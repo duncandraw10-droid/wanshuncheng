@@ -498,3 +498,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+\n
+// Equipment Data Object (Centralized Data Source)
+const equipmentData = [
+  {
+    id: 'eq-250t',
+    name: '250T 精密複合材料熱壓成型機',
+    tonnage: '250T',
+    platenSize: '待確認',
+    daylight: '待確認',
+    quantity: '待確認',
+    controlSystem: '待確認',
+    positioning: '適合新品開發、精細打樣及小批量生產。',
+    benefits: '設備升降溫及壓力條件可依產品需求設定，適合複合材料新品試作與製程驗證，有助於在量產前確認模具及成型條件。',
+    suitableStages: ['打樣', '小批量'],
+    image: '/images/equip-250t.jpg',
+    imageStatus: 'verified',
+    verified: true
+  },
+  {
+    id: 'eq-400t',
+    name: '400T 數位高效模壓成型機',
+    tonnage: '400T',
+    platenSize: '待確認',
+    daylight: '待確認',
+    quantity: '雙機配置',
+    controlSystem: '數位人機操作介面',
+    positioning: '適合穩定量產、分段加壓設定及彈性生產排程。',
+    benefits: '配備數位人機操作介面，可依實際設備功能設定加壓與排氣程序，支援不同產品的模壓條件管理。兩台設備可依訂單與模具安排彈性調度。',
+    suitableStages: ['小批量', '量產'],
+    image: '/images/equip-400t.jpg',
+    imageStatus: 'verified',
+    verified: true
+  },
+  {
+    id: 'eq-500t',
+    name: '500T 大型複合材料模壓成型機',
+    tonnage: '500T',
+    platenSize: '待確認',
+    daylight: '待確認',
+    quantity: '待確認',
+    controlSystem: '待確認',
+    positioning: '適合大型模具、較高成型壓力及重型結構件。',
+    benefits: '較高的成型壓力與設備剛性，可配合大型或高強度複合材料構件的模壓需求，實際可承作範圍依模具尺寸、材料及產品結構評估。',
+    suitableStages: ['量產'],
+    image: '/images/equip-500t.jpg',
+    imageStatus: 'verified',
+    verified: true
+  }
+];
+window.equipmentData = equipmentData;
