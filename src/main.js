@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-\n
+
 // Equipment Data Object (Centralized Data Source)
 const equipmentData = [
   {
@@ -512,7 +512,7 @@ const equipmentData = [
     positioning: '適合新品開發、精細打樣及小批量生產。',
     benefits: '設備升降溫及壓力條件可依產品需求設定，適合複合材料新品試作與製程驗證，有助於在量產前確認模具及成型條件。',
     suitableStages: ['打樣', '小批量'],
-    image: '/images/equip-250t.jpg',
+    image: './images/equip-250t.jpg',
     imageStatus: 'verified',
     verified: true
   },
@@ -527,7 +527,7 @@ const equipmentData = [
     positioning: '適合穩定量產、分段加壓設定及彈性生產排程。',
     benefits: '配備數位人機操作介面，可依實際設備功能設定加壓與排氣程序，支援不同產品的模壓條件管理。兩台設備可依訂單與模具安排彈性調度。',
     suitableStages: ['小批量', '量產'],
-    image: '/images/equip-400t.jpg',
+    image: './images/equip-400t.jpg',
     imageStatus: 'verified',
     verified: true
   },
@@ -542,7 +542,7 @@ const equipmentData = [
     positioning: '適合大型模具、較高成型壓力及重型結構件。',
     benefits: '較高的成型壓力與設備剛性，可配合大型或高強度複合材料構件的模壓需求，實際可承作範圍依模具尺寸、材料及產品結構評估。',
     suitableStages: ['量產'],
-    image: '/images/equip-500t.jpg',
+    image: './images/equip-500t.jpg',
     imageStatus: 'verified',
     verified: true
   }
