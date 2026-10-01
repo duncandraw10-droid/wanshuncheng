@@ -39,6 +39,7 @@
     <nav class="hidden md:flex items-center gap-6" aria-label="主要導覽">
       <a href="#capabilities" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors focus-visible:outline-white rounded px-1">製造能力</a>
       <a href="#equipment" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors focus-visible:outline-white rounded px-1">設備</a>
+      <a href="#applications" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors focus-visible:outline-white rounded px-1">應用與實績</a>
       <a href="#workflow" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors focus-visible:outline-white rounded px-1">合作流程</a>
       <a href="#about" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors focus-visible:outline-white rounded px-1">關於我們</a>
       <a href="#contact" class="px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded transition-colors shadow focus-visible:outline-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg">聯絡詢價</a>
@@ -53,6 +54,7 @@
     <nav class="flex flex-col gap-2">
       <a href="#capabilities" class="mobile-nav-link block py-2 text-sm font-semibold text-slate-300 hover:text-white border-b border-slate-800">製造能力</a>
       <a href="#equipment" class="mobile-nav-link block py-2 text-sm font-semibold text-slate-300 hover:text-white border-b border-slate-800">設備</a>
+      <a href="#applications" class="mobile-nav-link block py-2 text-sm font-semibold text-slate-300 hover:text-white border-b border-slate-800">應用與實績</a>
       <a href="#workflow" class="mobile-nav-link block py-2 text-sm font-semibold text-slate-300 hover:text-white border-b border-slate-800">合作流程</a>
       <a href="#about" class="mobile-nav-link block py-2 text-sm font-semibold text-slate-300 hover:text-white border-b border-slate-800">關於我們</a>
       <a href="#contact" class="mobile-nav-link mt-4 block py-3 text-center bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded">聯絡詢價</a>
@@ -225,6 +227,57 @@
     </div>
   </section>
 
+  <!-- SECTION: Applications -->
+  <section id="applications" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <span class="w-2 h-4 bg-primary rounded-sm"></span>
+          <span class="font-mono text-xs text-primary font-bold tracking-wider uppercase">實績案例</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">應用與實績</h2>
+        <p class="text-sm md:text-base text-slate-600 mt-4 leading-relaxed">
+          展示部分已獲准公開之實際承作產品，未來將陸續新增更多 SMC/BMC/FRP 模壓成型案例。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Item 1: Box -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="aspect-[4/3] relative overflow-hidden bg-slate-100">
+            <img src="./images/portfolio-box.jpg" alt="玻璃纖維箱" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 right-3 text-[10px] font-mono text-white bg-slate-900/70 px-2 py-1 rounded backdrop-blur-sm">實拍成品</span>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-bold text-lg text-slate-900">玻璃纖維箱</h3>
+          </div>
+        </div>
+
+        <!-- Item 2: Chairs -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="aspect-[4/3] relative overflow-hidden bg-slate-100">
+            <img src="./images/portfolio-chair.jpg" alt="玻璃纖維椅子" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 right-3 text-[10px] font-mono text-white bg-slate-900/70 px-2 py-1 rounded backdrop-blur-sm">實拍成品</span>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-bold text-lg text-slate-900">玻璃纖維椅子</h3>
+          </div>
+        </div>
+
+        <!-- Item 3: Train Front -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="aspect-[4/3] relative overflow-hidden bg-slate-100">
+            <img src="./images/portfolio-train.jpg" alt="火車頭（FRP）" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 right-3 text-[10px] font-mono text-white bg-slate-900/70 px-2 py-1 rounded backdrop-blur-sm">實拍成品</span>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-bold text-lg text-slate-900">火車頭（FRP）</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION: Workflow -->
   <section id="workflow" class="py-16 md:py-24 bg-white border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
@@ -336,6 +389,8 @@
       <a href="#capabilities" class="hover:text-white transition-colors">製造能力</a>
       <span class="text-slate-700">•</span>
       <a href="#equipment" class="hover:text-white transition-colors">設備</a>
+      <span class="text-slate-700">•</span>
+      <a href="#applications" class="hover:text-white transition-colors">應用與實績</a>
       <span class="text-slate-700">•</span>
       <a href="#workflow" class="hover:text-white transition-colors">合作流程</a>
       <span class="text-slate-700">•</span>
