@@ -2,32 +2,23 @@
 export default {
   content: [
     "./index.html",
-    "./404.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        "primary": "#1D4ED8",
-        "primary-hover": "#1e40af",
-        "secondary": "#14B8A6",
-        "dark-bg": "#0B1220",
-        "surface": "#F8FAFC",
-        "text-main": "#475569",
+        'primary': '#155EA8',
+        'primary-hover': '#104985',
+        'secondary': '#14B8A6',
+        'dark-bg': '#0B1728',
+        'surface': '#F3F5F7',
+        'text-main': '#334155',
       },
       fontFamily: {
-        sans: ['"Noto Sans TC"', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace']
-      },
-      spacing: {
-        "section-desktop": "80px",
-        "section-mobile": "56px",
+        'sans': ['"Noto Sans TC"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        'mono': ['Inter', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       }
-    }
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/container-queries')
-  ],
+  plugins: [],
 }
