@@ -222,3 +222,43 @@ window.copyTemplate = async function() {
     showToast('複製失敗，請手動複製範本。');
   }
 }
+
+// --- Portfolio Slider ---
+const slider = document.getElementById('portfolio-slider');
+const prevBtn = document.getElementById('slider-prev');
+const nextBtn = document.getElementById('slider-next');
+
+if (slider && prevBtn && nextBtn) {
+  function updateSliderButtons() {
+    const isAtStart = slider.scrollLeft <= 0;
+    const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+    
+    prevBtn.disabled = isAtStart;
+    nextBtn.disabled = isAtEnd;
+  }
+
+  // Initial check
+  updateSliderButtons();
+  
+  // Listen to scroll events
+  slider.addEventListener('scroll', () => {
+    // throttle or just run
+    requestAnimationFrame(updateSliderButtons);
+  });
+
+  // Click events
+  prevBtn.addEventListener('click', () => {
+    const itemWidth = slider.querySelector('div').offsetWidth;
+    const gap = window.innerWidth >= 768 ? 24 : 16;
+    slider.scrollBy({ left: -(itemWidth + gap), behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const itemWidth = slider.querySelector('div').offsetWidth;
+    const gap = window.innerWidth >= 768 ? 24 : 16;
+    slider.scrollBy({ left: itemWidth + gap, behavior: 'smooth' });
+  });
+
+  // Re-check on resize
+  window.addEventListener('resize', updateSliderButtons);
+}
