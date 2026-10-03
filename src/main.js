@@ -271,3 +271,7 @@ if (slider && prevBtn && nextBtn) {
 
   window.addEventListener('resize', updateSlider);
 }
+
+// Update current year
+const yearEl = document.getElementById('current-year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
+
