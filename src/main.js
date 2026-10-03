@@ -196,30 +196,27 @@ window.showToast = function(message) {
 window.copyToClipboard = async function(text) {
   try {
     await navigator.clipboard.writeText(text);
-    showToast('信箱已複製！');
+    showToast('已複製！');
   } catch (err) {
-    showToast('複製失敗，請手動反白：' + text);
+    showToast('複製失敗，請手動複製：' + text);
   }
 }
 
 window.copyTemplate = async function() {
   const template = `您好，我們有模壓成型的需求，請協助評估：
 
-1. 公司名稱：
-2. 聯絡人與電話：
-3. 產品名稱／用途：
-4. 材料需求：
-5. 預估數量：
-6. 是否有現成模具：
-7. 希望交期：
-8. 其他需求（如表面處理）：
+1. 產品用途與尺寸：
+2. 材料需求（如已知）：
+3. 預計數量：
+4. 是否已有模具：
+5. 希望交期：
 
-（備註：將隨信附上產品圖面或照片）`;
+（備註：將隨信附上圖面或產品照片）`;
   try {
     await navigator.clipboard.writeText(template);
-    showToast('詢價範本已複製！');
+    showToast('已複製！');
   } catch (err) {
-    showToast('複製失敗，請手動複製範本。');
+    showToast('複製失敗，請手動複製。');
   }
 }
 
