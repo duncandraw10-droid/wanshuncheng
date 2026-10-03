@@ -117,20 +117,8 @@
           <div class="text-lg font-bold text-white flex items-center gap-2">完整製程</div>
           <div class="text-[14px] text-slate-300">評估、試作、量產與交付</div>
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
-        </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多</span>
-        </div>
-      </div>
     </div>
-</section>
+  </section>
 
   <!-- Applications Section -->
   <section id="applications" class="py-12 lg:py-20 bg-surface scroll-margin-top-24">
@@ -259,7 +247,7 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 
   <!-- Capabilities Section -->
   <section id="capabilities" class="py-12 lg:py-20 bg-white border-t border-slate-200 scroll-margin-top-24">
@@ -338,20 +326,8 @@
             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">arrow_right</span>預估數量及希望交期</li>
           </ul>
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
-        </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多</span>
-        </div>
-      </div>
     </div>
-</section>
+  </section>
 
   <!-- Equipment Section -->
   <section id="equipment" class="py-12 lg:py-20 bg-surface border-t border-slate-200 scroll-margin-top-24">
@@ -365,8 +341,8 @@
       </div>
 
       <!-- Equipment Photos & Data -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-6 items-stretch">
-        <div class="reveal delay-0 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
+      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-4 pt-1 scrollbar-hide -mx-5 px-[7.5vw] md:mx-0 md:px-0 md:grid md:grid-cols-3 md:overflow-visible items-stretch">
+        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-0 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
           <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
             <img src="./images/equip-250t.jpg" alt="250T 模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
           </div>
@@ -378,7 +354,7 @@
           </div>
         </div>
 
-        <div class="reveal delay-60 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
+        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-60 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
           <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
             <img src="./images/equip-400t.jpg" alt="400T 模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
           </div>
@@ -390,7 +366,7 @@
           </div>
         </div>
 
-        <div class="reveal delay-120 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
+        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-120 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
           <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
             <img src="./images/equip-500t.jpg" alt="500T 大型模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
           </div>
@@ -403,42 +379,15 @@
         </div>
       </div>
       
+      <!-- Swipe Hint (Mobile) -->
+      <div class="md:hidden flex items-center justify-center gap-2 mt-4 mb-6 text-slate-400 text-[13px]">
+        <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
+        <span>向左右滑動查看更多機型</span>
+      </div>
+
       <div class="flex items-start md:items-center gap-2 text-[13px] text-slate-500 mb-10">
         <span class="material-symbols-outlined text-[16px] shrink-0 mt-0.5 md:mt-0" aria-hidden="true">info</span>
         <span>工作台尺寸、模具高度、開模行程與實際適配性，將依產品圖面、模具及實機條件確認。</span>
-      </div>
-
-      <!-- Aux Equipment -->
-      <div class="reveal bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col md:flex-row items-stretch">
-        <div class="w-full md:w-[40%] bg-slate-100 shrink-0 flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-slate-200">
-          <img src="./images/equip-shini-stm.jpg" alt="SHINI STM 模溫控制系統" loading="lazy" width="800" height="600" class="w-full h-auto object-contain max-h-[280px]" />
-        </div>
-        <div class="p-6 md:p-8 lg:p-10 w-full flex flex-col justify-center">
-          <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-            <h3 class="font-bold text-[18px] lg:text-[20px] text-slate-900">模具溫度控制系統</h3>
-            <span class="inline-block w-fit bg-slate-100 text-slate-600 px-2 py-0.5 rounded-sm text-xs font-bold font-mono border border-slate-200">SHINI STM</span>
-          </div>
-          <p class="text-[14px] lg:text-[15px] text-slate-600 leading-relaxed mb-6">
-            廠內配備專業級水式模溫機，確保 SMC／BMC 等熱固性複合材料在成型過程中，模具溫度維持高度穩定。
-          </p>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="flex items-start gap-2">
-              <span class="material-symbols-outlined text-primary text-[20px] shrink-0" aria-hidden="true">device_thermostat</span>
-              <div>
-                <h4 class="font-bold text-[14px] text-slate-900 mb-1">精準溫控</h4>
-                <p class="text-[13px] text-slate-500 leading-relaxed">提供精確的加熱與保溫控制，降低產品變形率。</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-2">
-              <span class="material-symbols-outlined text-primary text-[20px] shrink-0" aria-hidden="true">settings_timelapse</span>
-              <div>
-                <h4 class="font-bold text-[14px] text-slate-900 mb-1">穩定交期</h4>
-                <p class="text-[13px] text-slate-500 leading-relaxed">有效減少升溫等待時間，提升量產效率與良率。</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- CTA -->
@@ -532,20 +481,8 @@
           </div>
 
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
-        </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多</span>
-        </div>
-      </div>
     </div>
-</section>
+  </section>
 
   <!-- About Section -->
     <section id="about" class="py-12 lg:py-20 bg-dark-bg text-white border-t border-slate-800 scroll-margin-top-24">
@@ -616,20 +553,8 @@
             </div>
           </div>
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
-        </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多</span>
-        </div>
-      </div>
     </div>
-</section>
+  </section>
 
   <!-- Contact Section -->
     <section id="contact" class="py-12 lg:py-20 bg-surface scroll-margin-top-24 relative">
@@ -730,20 +655,8 @@
             </div>
           </div>
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
-        </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多</span>
-        </div>
-      </div>
     </div>
-</section>
+  </section>
 </main>
 
 <footer class="bg-[#0B1C2E] text-slate-400 py-12 border-t border-slate-800">
