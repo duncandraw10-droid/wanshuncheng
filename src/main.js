@@ -223,42 +223,51 @@ window.copyTemplate = async function() {
   }
 }
 
+
 // --- Portfolio Slider ---
 const slider = document.getElementById('portfolio-slider');
 const prevBtn = document.getElementById('slider-prev');
 const nextBtn = document.getElementById('slider-next');
+const progressBar = document.getElementById('slider-progress');
 
 if (slider && prevBtn && nextBtn) {
-  function updateSliderButtons() {
+  function updateSlider() {
     const isAtStart = slider.scrollLeft <= 0;
-    const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+    const isAtEnd = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth;
     
     prevBtn.disabled = isAtStart;
     nextBtn.disabled = isAtEnd;
+    
+    if (progressBar) {
+      const scrollPercentage = slider.scrollLeft / (slider.scrollWidth - slider.clientWidth);
+      // Ensure it doesn't go below 33.3% (minimum bar width)
+      const minWidth = 100 / slider.children.length;
+      const width = Math.max(minWidth, minWidth + (scrollPercentage * (100 - minWidth)));
+      progressBar.style.width = `${width}%`;
+    }
   }
 
   // Initial check
-  updateSliderButtons();
+  updateSlider();
   
-  // Listen to scroll events
   slider.addEventListener('scroll', () => {
-    // throttle or just run
-    requestAnimationFrame(updateSliderButtons);
+    requestAnimationFrame(updateSlider);
   });
 
-  // Click events
-  prevBtn.addEventListener('click', () => {
-    const itemWidth = slider.querySelector('div').offsetWidth;
+  const scrollByAmount = () => {
+    const item = slider.querySelector('div');
+    if(!item) return 0;
     const gap = window.innerWidth >= 768 ? 24 : 16;
-    slider.scrollBy({ left: -(itemWidth + gap), behavior: 'smooth' });
+    return item.offsetWidth + gap;
+  };
+
+  prevBtn.addEventListener('click', () => {
+    slider.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
   });
 
   nextBtn.addEventListener('click', () => {
-    const itemWidth = slider.querySelector('div').offsetWidth;
-    const gap = window.innerWidth >= 768 ? 24 : 16;
-    slider.scrollBy({ left: itemWidth + gap, behavior: 'smooth' });
+    slider.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
   });
 
-  // Re-check on resize
-  window.addEventListener('resize', updateSliderButtons);
+  window.addEventListener('resize', updateSlider);
 }
