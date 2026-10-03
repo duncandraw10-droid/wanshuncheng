@@ -554,40 +554,36 @@
           <div class="flex flex-col gap-4 text-[15px] lg:text-[16px] text-slate-700">
             <div class="flex items-center gap-3">
               <span class="text-slate-500 w-[64px] shrink-0 font-medium">負責人</span>
-              <span class="font-bold">范整鐘</span>
+              <span class="font-bold text-slate-900">范整鐘</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-slate-500 w-[64px] shrink-0 font-medium">手機</span>
-              <div class="flex items-center gap-2 group">
-                <span class="font-mono font-bold text-[18px] text-slate-900">0932-271570</span>
-                <button onclick="copyToClipboard('0932271570')" class="hidden lg:flex text-slate-400 hover:text-primary transition-colors focus-visible:outline-none" aria-label="複製手機號碼" title="複製號碼">
+              <div class="flex items-center gap-1 group">
+                <a href="tel:0932271570" class="tabular-nums font-bold text-[18px] text-slate-900 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded underline underline-offset-4 decoration-transparent hover:decoration-primary">0932-271570</a>
+                <button onclick="copyToClipboard('0932271570')" class="hidden lg:flex w-11 h-11 items-center justify-center rounded-md text-slate-400 hover:text-primary hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="複製手機號碼" title="複製號碼">
                   <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
                 </button>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-slate-500 w-[64px] shrink-0 font-medium">電話</span>
-              <div class="flex items-center gap-2 group">
-                <span class="font-mono text-[16px]">03-4721912</span>
-                <button onclick="copyToClipboard('034721912')" class="hidden lg:flex text-slate-400 hover:text-primary transition-colors focus-visible:outline-none" aria-label="複製公司電話" title="複製號碼">
+              <div class="flex items-center gap-1 group">
+                <a href="tel:034721912" class="tabular-nums text-[16px] text-slate-700 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded underline underline-offset-4 decoration-transparent hover:decoration-primary">03-4721912</a>
+                <button onclick="copyToClipboard('034721912')" class="hidden lg:flex w-11 h-11 items-center justify-center rounded-md text-slate-400 hover:text-primary hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="複製公司電話" title="複製號碼">
                   <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
                 </button>
               </div>
             </div>
             <div class="flex items-center gap-3 mt-1">
               <span class="text-slate-400 w-[64px] shrink-0 text-[14px]">傳真</span>
-              <span class="font-mono text-[14px] text-slate-500">03-4728290</span>
+              <span class="tabular-nums text-[14px] text-slate-500">03-4728290</span>
             </div>
           </div>
           
-          <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-slate-100">
-            <a href="tel:0932271570" class="min-h-[44px] sm:flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div class="pt-6 border-t border-slate-100">
+            <a href="tel:0932271570" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
               <span class="material-symbols-outlined text-[20px]" aria-hidden="true">smartphone</span>
               撥打手機
-            </a>
-            <a href="tel:034721912" class="min-h-[44px] sm:flex-1 inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">call</span>
-              撥打電話
             </a>
           </div>
         </div>
@@ -603,41 +599,39 @@
           
           <div class="flex flex-col gap-3">
             <span class="text-slate-500 text-[15px] font-medium">詢價信箱</span>
-            <span class="font-mono text-primary font-bold text-[20px] break-all leading-tight">fan6772@gmail.com</span>
+            <a href="mailto:fan6772@gmail.com" class="tabular-nums text-primary font-bold text-[20px] break-all leading-tight hover:text-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded w-fit underline underline-offset-4 decoration-transparent hover:decoration-primary">fan6772@gmail.com</a>
             <p class="text-[14px] text-slate-500 leading-relaxed mt-2">
-              將開啟您的郵件程式，圖面或照片請於郵件中自行附加。
+              將開啟您的郵件程式，圖面或照片請自行附加。
             </p>
           </div>
           
-          <div class="flex flex-col gap-3 pt-6 border-t border-slate-100">
-            <a href="mailto:fan6772@gmail.com?subject=模壓代工詢價&body=您好，我們有模壓成型的需求，請協助評估：%0D%0A%0D%0A1.%20產品用途與尺寸：%0D%0A2.%20材料需求（如已知）：%0D%0A3.%20預計數量：%0D%0A4.%20是否已有模具：%0D%0A5.%20希望交期：%0D%0A%0D%0A（請記得夾帶圖面或照片檔案，謝謝！）" class="min-h-[44px] w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div class="flex flex-col gap-3 pt-6 border-t border-slate-100 mt-auto">
+            <a href="mailto:fan6772@gmail.com?subject=模壓代工詢價&body=您好，我們有模壓成型的需求，請協助評估：%0D%0A%0D%0A1.%20產品用途與尺寸：%0D%0A2.%20材料需求（如已知）：%0D%0A3.%20預計數量：%0D%0A4.%20是否已有模具：%0D%0A5.%20希望交期：%0D%0A%0D%0A（請記得夾帶圖面或照片檔案）" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
               <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mail</span>
               Email 詢價
             </a>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button onclick="copyToClipboard('fan6772@gmail.com')" class="min-h-[44px] w-full inline-flex items-center justify-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            <div class="grid grid-cols-2 gap-3">
+              <button onclick="copyToClipboard('fan6772@gmail.com')" class="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
                 複製信箱
               </button>
-              <button onclick="copyTemplate()" class="min-h-[44px] w-full inline-flex items-center justify-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <button onclick="copyTemplate()" class="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">assignment</span>
-                複製詢價範本
+                複製範本
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Inquiry Data Prep List -->
-      <div class="bg-white border border-slate-200 rounded-md p-6 lg:p-8 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-2 font-bold text-slate-900 mb-4 text-[16px]">
-          <div class="flex items-center gap-2 text-primary">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">list_alt</span>
-            <span class="text-slate-900">準備資料說明</span>
-          </div>
+      <!-- Inquiry Data Prep List (Desktop) -->
+      <div class="hidden lg:block bg-white border border-slate-200 rounded-md p-8 shadow-sm">
+        <div class="flex items-center gap-2 font-bold text-slate-900 mb-4 text-[16px]">
+          <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">list_alt</span>
+          詢價前可準備的資料
         </div>
-        <p class="text-[14px] text-slate-500 mb-4">為加速初步評估，詢價時建議準備以下資訊（無須全部齊全即可聯絡）：</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 lg:gap-y-4 gap-x-6 text-[15px] text-slate-700">
+        <p class="text-[14px] text-slate-500 mb-5">資料尚未齊全，也歡迎先聯絡。</p>
+        <div class="grid grid-cols-2 gap-y-4 gap-x-6 text-[15px] text-slate-700">
           <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 產品用途與尺寸</div>
           <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 材料需求（如已知）</div>
           <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 預計數量</div>
@@ -646,6 +640,30 @@
           <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 圖面或產品照片</div>
         </div>
       </div>
+
+      <!-- Inquiry Data Prep List (Mobile Accordion) -->
+      <details class="lg:hidden bg-white border border-slate-200 rounded-md shadow-sm group">
+        <summary class="flex flex-col p-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md list-none [&::-webkit-details-marker]:hidden relative">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 font-bold text-slate-900 text-[16px]">
+              <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">list_alt</span>
+              詢價前可準備的資料
+            </div>
+            <span class="material-symbols-outlined text-slate-400 transition-transform duration-300 group-open:-rotate-180" aria-hidden="true">expand_more</span>
+          </div>
+          <p class="text-[13px] text-slate-500 mt-2">資料尚未齊全，也歡迎先聯絡。</p>
+        </summary>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <div class="grid grid-cols-1 gap-y-3 text-[14px] text-slate-700">
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 產品用途與尺寸</div>
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 材料需求（如已知）</div>
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 預計數量</div>
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 是否已有模具</div>
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 希望交期</div>
+            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 圖面或產品照片</div>
+          </div>
+        </div>
+      </details>
 
     </div>
   </section>
@@ -732,7 +750,7 @@
 </div>
 
 <!-- Toast Notification -->
-<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-md shadow-lg text-[14px] flex items-center gap-2 transform transition-all duration-150 translate-y-10 opacity-0 z-[100]" aria-live="polite">
+<div id="toast" class="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-md shadow-lg text-[14px] flex items-center gap-2 transform transition-all duration-150 translate-y-10 opacity-0 z-[100]" aria-live="polite">
   <span class="material-symbols-outlined text-[18px] text-green-400" aria-hidden="true">check_circle</span>
   <span id="toast-message">複製成功</span>
 </div>
