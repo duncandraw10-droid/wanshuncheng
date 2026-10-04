@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#155EA8',
-        'primary-hover': '#104985',
+        'primary': '#2563EB',
+        'primary-hover': '#1D4ED8',
         'secondary': '#14B8A6',
-        'dark-bg': '#0B1728',
-        'surface': '#F3F5F7',
+        'dark-bg': '#172B46',
+        'surface': '#F8FAFC',
         'text-main': '#334155',
       },
       fontFamily: {

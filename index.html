@@ -37,646 +37,518 @@
     }
   </style>
 </head>
-<body class="bg-surface text-text-main font-sans antialiased selection:bg-primary selection:text-white">
+<body class="bg-white text-text-main font-sans antialiased selection:bg-[#2563EB] selection:text-white loading-overflow">
 
-<header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#08192B]/95 to-[#0B1C2E]/95 backdrop-blur-sm border-b border-white/[0.08] transition-colors duration-300">
+<!-- Loading Area -->
+<div id="loadingArea" class="fixed inset-0 z-[100] bg-[#172B46] flex flex-col items-center justify-center transition-all duration-1000">
+  <div id="loadLogo" class="opacity-0 transform translate-y-4 transition-all duration-1000 w-48 md:w-64">
+    <img src="./images/logo.png" alt="萬順承實業" class="w-full h-auto drop-shadow-lg" />
+  </div>
+  <div id="loadProgress" class="mt-8 w-32 h-1 bg-white/20 rounded-full overflow-hidden opacity-0 transition-opacity duration-1000 delay-300">
+    <div class="h-full bg-white rounded-full w-0 progress-animate"></div>
+  </div>
+</div>
+<!-- Loading Area End -->
+
+
+<header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#172B46]/95 to-[#172B46]/95 backdrop-blur-sm border-b border-white/[0.08] transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-5 md:px-10 h-[72px] md:h-[76px] flex items-center justify-between">
-    <a href="./" class="-ml-4 lg:-ml-6 flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md" aria-label="回到首頁">
+    <a href="./" class="-ml-4 lg:-ml-6 flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md" aria-label="回到首頁">
       <img src="./images/logo.png" alt="萬順承實業有限公司" class="h-[54px] lg:h-[64px] w-auto object-contain transform scale-[1.15] origin-left" />
     </a>
 
     <nav class="hidden lg:flex items-center gap-6" aria-label="主要導覽">
-      <a href="#applications" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 py-1">承製案例</a>
-      <a href="#capabilities" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 py-1">製造能力</a>
-      <a href="#equipment" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 py-1">設備能力</a>
-      <a href="#workflow" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 py-1">合作流程</a>
-      <a href="#about" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 py-1">關於萬順承</a>
-      <a href="#contact" class="px-4 py-2 bg-primary hover:bg-primary-hover border border-transparent text-white text-[15px] font-medium rounded-md transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white group flex items-center gap-1">
+      <a href="#applications" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md px-1 py-1">承製案例</a>
+      <a href="#capabilities" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md px-1 py-1">製造能力</a>
+      <a href="#equipment" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md px-1 py-1">設備能力</a>
+      <a href="#workflow" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md px-1 py-1">合作流程</a>
+      <a href="#about" class="text-[15px] font-medium text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md px-1 py-1">關於萬順承</a>
+      <a href="#contact" class="px-4 py-2 bg-[#2563EB] hover:bg-[#2563EB]-hover border border-transparent text-white text-[15px] font-medium rounded-md transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white group flex items-center gap-1">
         洽詢製程評估 <span class="material-symbols-outlined text-[16px] transition-transform duration-150 group-hover:translate-x-[2px]" aria-hidden="true">arrow_forward</span>
       </a>
     </nav>
 
-    <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md flex items-center justify-center transition-colors duration-150" aria-expanded="false" aria-controls="mobile-menu" aria-label="切換選單">
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-md flex items-center justify-center transition-colors duration-150" aria-expanded="false" aria-controls="mobile-menu" aria-label="切換選單">
       <span class="material-symbols-outlined icon-menu block" aria-hidden="true">menu</span>
       <span class="material-symbols-outlined icon-close hidden" aria-hidden="true">close</span>
     </button>
   </div>
   
-  <div id="mobile-menu" class="hidden lg:hidden bg-[#0B1C2E] border-b border-white/10 flex-col px-5 py-4 gap-2 absolute w-full left-0 top-[72px] shadow-lg transition-all duration-180 opacity-0 -translate-y-2">
-    <a href="#applications" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">承製案例</a>
-    <a href="#capabilities" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">製造能力</a>
-    <a href="#equipment" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">設備能力</a>
-    <a href="#workflow" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">合作流程</a>
-    <a href="#about" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">關於萬順承</a>
-    <a href="#contact" class="mobile-nav-link block py-3 text-[15px] font-bold text-primary hover:text-primary-hover mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm inline-flex items-center gap-1 group">
+  <div id="mobile-menu" class="hidden lg:hidden bg-[#172B46] border-b border-white/10 flex-col px-5 py-4 gap-2 absolute w-full left-0 top-[72px] shadow-lg transition-all duration-180 opacity-0 -translate-y-2">
+    <a href="#applications" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm">承製案例</a>
+    <a href="#capabilities" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm">製造能力</a>
+    <a href="#equipment" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm">設備能力</a>
+    <a href="#workflow" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm">合作流程</a>
+    <a href="#about" class="mobile-nav-link block py-2 text-[15px] font-medium text-slate-300 hover:text-white border-b border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm">關於萬順承</a>
+    <a href="#contact" class="mobile-nav-link block py-3 text-[15px] font-bold text-[#2563EB] hover:text-[#2563EB]-hover mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm inline-flex items-center gap-1 group">
       洽詢製程評估 <span class="material-symbols-outlined text-[18px] transition-transform duration-150 group-hover:translate-x-[2px]" aria-hidden="true">arrow_forward</span>
     </a>
   </div>
 </header>
 
 <main>
+  
   <!-- Hero Section -->
-  <section class="relative pt-28 pb-12 md:pt-36 md:pb-16 overflow-hidden flex flex-col justify-center">
-    <div class="absolute inset-0 z-0 overflow-hidden bg-[#051426]">
-      <img src="./images/factory-hero.jpg" alt="萬順承廠房實景" fetchpriority="high" width="1920" height="1080" class="w-full h-full object-cover object-[75%_center] md:object-center opacity-100" />
-      
-      <!-- Mobile Gradient overlay: ensures text readability across full width while hinting at background -->
-      <div class="absolute inset-0 z-10 pointer-events-none md:hidden" style="background: linear-gradient(90deg, rgba(5, 20, 38, 0.95) 0%, rgba(5, 20, 38, 0.85) 60%, rgba(5, 20, 38, 0.6) 100%);"></div>
-      
-      <!-- Desktop Gradient overlay: fades to transparent on the right to show factory equipment clearly -->
-      <div class="absolute inset-0 z-10 pointer-events-none hidden md:block" style="background: linear-gradient(90deg, rgba(5, 20, 38, 0.95) 0%, rgba(5, 20, 38, 0.8) 45%, rgba(5, 20, 38, 0.2) 75%, rgba(5, 20, 38, 0) 100%);"></div>
+  <section id="hero" class="relative bg-slate-50 flex flex-col md:flex-row md:min-h-[75vh] overflow-hidden pt-[72px] md:pt-0">
+    
+    <!-- Mobile Image (Top, approx 3:2) -->
+    <div class="relative w-full aspect-[3/2] z-0 md:hidden shrink-0">
+      <img src="./images/factory-hero.jpg" alt="萬順承廠房實景" fetchpriority="high" class="w-full h-full object-cover object-[75%_center]" />
     </div>
     
-    <div class="relative z-20 max-w-7xl mx-auto px-5 md:px-10 w-full flex-grow flex flex-col justify-center mt-2 md:mt-0">
-      <div class="max-w-[480px] md:max-w-xl lg:max-w-2xl">
-        <h1 class="hero-animate text-[32px] leading-[1.25] md:text-[44px] lg:text-[52px] font-bold text-white tracking-tight mb-5 md:mb-6">
-          SMC／BMC 模壓成型代工
+    <!-- Desktop Image Background -->
+    <div class="hidden md:block absolute inset-0 z-0 bg-slate-100">
+      <img src="./images/factory-hero.jpg" alt="萬順承廠房實景" fetchpriority="high" class="w-full h-full object-cover object-[80%_center]" />
+    </div>
+
+    <!-- Geometric Dark Navy Block (Desktop) / Background (Mobile) -->
+    <div class="relative w-full bg-dark-bg z-10 md:absolute md:left-0 md:top-0 md:h-full md:w-[60%] lg:w-[55%] md:slant-cut hero-geo-animate shrink-0">
+      <!-- Thin blue decorative line on the cut edge -->
+      <div class="hidden md:block absolute top-0 right-0 h-full w-[6px] bg-primary"></div>
+    </div>
+
+    <!-- Content Container -->
+    <div class="relative z-20 w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center px-6 py-12 md:px-10 lg:pl-16 lg:pr-8 text-white md:h-full">
+      <div class="max-w-[480px]">
+        <h1 class="hero-animate text-[32px] leading-[1.25] md:text-[44px] lg:text-[52px] font-bold tracking-tight mb-5">
+          SMC／BMC<br class="md:hidden"> 模壓成型代工
         </h1>
-        <p class="hero-animate hero-delay-1 text-[16px] md:text-[18px] lg:text-[20px] text-[rgba(255,255,255,0.85)] mb-8 md:mb-10 leading-relaxed font-medium">
+        <p class="hero-animate hero-delay-1 text-[16px] md:text-[18px] lg:text-[20px] text-slate-300 mb-10 leading-[1.7] font-medium">
           位於桃園楊梅，專注提供 SMC／BMC 模壓成型、現有模具移轉與穩定量產等專業製造服務。
         </p>
         
-        <div class="hero-animate hero-delay-2 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 md:mb-12">
-          <a href="#contact" class="min-h-[48px] inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white sm:px-8 rounded-md font-bold text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm group">
+        <div class="hero-animate hero-delay-2 flex flex-col md:flex-row gap-4 items-start">
+          <a href="#contact" class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-8 h-[52px] rounded font-bold text-[16px] transition-colors shadow-sm group">
             洽詢製程評估
-            <span class="material-symbols-outlined text-[20px] transition-transform duration-150 group-hover:translate-x-[2px]" aria-hidden="true">arrow_forward</span>
+            <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span>
           </a>
-          <a href="#equipment" class="min-h-[48px] inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 text-white border border-white/30 sm:px-8 rounded-md font-medium text-[16px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+          <a href="#equipment" class="w-full md:w-auto inline-flex items-center justify-center gap-1.5 text-slate-200 hover:text-white transition-colors h-[52px] font-bold text-[16px] underline underline-offset-4 decoration-slate-600 hover:decoration-white">
             查看設備能力
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_downward</span>
           </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Capabilities Summary -->
-    <div class="hero-animate hero-delay-3 relative z-20 max-w-7xl mx-auto px-5 md:px-10 w-full mt-auto pt-6 md:pt-8 border-t border-white/15">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-5 max-w-3xl">
-        <div class="flex flex-col gap-1">
-          <div class="text-[15px] md:text-lg font-bold text-white leading-tight">35 年</div>
-          <div class="text-[13px] md:text-[14px] text-slate-300 leading-tight">產業實務經驗</div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <div class="text-[15px] md:text-lg font-bold text-white leading-tight">模壓成型代工</div>
-          <div class="text-[13px] md:text-[14px] text-slate-300 leading-tight">模具移轉、試作與量產</div>
-        </div>
-        <div class="flex flex-col gap-1 col-span-2 md:col-span-1">
-          <div class="text-[15px] md:text-lg font-bold text-white tabular-nums leading-tight">250T／400T／500T</div>
-          <div class="text-[13px] md:text-[14px] text-slate-300 leading-tight">廠內熱固性壓機設備</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Applications Section -->
-  <section id="applications" class="py-12 lg:py-20 bg-surface scroll-margin-top-24">
+  <section id="applications" class="py-16 lg:py-24 bg-white scroll-margin-top-24">
     <div class="max-w-7xl mx-auto px-5 md:px-10">
-      <div class="mb-8 reveal">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">承製案例</h2>
-        <div class="w-8 h-1 bg-primary mt-3 rounded-md"></div>
-        <p class="max-w-[720px] text-[15px] text-slate-600 mt-4 leading-relaxed">
-          以下皆為實際承製品項，更多案例歡迎洽詢。
-        </p>
+      <div class="mb-10 reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h2 class="text-2xl lg:text-[32px] font-bold text-dark-bg tracking-tight">承製案例</h2>
+          <div class="w-10 h-1 bg-primary mt-4"></div>
+          <p class="max-w-[600px] text-[16px] text-slate-600 mt-5 leading-relaxed">
+            以下皆為實際承製品項，我們專注於工業部件與特殊結構的模壓成型，更多案例歡迎洽詢。
+          </p>
+        </div>
+        
+        <!-- Desktop Slider Controls -->
+        <div class="hidden md:flex gap-3">
+          <button id="slider-prev" class="w-12 h-12 bg-surface hover:bg-slate-200 text-dark-bg rounded flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-30 disabled:cursor-not-allowed" aria-label="上一頁">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button id="slider-next" class="w-12 h-12 bg-surface hover:bg-slate-200 text-dark-bg rounded flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-30 disabled:cursor-not-allowed" aria-label="下一頁">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
       </div>
 
-      <div class="relative group reveal">
-        <!-- Desktop Slider Controls -->
-        <button id="slider-prev" class="hidden md:flex absolute -left-6 lg:-left-8 top-[calc(50%-24px)] -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full items-center justify-center text-slate-600 hover:text-primary shadow-md z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-opacity opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-30 disabled:cursor-not-allowed" aria-label="上一頁">
-          <span class="material-symbols-outlined">chevron_left</span>
-        </button>
-        <button id="slider-next" class="hidden md:flex absolute -right-6 lg:-right-8 top-[calc(50%-24px)] -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full items-center justify-center text-slate-600 hover:text-primary shadow-md z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-opacity opacity-100 lg:opacity-0 lg:group-hover:opacity-100 disabled:opacity-30 disabled:cursor-not-allowed" aria-label="下一頁">
-          <span class="material-symbols-outlined">chevron_right</span>
-        </button>
-
+      <div class="relative reveal">
         <!-- Slider Container -->
-        <div id="portfolio-slider" class="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-6 pt-2 scrollbar-hide -mx-5 px-[7.5vw] sm:mx-0 sm:px-0">
+        <div id="portfolio-slider" class="flex items-stretch overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0">
           
           <!-- Item 1 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-box.jpg" alt="玻璃纖維強化複合防護箱" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-box.jpg" alt="玻璃纖維強化複合防護箱" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">玻璃纖維強化複合防護箱</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">工業箱體與設備外殼</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>SMC 模壓</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>模壓成型、修邊</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">玻璃纖維強化複合防護箱</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">SMC 模壓成型、修邊加工，應用於工業箱體與設備外殼。</p>
             </div>
           </div>
 
           <!-- Item 2 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-chair.jpg" alt="SMC 模壓公共座椅" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-chair.jpg" alt="SMC 模壓公共座椅" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">SMC 模壓公共座椅</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">公共座椅與設施部件</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>SMC 模壓</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>模壓成型、修邊</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">SMC 模壓公共座椅</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">SMC 模壓成型，應用於戶外家具與公共設施，具備高耐候性。</p>
             </div>
           </div>
 
           <!-- Item 3 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-train.jpg" alt="軌道車輛 FRP 車頭罩" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-panel.jpg" alt="建築用裝飾壁板" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">軌道車輛 FRP 車頭罩</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">交通工具與大型構件</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>FRP 手工積層成型法</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>積層成型、後道修邊</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">建築用裝飾壁板</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">SMC 模壓成型，應用於建材與裝潢，提供極佳的結構強度。</p>
             </div>
           </div>
 
           <!-- Item 4 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-base.jpg" alt="高強度複合材料結構底座" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-glare.jpg" alt="公路防眩板" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">高強度複合材料結構底座</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">工業設備組件與機電結構件</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>SMC 模壓</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>模壓成型、金屬崁件包覆、修邊</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">公路防眩板</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">SMC 模壓成型，應用於交通與公路安全設施。</p>
             </div>
           </div>
 
           <!-- Item 5 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-glare.jpg" alt="高耐候複合材料防眩板" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-base.jpg" alt="機電設備基座" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">高耐候複合材料防眩板</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">交通工程與戶外公共設施</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>SMC 模壓</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>模壓成型、修邊打孔、五金鎖點預埋與組裝</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">機電設備基座</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">BMC 模壓成型，具備優異的絕緣與耐高溫特性。</p>
             </div>
           </div>
 
           <!-- Item 6 -->
-          <div class="w-[85vw] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start bg-white rounded-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-300">
-            <div class="aspect-[4/3] relative bg-slate-100 shrink-0 border-b border-slate-200">
-              <img src="./images/portfolio-panel.jpg" alt="複合材料仿石紋裝飾平板" loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
+          <div class="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center sm:snap-start group cursor-pointer">
+            <div class="aspect-[4/3] bg-surface overflow-hidden relative mb-4">
+              <img src="./images/portfolio-train.jpg" alt="軌道車輛絕緣件" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             </div>
-            <div class="p-5 flex-grow flex flex-col">
-              <h3 class="font-bold text-[16px] text-slate-900 mb-3">複合材料仿石紋裝飾平板</h3>
-              <ul class="text-[14px] text-slate-600 space-y-2">
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">產品類型</span><span class="font-medium text-slate-800">建築建材與室內裝飾面板</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">材料成型</span><span>BMC 模壓</span></li>
-                <li class="flex"><span class="w-20 text-slate-300 shrink-0">承製工序</span><span>熱壓成型、表面紋理處理</span></li>
-              </ul>
+            <div class="pr-4">
+              <h3 class="font-bold text-[18px] text-dark-bg mb-2">軌道車輛絕緣件</h3>
+              <p class="text-[15px] text-slate-600 line-clamp-2">BMC 模壓成型，專為軌道交通設計的特種絕緣部件。</p>
             </div>
           </div>
 
         </div>
-        <!-- Progress Bar (Desktop & Tablet) -->
-        <div class="hidden md:flex justify-center mt-6">
-          <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden relative">
-            <div id="slider-progress" class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-300 w-1/3"></div>
-          </div>
+        
+        <!-- Slider Progress Bar -->
+        <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden mt-2 md:mt-4">
+          <div id="slider-progress" class="h-full bg-primary w-[16.666%] transition-all duration-300"></div>
         </div>
-        <!-- Swipe Hint (Mobile) -->
-        <div class="md:hidden flex items-center justify-center gap-2 mt-4 text-slate-400 text-[13px]">
-          <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-          <span>向左右滑動查看更多案例</span>
-        </div>
+        
       </div>
     </div>
   </section>
 
   <!-- Capabilities Section -->
-  <section id="capabilities" class="py-12 lg:py-20 bg-white border-t border-slate-200 scroll-margin-top-24">
+  <section id="capabilities" class="py-16 lg:py-24 bg-slate-50 scroll-margin-top-24">
     <div class="max-w-7xl mx-auto px-5 md:px-10">
-      <div class="mb-10 reveal">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">製造能力</h2>
-        <div class="w-8 h-1 bg-primary mt-3 rounded-md"></div>
-        <p class="max-w-[720px] text-[15px] text-slate-600 mt-4 leading-relaxed">
-          依產品圖面、材料、模具與預估批量，協助確認從試作到量產的製程安排。
-        </p>
-      </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-10">
-        <div class="reveal delay-0 bg-white rounded-md p-4 lg:p-5 border border-slate-200 h-full flex lg:flex-col gap-3 lg:gap-0">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between lg:mb-3 shrink-0">
-            <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">engineering</span>
-            <span class="hidden lg:block font-mono text-slate-300 text-sm font-bold">01</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-[16px] text-slate-900 mb-1 lg:mb-2">圖面與模具評估</h3>
-            <p class="text-[14px] text-slate-600 leading-relaxed">新產品圖面可行性分析，或現有模具移轉的機台規格適配評估。</p>
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+        <!-- Left: Image -->
+        <div class="w-full lg:w-1/2 reveal">
+          <div class="relative aspect-[4/3] w-full bg-slate-200">
+            <img src="./images/factory-interior-1.jpg" alt="萬順承廠內作業環境" loading="lazy" class="w-full h-full object-cover" />
+            <!-- Decorative cut -->
+            <div class="hidden lg:block absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 -z-10"></div>
           </div>
         </div>
-        <div class="reveal delay-60 bg-white rounded-md p-4 lg:p-5 border border-slate-200 h-full flex lg:flex-col gap-3 lg:gap-0">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between lg:mb-3 shrink-0">
-            <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">science</span>
-            <span class="hidden lg:block font-mono text-slate-300 text-sm font-bold">02</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-[16px] text-slate-900 mb-1 lg:mb-2">打樣與試作</h3>
-            <p class="text-[14px] text-slate-600 leading-relaxed">依模具及產品條件設定升降溫與加壓排氣程序，確認量產成型條件。</p>
-          </div>
-        </div>
-        <div class="reveal delay-120 bg-white rounded-md p-4 lg:p-5 border border-slate-200 h-full flex lg:flex-col gap-3 lg:gap-0">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between lg:mb-3 shrink-0">
-            <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">precision_manufacturing</span>
-            <span class="hidden lg:block font-mono text-slate-300 text-sm font-bold">03</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-[16px] text-slate-900 mb-1 lg:mb-2">量產模壓製造</h3>
-            <p class="text-[14px] text-slate-600 leading-relaxed">調度 250T 至 500T 設備，進行穩定量產與彈性生產排程。</p>
-          </div>
-        </div>
-        <div class="reveal delay-180 bg-white rounded-md p-4 lg:p-5 border border-slate-200 h-full flex lg:flex-col gap-3 lg:gap-0">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between lg:mb-3 shrink-0">
-            <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">design_services</span>
-            <span class="hidden lg:block font-mono text-slate-300 text-sm font-bold">04</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-[16px] text-slate-900 mb-1 lg:mb-2">後道加工處理</h3>
-            <p class="text-[14px] text-slate-600 leading-relaxed">廠內執行修邊、研磨去毛邊及鑽孔攻牙等後道工序。</p>
+
+        <!-- Right: Text Content -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-center reveal">
+          <h2 class="text-2xl lg:text-[32px] font-bold text-dark-bg tracking-tight">製造能力</h2>
+          <div class="w-10 h-1 bg-primary mt-4 mb-8"></div>
+          
+          <div class="flex flex-col gap-8">
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-1" aria-hidden="true">engineering</span>
+              <div>
+                <h3 class="text-[18px] font-bold text-dark-bg mb-2">圖面適配與模具移轉</h3>
+                <p class="text-[15px] text-slate-600 leading-relaxed">
+                  提供現有模具移轉至廠內生產的完整銜接服務，並可針對現有圖面進行 SMC／BMC 製程適配性評估。
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-1" aria-hidden="true">precision_manufacturing</span>
+              <div>
+                <h3 class="text-[18px] font-bold text-dark-bg mb-2">模壓試作與穩定量產</h3>
+                <p class="text-[15px] text-slate-600 leading-relaxed">
+                  從前端打樣試作到最終批量生產，廠內配備完整熱壓成型設備，確保各階段品質穩定一致。
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-1" aria-hidden="true">handyman</span>
+              <div>
+                <h3 class="text-[18px] font-bold text-dark-bg mb-2">廠內修邊與後加工</h3>
+                <p class="text-[15px] text-slate-600 leading-relaxed">
+                  提供成型後的去毛邊、鑽孔、攻牙等基本修整加工服務，簡化客戶後端作業流程。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pt-6 border-t border-slate-200">
-        <div>
-          <h3 class="font-bold text-[15px] text-slate-900 mb-3 flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">list_alt</span>常見合作需求
-          </h3>
-          <ul class="space-y-2 text-[14px] text-slate-600">
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">check</span>現有模具移轉生產</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">check</span>新產品圖面與成型評估</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">check</span>小量打樣後逐步量產</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">check</span>模壓與後道加工整合</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-[15px] text-slate-900 mb-3 flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">fact_check</span>評估時會確認
-          </h3>
-          <ul class="space-y-2 text-[14px] text-slate-600">
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">arrow_right</span>產品尺寸與結構</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">arrow_right</span>SMC／BMC／FRP 材料條件</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">arrow_right</span>模具尺寸與現況</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px] shrink-0" aria-hidden="true">arrow_right</span>預估數量及希望交期</li>
-          </ul>
-        </div>
     </div>
   </section>
 
   <!-- Equipment Section -->
-  <section id="equipment" class="py-12 lg:py-20 bg-surface border-t border-slate-200 scroll-margin-top-24">
+  <section id="equipment" class="py-16 lg:py-24 bg-white scroll-margin-top-24">
     <div class="max-w-7xl mx-auto px-5 md:px-10">
       <div class="mb-10 reveal">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">設備與成型能力</h2>
-        <div class="w-8 h-1 bg-primary mt-3 rounded-md"></div>
-        <p class="max-w-[720px] text-[15px] text-slate-600 mt-4 leading-relaxed">
-          廠內配備 250T、400T、500T 模壓設備，可支援新品試作、小批量與量產需求。實際適用設備將依產品尺寸、材料、模具及預估數量綜合評估。
-        </p>
+        <h2 class="text-2xl lg:text-[32px] font-bold text-dark-bg tracking-tight">廠內設備</h2>
+        <div class="w-10 h-1 bg-primary mt-4"></div>
       </div>
 
-      <!-- Equipment Photos & Data -->
-      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-4 pt-1 scrollbar-hide -mx-5 px-[7.5vw] md:mx-0 md:px-0 md:grid md:grid-cols-3 md:overflow-visible items-stretch">
-        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-0 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
-          <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
-            <img src="./images/equip-250t.jpg" alt="250T 模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
-          </div>
-          <div class="p-5 flex-grow flex flex-col">
-            <div class="flex items-center gap-3 mb-2">
-              <h3 class="font-bold text-[16px] text-slate-900">250T 模壓成型機</h3>
-            </div>
-            <p class="text-[14px] text-slate-600 leading-relaxed">適合進行模具試作與初期成型條件確認。</p>
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 reveal">
+        <!-- Main Image -->
+        <div class="w-full lg:w-[65%]">
+          <div class="aspect-[4/3] lg:aspect-[16/10] bg-slate-100 overflow-hidden relative">
+            <img id="equip-main-img" src="./images/equip-250t.jpg" alt="250T 熱壓成型機" loading="lazy" class="w-full h-full object-cover transition-opacity duration-300" />
           </div>
         </div>
 
-        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-60 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
-          <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
-            <img src="./images/equip-400t.jpg" alt="400T 模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
-          </div>
-          <div class="p-5 flex-grow flex flex-col">
-            <div class="flex items-center gap-3 mb-2">
-              <h3 class="font-bold text-[16px] text-slate-900">400T 模壓成型機</h3>
-            </div>
-            <p class="text-[14px] text-slate-600 leading-relaxed">適合已確認成型條件之產品進行彈性生產排程。</p>
-          </div>
+        <!-- Equipment List / Tabs -->
+        <div class="w-full lg:w-[35%] flex flex-col gap-3">
+          <!-- Item 1 -->
+          <button class="equip-tab active text-left p-5 border border-primary bg-primary/5 rounded flex flex-col gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-img="./images/equip-250t.jpg" data-alt="250T 熱固性壓機">
+            <h3 class="font-bold text-[18px] text-primary">250T 熱固性壓機</h3>
+            <p class="text-[14px] text-slate-600 leading-relaxed">提供中小尺寸部件的模壓成型，穩定性佳。</p>
+          </button>
+          <!-- Item 2 -->
+          <button class="equip-tab text-left p-5 border border-slate-200 bg-white hover:border-primary/50 rounded flex flex-col gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-img="./images/equip-400t.jpg" data-alt="400T 熱固性壓機">
+            <h3 class="font-bold text-[18px] text-dark-bg group-hover:text-primary">400T 熱固性壓機</h3>
+            <p class="text-[14px] text-slate-600 leading-relaxed">適合中大型 SMC／BMC 產品，具備優異的壓力控制。</p>
+          </button>
+          <!-- Item 3 -->
+          <button class="equip-tab text-left p-5 border border-slate-200 bg-white hover:border-primary/50 rounded flex flex-col gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-img="./images/equip-500t.jpg" data-alt="500T 熱固性壓機">
+            <h3 class="font-bold text-[18px] text-dark-bg group-hover:text-primary">500T 熱固性壓機</h3>
+            <p class="text-[14px] text-slate-600 leading-relaxed">廠內最大噸數設備，滿足大面積或高深度的特殊成型需求。</p>
+          </button>
         </div>
-
-        <div class="w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none reveal delay-120 bg-white rounded-md border border-slate-200 overflow-hidden relative flex flex-col h-full">
-          <div class="bg-slate-100 w-full aspect-[4/3] md:aspect-square lg:aspect-[3/4] p-0 md:p-4 flex items-center justify-center border-b border-slate-200">
-            <img src="./images/equip-500t.jpg" alt="500T 大型模壓成型機" loading="lazy" width="800" height="1066" class="w-full h-full object-cover md:object-contain" />
-          </div>
-          <div class="p-5 flex-grow flex flex-col">
-            <div class="flex items-center gap-3 mb-2">
-              <h3 class="font-bold text-[16px] text-slate-900">500T 大型模壓成型機</h3>
-            </div>
-            <p class="text-[14px] text-slate-600 leading-relaxed">適合需要較高成型壓力或大型模具的產品需求。</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Swipe Hint (Mobile) -->
-      <div class="md:hidden flex items-center justify-center gap-2 mt-4 mb-6 text-slate-400 text-[13px]">
-        <span class="material-symbols-outlined text-[16px] animate-pulse">swipe</span>
-        <span>向左右滑動查看更多機型</span>
       </div>
 
-      <div class="flex items-start md:items-center gap-2 text-[13px] text-slate-500 mb-10">
-        <span class="material-symbols-outlined text-[16px] shrink-0 mt-0.5 md:mt-0" aria-hidden="true">info</span>
-        <span>工作台尺寸、模具高度、開模行程與實際適配性，將依產品圖面、模具及實機條件確認。</span>
+      <!-- Aux Equipment -->
+      <div class="mt-12 lg:mt-16 pt-8 border-t border-slate-200 reveal">
+        <h3 class="text-[18px] font-bold text-dark-bg mb-6">輔助設備</h3>
+        <div class="flex items-center gap-5 p-5 bg-slate-50 border border-slate-100 rounded">
+          <div class="w-20 h-20 bg-white shrink-0 hidden sm:block">
+            <img src="./images/equip-shini-stm.jpg" alt="模具溫度控制系統" loading="lazy" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h4 class="font-bold text-[16px] text-dark-bg mb-1">模具溫度控制系統</h4>
+            <p class="text-[14px] text-slate-600">配備 SHINI 模溫機，精準控制模具溫度，確保熱固性材料交聯反應完全與品質穩定。</p>
+          </div>
+        </div>
       </div>
 
-      <!-- CTA -->
-      <div class="mt-12 lg:mt-16 bg-[#0B1C2E] rounded-md overflow-hidden relative shadow-lg">
-        <div class="absolute inset-0 z-0">
-          <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        </div>
-        
-        <div class="relative z-10 p-6 md:p-8 lg:p-10 flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-8">
-          <div class="flex-grow">
-            <h3 class="font-bold text-[18px] lg:text-[22px] text-white mb-2">需要製程或機台適配評估？</h3>
-            <p class="text-[14px] lg:text-[15px] text-slate-300 leading-relaxed">
-              請備妥產品圖面或現有模具尺寸，我們將為您建議最合適的成型設備與排程。
-            </p>
-          </div>
-          <a href="#contact" class="shrink-0 min-h-[44px] w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1C2E]">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mail</span>
-            與我們聯繫
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- Workflow Section -->
-    <section id="workflow" class="py-12 lg:py-20 bg-white border-t border-slate-200 scroll-margin-top-24">
+  <section id="workflow" class="py-16 lg:py-24 bg-slate-50 scroll-margin-top-24">
     <div class="max-w-7xl mx-auto px-5 md:px-10">
-      <div class="mb-12 lg:mb-16 reveal">
-        <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">合作流程</h2>
-        <div class="w-8 h-1 bg-primary mt-3 rounded-md"></div>
-        <p class="max-w-[720px] text-[15px] lg:text-[16px] text-slate-600 mt-4 leading-relaxed">
-          每個專案均由需求確認開始，逐步完成評估、試作、生產、檢驗與交付。
-        </p>
+      <div class="mb-12 reveal">
+        <h2 class="text-2xl lg:text-[32px] font-bold text-dark-bg tracking-tight">合作流程</h2>
+        <div class="w-10 h-1 bg-primary mt-4"></div>
       </div>
-      
-      <div class="relative">
+
+      <div class="relative reveal">
         <!-- Desktop Horizontal Line -->
-        <div class="hidden xl:block absolute top-[20px] left-5 right-5 h-[2px] bg-slate-200 z-0"></div>
-        <!-- Mobile/Tablet Vertical Line -->
-        <div class="xl:hidden absolute top-5 bottom-5 left-[19px] w-[2px] bg-slate-200 z-0"></div>
-
-        <div class="grid grid-cols-1 xl:grid-cols-6 gap-y-8 gap-x-4 relative z-10">
+        <div class="hidden md:block absolute top-[28px] left-[15%] right-[15%] h-[1px] bg-slate-200 z-0"></div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
           
-          <div class="reveal delay-0 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-primary text-white rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] z-10 ring-4 ring-white">1</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">需求確認</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed xl:pr-2">確認產品圖面、材質、數量與交期規範。</p>
-            </div>
-          </div>
-          
-          <div class="reveal delay-60 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-white text-primary rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] border-2 border-slate-300 z-10 ring-4 ring-white">2</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">圖面／模具評估</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed xl:pr-2">評估工程圖面可行性或機台適配性。</p>
+          <div class="flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-6">
+            <div class="w-14 h-14 rounded-full bg-white border border-primary text-primary font-bold text-[20px] flex items-center justify-center shrink-0 z-10 shadow-sm">1</div>
+            <div class="text-left md:text-center">
+              <h3 class="font-bold text-[16px] text-dark-bg mb-2">需求洽詢與圖面評估</h3>
+              <p class="text-[14px] text-slate-600 leading-relaxed">提供產品圖面、規格與數量需求，由我們評估成型可行性。</p>
             </div>
           </div>
 
-          <div class="reveal delay-120 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-white text-primary rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] border-2 border-slate-300 z-10 ring-4 ring-white">3</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">試作與確認</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed xl:pr-2">打樣試模，確認成型參數與產品品質。</p>
+          <div class="flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-6">
+            <div class="w-14 h-14 rounded-full bg-white border border-primary text-primary font-bold text-[20px] flex items-center justify-center shrink-0 z-10 shadow-sm">2</div>
+            <div class="text-left md:text-center">
+              <h3 class="font-bold text-[16px] text-dark-bg mb-2">製程規劃與報價</h3>
+              <p class="text-[14px] text-slate-600 leading-relaxed">確立成型方式與模具移轉細節，提供正式的代工報價單。</p>
             </div>
           </div>
 
-          <div class="reveal delay-180 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-white text-primary rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] border-2 border-slate-300 z-10 ring-4 ring-white">4</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">生產與後加工</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed xl:pr-2">依照確認製程參數進行量產，並於廠內執行修邊、去毛邊等後道工序。</p>
+          <div class="flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-6">
+            <div class="w-14 h-14 rounded-full bg-white border border-primary text-primary font-bold text-[20px] flex items-center justify-center shrink-0 z-10 shadow-sm">3</div>
+            <div class="text-left md:text-center">
+              <h3 class="font-bold text-[16px] text-dark-bg mb-2">模具測試與打樣</h3>
+              <p class="text-[14px] text-slate-600 leading-relaxed">模具進廠後進行上機測試，並提供首件樣品供客戶確認。</p>
             </div>
           </div>
 
-          <div class="reveal delay-180 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-white text-primary rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] border-2 border-slate-300 z-10 ring-4 ring-white">5</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">品質檢查</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed xl:pr-2">依公司品質作業規範進行產品外觀與尺寸檢驗。</p>
-            </div>
-          </div>
-
-          <div class="reveal delay-180 flex xl:flex-col items-start gap-5">
-            <div class="w-10 h-10 bg-white text-primary rounded-full flex shrink-0 items-center justify-center font-bold font-mono text-[15px] border-2 border-slate-300 z-10 ring-4 ring-white">6</div>
-            <div>
-              <h3 class="font-bold text-[16px] text-slate-900 mb-1 xl:mb-2">包裝交付</h3>
-              <p class="text-[15px] xl:text-[14px] text-slate-600 leading-relaxed">依據客戶要求妥善包裝，並準時交付。</p>
+          <div class="flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-6">
+            <div class="w-14 h-14 rounded-full bg-white border border-primary text-primary font-bold text-[20px] flex items-center justify-center shrink-0 z-10 shadow-sm">4</div>
+            <div class="text-left md:text-center">
+              <h3 class="font-bold text-[16px] text-dark-bg mb-2">批量生產與交付</h3>
+              <p class="text-[14px] text-slate-600 leading-relaxed">樣品確認無誤後進入穩定量產，並依約定時程進行修邊與交付。</p>
             </div>
           </div>
 
         </div>
+      </div>
     </div>
   </section>
 
   <!-- About Section -->
-    <section id="about" class="py-12 lg:py-20 bg-dark-bg text-white border-t border-slate-800 scroll-margin-top-24">
+  <section id="about" class="py-16 lg:py-24 bg-white scroll-margin-top-24">
     <div class="max-w-7xl mx-auto px-5 md:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div>
-          <h2 class="text-2xl lg:text-3xl font-bold tracking-tight mb-5">關於萬順承實業</h2>
-          <p class="text-[16px] text-slate-300 leading-relaxed mb-8 max-w-lg">
-            技術團隊專注於提供穩定的複合材料熱壓成型代工服務。我們以紮實的現場實務為基礎，協助客戶克服開模與量產挑戰。
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+        <!-- Text -->
+        <div class="w-full lg:w-1/2 reveal">
+          <h2 class="text-2xl lg:text-[32px] font-bold text-dark-bg tracking-tight">關於萬順承</h2>
+          <div class="w-10 h-1 bg-primary mt-4 mb-6"></div>
+          <p class="text-[16px] text-slate-600 leading-relaxed mb-8">
+            萬順承實業有限公司具備 35 年的 SMC／BMC 現場製程經驗。廠區位於桃園楊梅，致力於為各產業客戶提供專業、穩定的熱固性複合材料模壓成型代工服務。我們重視製程中的每一處細節，從溫控到壓制，確保產品品質符合工業應用需求。
           </p>
-          
-        </div>
-        
-        <div class="flex flex-col gap-6 lg:gap-8">
-          <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 bg-slate-800 rounded-md flex shrink-0 items-center justify-center border border-slate-700">
-              <span class="material-symbols-outlined text-[#3B82F6] text-[24px]" aria-hidden="true">history</span>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary" aria-hidden="true">factory</span>
             </div>
             <div>
-              <h3 class="font-bold text-[16px] text-white mb-2">35 年現場製程經驗</h3>
-              <p class="text-[14px] text-slate-400 leading-relaxed">深厚的複合材料成型技術底蘊，確保量產穩定性。</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 bg-slate-800 rounded-md flex shrink-0 items-center justify-center border border-slate-700">
-              <span class="material-symbols-outlined text-[#3B82F6] text-[24px]" aria-hidden="true">sync_alt</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-[16px] text-white mb-2">支援既有模具移轉</h3>
-              <p class="text-[14px] text-slate-400 leading-relaxed">專業評估機台適配度，無縫接軌客戶現有生產模具。</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 bg-slate-800 rounded-md flex shrink-0 items-center justify-center border border-slate-700">
-              <span class="material-symbols-outlined text-[#3B82F6] text-[24px]" aria-hidden="true">category</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-[16px] text-white mb-2">廠內後道加工整合</h3>
-              <p class="text-[14px] text-slate-400 leading-relaxed">提供修邊、去毛邊等一站式服務，降低委外風險。</p>
+              <div class="text-[14px] text-slate-500">生產基地</div>
+              <div class="font-bold text-dark-bg text-[15px]">桃園市楊梅區</div>
             </div>
           </div>
         </div>
+        <!-- Image -->
+        <div class="w-full lg:w-1/2 reveal">
+          <div class="aspect-[4/3] bg-slate-100 relative">
+            <img src="./images/factory-interior-2.jpg" alt="萬順承廠區實景" loading="lazy" class="w-full h-full object-cover" />
+            <!-- Decorative accent -->
+            <div class="hidden lg:block absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-primary -z-10"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-    <section id="contact" class="py-12 lg:py-20 bg-surface scroll-margin-top-24 relative">
-    <div class="max-w-5xl mx-auto px-5 md:px-10">
+  <section id="contact" class="py-16 lg:py-24 bg-[#f8fafc] scroll-margin-top-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-5 md:px-10">
       
-      <div class="text-center mb-10 lg:mb-12">
-        <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">聯絡詢價</h2>
-        <div class="w-8 h-1 bg-primary mt-3 mb-4 rounded-md mx-auto"></div>
-        <p class="text-[15px] lg:text-[16px] text-slate-600 max-w-lg mx-auto">
-          歡迎提供產品需求、圖面或照片，洽詢製程評估與報價。
+      <div class="text-center mb-12 lg:mb-16 reveal">
+        <h2 class="text-3xl font-bold text-slate-900 tracking-tight">聯絡詢價</h2>
+        <div class="w-12 h-1 bg-[#2563EB] mt-4 mb-6 mx-auto"></div>
+        <p class="text-[16px] text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          歡迎提供產品需求、圖面或照片，洽詢製程評估與報價。<br class="hidden sm:block"/>資料尚未齊全，也歡迎先聯絡。
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-8">
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
         
+        <!-- Prep Data Card -->
+        <div class="bg-white border border-slate-200 p-8 flex flex-col h-full reveal delay-0">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-[#2563EB] text-[28px]" aria-hidden="true">list_alt</span>
+            <h3 class="font-bold text-[20px] text-slate-900">詢價前可準備的資料</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-y-4 gap-x-6 text-[16px] text-slate-600 mt-2">
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 產品用途與尺寸</div>
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 材料需求（如已知）</div>
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 預計數量</div>
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 是否已有模具</div>
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 希望交期</div>
+            <div class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2.5 shrink-0"></span> 圖面或產品照片</div>
+          </div>
+        </div>
+
         <!-- Phone Card -->
-        <div class="bg-white rounded-md border border-slate-200 shadow-sm p-6 lg:p-8 flex flex-col gap-6">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">call</span>
-            </div>
-            <h3 class="font-bold text-[18px] lg:text-[20px] text-slate-900">電話聯絡</h3>
+        <div class="bg-white border border-slate-200 p-8 flex flex-col h-full reveal delay-60">
+          <div class="flex items-center gap-3 mb-8">
+            <span class="material-symbols-outlined text-[#2563EB] text-[28px]" aria-hidden="true">call</span>
+            <h3 class="font-bold text-[20px] text-slate-900">電話聯絡</h3>
           </div>
           
-          <div class="flex flex-col gap-4 text-[15px] lg:text-[16px] text-slate-700">
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500 w-[64px] shrink-0 font-medium">負責人</span>
-              <span class="font-bold text-slate-900">范整鏞</span>
+          <div class="flex flex-col gap-5 text-[16px] text-slate-600 flex-grow">
+            <div class="flex items-center justify-between">
+              <span class="font-medium w-16 shrink-0">負責人</span>
+              <span class="font-bold text-slate-900 flex-grow text-right">范整鏞</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500 w-[64px] shrink-0 font-medium">手機</span>
-              <div class="flex items-center gap-1 group">
-                <a href="tel:0932271570" class="tabular-nums font-bold text-[18px] text-slate-900 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded underline underline-offset-4 decoration-transparent hover:decoration-primary">0932-271570</a>
-                <button onclick="copyToClipboard('0932271570')" class="hidden lg:flex w-11 h-11 items-center justify-center rounded-md text-slate-400 hover:text-primary hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="複製手機號碼" title="複製號碼">
-                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
+            <div class="flex items-center justify-between group">
+              <span class="font-medium w-16 shrink-0">手機</span>
+              <div class="flex items-center gap-2">
+                <a href="tel:0932271570" class="tabular-nums font-bold text-slate-900 hover:text-[#2563EB] transition-colors">0932-271570</a>
+                <button onclick="copyToClipboard('0932271570')" class="text-slate-400 hover:text-[#2563EB] transition-colors p-1" title="複製號碼">
+                  <span class="material-symbols-outlined text-[18px]">content_copy</span>
                 </button>
               </div>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500 w-[64px] shrink-0 font-medium">電話</span>
-              <div class="flex items-center gap-1 group">
-                <a href="tel:034721912" class="tabular-nums text-[16px] text-slate-700 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded underline underline-offset-4 decoration-transparent hover:decoration-primary">03-4721912</a>
-                <button onclick="copyToClipboard('034721912')" class="hidden lg:flex w-11 h-11 items-center justify-center rounded-md text-slate-400 hover:text-primary hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="複製公司電話" title="複製號碼">
-                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
+            <div class="flex items-center justify-between group">
+              <span class="font-medium w-16 shrink-0">電話</span>
+              <div class="flex items-center gap-2">
+                <a href="tel:034721912" class="tabular-nums text-slate-900 hover:text-[#2563EB] transition-colors">03-4721912</a>
+                <button onclick="copyToClipboard('034721912')" class="text-slate-400 hover:text-[#2563EB] transition-colors p-1" title="複製號碼">
+                  <span class="material-symbols-outlined text-[18px]">content_copy</span>
                 </button>
               </div>
             </div>
-            <div class="flex items-center gap-3 mt-1">
-              <span class="text-slate-400 w-[64px] shrink-0 text-[14px]">傳真</span>
-              <span class="tabular-nums text-[14px] text-slate-500">03-4728290</span>
+            <div class="flex items-center justify-between">
+              <span class="font-medium w-16 shrink-0 text-slate-500">傳真</span>
+              <span class="tabular-nums text-slate-500">03-4728290</span>
             </div>
           </div>
           
-          <div class="pt-6 border-t border-slate-100">
-            <a href="tel:0932271570" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div class="mt-8 pt-6 border-t border-slate-100">
+            <a href="tel:0932271570" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-blue-700 text-white font-bold text-[16px] transition-colors">
               <span class="material-symbols-outlined text-[20px]" aria-hidden="true">smartphone</span>
               撥打手機
             </a>
           </div>
         </div>
-        
+
         <!-- Email Card -->
-        <div class="bg-white rounded-md border border-slate-200 shadow-sm p-6 lg:p-8 flex flex-col gap-6">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">mail</span>
-            </div>
-            <h3 class="font-bold text-[18px] lg:text-[20px] text-slate-900">Email 詢價</h3>
+        <div class="bg-white border border-slate-200 p-8 flex flex-col h-full reveal delay-120">
+          <div class="flex items-center gap-3 mb-8">
+            <span class="material-symbols-outlined text-[#2563EB] text-[28px]" aria-hidden="true">mail</span>
+            <h3 class="font-bold text-[20px] text-slate-900">Email 詢價</h3>
           </div>
           
-          <div class="flex flex-col gap-3">
-            <span class="text-slate-500 text-[15px] font-medium">詢價信箱</span>
-            <a href="mailto:fan6772@gmail.com" class="tabular-nums text-primary font-bold text-[20px] break-all leading-tight hover:text-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded w-fit underline underline-offset-4 decoration-transparent hover:decoration-primary">fan6772@gmail.com</a>
-            <p class="text-[14px] text-slate-500 leading-relaxed mt-2">
-              將開啟您的郵件程式，圖面或照片請自行附加。
+          <div class="flex flex-col gap-5 flex-grow">
+            <div class="flex flex-col gap-2">
+              <span class="text-[16px] font-medium text-slate-600">詢價信箱</span>
+              <a href="mailto:fan6772@gmail.com" class="tabular-nums font-bold text-[18px] text-slate-900 hover:text-[#2563EB] transition-colors break-all">
+                fan6772@gmail.com
+              </a>
+            </div>
+            
+            <p class="text-[14px] text-slate-500 mt-2 leading-relaxed">
+              點擊下方「開啟郵件」將會開啟您的郵件程式，請自行夾帶圖面與照片附件。
             </p>
           </div>
           
-          <div class="flex flex-col gap-3 pt-6 border-t border-slate-100 mt-auto">
-            <a href="mailto:fan6772@gmail.com?subject=模壓代工詢價&body=您好，我們有模壓成型的需求，請協助評估：%0D%0A%0D%0A1.%20產品用途與尺寸：%0D%0A2.%20材料需求（如已知）：%0D%0A3.%20預計數量：%0D%0A4.%20是否已有模具：%0D%0A5.%20希望交期：%0D%0A%0D%0A（請記得夾帶圖面或照片檔案）" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-md font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col gap-3">
+            <a href="mailto:fan6772@gmail.com?subject=模壓代工詢價&body=您好，我們有模壓成型的需求，請協助評估：%0D%0A%0D%0A1.%20產品用途與尺寸：%0D%0A2.%20材料需求（如已知）：%0D%0A3.%20預計數量：%0D%0A4.%20是否已有模具：%0D%0A5.%20希望交期：%0D%0A%0D%0A（請記得夾帶圖面或照片檔案）" class="min-h-[48px] w-full inline-flex items-center justify-center gap-2 bg-[#172B46] hover:bg-slate-800 text-white font-bold text-[16px] transition-colors">
               <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mail</span>
-              Email 詢價
+              開啟郵件
             </a>
             <div class="grid grid-cols-2 gap-3">
-              <button onclick="copyToClipboard('fan6772@gmail.com')" class="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <button onclick="copyToClipboard('fan6772@gmail.com')" class="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium text-[15px] transition-colors">
                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">content_copy</span>
                 複製信箱
               </button>
-              <button onclick="copyTemplate()" class="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-md font-medium text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <button onclick="copyTemplate()" class="min-h-[48px] inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium text-[15px] transition-colors">
                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">assignment</span>
                 複製範本
               </button>
             </div>
           </div>
         </div>
+
       </div>
-
-      <!-- Inquiry Data Prep List (Desktop) -->
-      <div class="hidden lg:block bg-white border border-slate-200 rounded-md p-8 shadow-sm">
-        <div class="flex items-center gap-2 font-bold text-slate-900 mb-4 text-[16px]">
-          <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">list_alt</span>
-          詢價前可準備的資料
-        </div>
-        <p class="text-[14px] text-slate-500 mb-5">資料尚未齊全，也歡迎先聯絡。</p>
-        <div class="grid grid-cols-2 gap-y-4 gap-x-6 text-[15px] text-slate-700">
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 產品用途與尺寸</div>
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 材料需求（如已知）</div>
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 預計數量</div>
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 是否已有模具</div>
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 希望交期</div>
-          <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 圖面或產品照片</div>
-        </div>
-      </div>
-
-      <!-- Inquiry Data Prep List (Mobile Accordion) -->
-      <details class="lg:hidden bg-white border border-slate-200 rounded-md shadow-sm group">
-        <summary class="flex flex-col p-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md list-none [&::-webkit-details-marker]:hidden relative">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2 font-bold text-slate-900 text-[16px]">
-              <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">list_alt</span>
-              詢價前可準備的資料
-            </div>
-            <span class="material-symbols-outlined text-slate-400 transition-transform duration-300 group-open:-rotate-180" aria-hidden="true">expand_more</span>
-          </div>
-          <p class="text-[13px] text-slate-500 mt-2">資料尚未齊全，也歡迎先聯絡。</p>
-        </summary>
-        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
-          <div class="grid grid-cols-1 gap-y-3 text-[14px] text-slate-700">
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 產品用途與尺寸</div>
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 材料需求（如已知）</div>
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 預計數量</div>
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 是否已有模具</div>
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 希望交期</div>
-            <div class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" aria-hidden="true">check</span> 圖面或產品照片</div>
-          </div>
-        </div>
-      </details>
-
     </div>
   </section>
+
 </main>
 
-<footer class="bg-[#0B1C2E] text-slate-300 pt-12 pb-[calc(1.5rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-10 border-t border-slate-800">
+<footer class="bg-[#172B46] text-slate-300 pt-12 pb-[calc(1.5rem+env(safe-area-inset-bottom))] md:pt-16 md:pb-10 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
     <div class="flex flex-col md:flex-row justify-between gap-10 md:gap-8 lg:gap-12">
       
@@ -740,15 +612,15 @@
       <div class="flex flex-col justify-between items-start md:items-end w-full md:w-auto gap-8 md:gap-10">
         <!-- Links Grid -->
         <div class="grid grid-cols-2 md:grid-flow-col md:grid-rows-2 md:auto-cols-max gap-x-6 md:gap-x-12 lg:gap-x-20 gap-y-5 md:gap-y-6 w-full md:w-auto">
-          <a href="#applications" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">承製案例</a>
-          <a href="#capabilities" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">製造能力</a>
-          <a href="#equipment" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">設備能力</a>
-          <a href="#workflow" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">合作流程</a>
-          <a href="#about" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">關於萬順承</a>
+          <a href="#applications" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">承製案例</a>
+          <a href="#capabilities" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">製造能力</a>
+          <a href="#equipment" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">設備能力</a>
+          <a href="#workflow" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">合作流程</a>
+          <a href="#about" class="font-bold text-[15px] lg:text-[16px] text-white hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 -my-1">關於萬順承</a>
         </div>
         
         <!-- Action Button -->
-        <a href="#contact" class="w-full md:w-auto inline-flex items-center justify-center bg-white text-[#0B1C2E] hover:bg-slate-100 px-8 py-3 rounded-full font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-sm self-start md:self-end mt-2 md:mt-0">
+        <a href="#contact" class="w-full md:w-auto inline-flex items-center justify-center bg-white text-dark-bg hover:bg-slate-100 px-8 py-3 rounded-full font-bold text-[15px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-sm self-start md:self-end mt-2 md:mt-0">
           聯絡我們
         </a>
       </div>

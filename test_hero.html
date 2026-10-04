@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @keyframes mask-slide-in {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  .animate-mask {
+    animation: mask-slide-in 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fade-up 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  .delay-1 { animation-delay: 400ms; }
+  .delay-2 { animation-delay: 600ms; }
+  .delay-3 { animation-delay: 800ms; }
+  
+  .slant-mask {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<section class="relative h-[80vh] overflow-hidden bg-slate-100 flex items-center">
+  <!-- Full BG Image -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" class="w-full h-full object-cover" />
+  </div>
+
+  <!-- Geometric Overlay -->
+  <div class="absolute left-0 top-0 h-full w-[60%] bg-[#172B46] z-10 slant-mask animate-mask"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 w-[45%] pl-16 pr-8 text-white">
+    <h1 class="text-[52px] font-bold leading-tight mb-6 fade-up delay-1">SMC／BMC<br>模壓成型代工</h1>
+    <p class="text-lg text-slate-300 mb-10 fade-up delay-2">位於桃園楊梅，專注提供 SMC／BMC 模壓成型、現有模具移轉與穩定量產等專業製造服務。</p>
+    <div class="flex gap-4 fade-up delay-3">
+      <button class="bg-blue-600 px-8 h-[52px] rounded font-bold">洽詢製程評估</button>
+      <button class="text-white hover:text-blue-500 font-bold">查看設備能力</button>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

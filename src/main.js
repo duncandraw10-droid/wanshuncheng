@@ -1,3 +1,48 @@
+
+// --- Opening Animation (Preloader) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const loadingArea = document.getElementById('loadingArea');
+  const loadLogo = document.getElementById('loadLogo');
+  const loadProgress = document.getElementById('loadProgress');
+  
+  if (!loadingArea) return;
+
+  const hasLoading = sessionStorage.getItem('loadingPlayed');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (hasLoading === 'true' || prefersReducedMotion) {
+    // Skip animation if already played or reduced motion enabled
+    loadingArea.style.display = 'none';
+    body.classList.remove('loading-overflow');
+  } else {
+    // Start animation sequence
+    sessionStorage.setItem('loadingPlayed', 'true');
+    
+    // Step 1: Fade in logo and progress bar
+    setTimeout(() => {
+      if (loadLogo) {
+        loadLogo.classList.remove('opacity-0', 'translate-y-4');
+        loadLogo.classList.add('opacity-100', 'translate-y-0');
+      }
+      if (loadProgress) {
+        loadProgress.classList.remove('opacity-0');
+      }
+    }, 100);
+
+    // Step 2: Fade out the entire loading screen after animation completes
+    setTimeout(() => {
+      loadingArea.classList.add('loading-hide');
+      body.classList.remove('loading-overflow');
+    }, 2000);
+
+    // Step 3: Remove from DOM and restore scrolling
+    setTimeout(() => {
+      loadingArea.remove();
+    }, 3000);
+  }
+});
+
 // --- Mobile Menu ---
 document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
   const menu = document.getElementById('mobile-menu');
@@ -272,3 +317,44 @@ if (slider && prevBtn && nextBtn) {
 // Update current year
 const yearEl = document.getElementById('current-year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
 
+
+// --- Equipment Tabs ---
+const equipTabs = document.querySelectorAll('.equip-tab');
+const equipMainImg = document.getElementById('equip-main-img');
+
+if (equipTabs.length > 0 && equipMainImg) {
+  equipTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      equipTabs.forEach(t => {
+        t.classList.remove('border-primary', 'bg-primary/5', 'active');
+        t.classList.add('border-slate-200', 'bg-white');
+        const h3 = t.querySelector('h3');
+        if (h3) {
+          h3.classList.remove('text-primary');
+          h3.classList.add('text-dark-bg');
+        }
+      });
+      
+      // Add active to clicked
+      tab.classList.add('border-primary', 'bg-primary/5', 'active');
+      tab.classList.remove('border-slate-200', 'bg-white');
+      const activeH3 = tab.querySelector('h3');
+      if (activeH3) {
+        activeH3.classList.remove('text-dark-bg');
+        activeH3.classList.add('text-primary');
+      }
+      
+      // Update image
+      const src = tab.getAttribute('data-img');
+      const alt = tab.getAttribute('data-alt');
+      
+      equipMainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        equipMainImg.src = src;
+        equipMainImg.alt = alt;
+        equipMainImg.style.opacity = '1';
+      }, 150);
+    });
+  });
+}
