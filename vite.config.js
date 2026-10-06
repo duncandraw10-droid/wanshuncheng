@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite'
+import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
-  // Using relative base ensures assets can be loaded correctly regardless of whether 
-  // it's hosted at the root (/) or a subdirectory (/repo-name/) on GitHub Pages.
   base: './',
+  build: {
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        notFound: fileURLToPath(new URL('./404.html', import.meta.url)),
+      },
+    },
+  },
 })
