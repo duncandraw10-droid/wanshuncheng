@@ -14,10 +14,29 @@
   background-size: 10px 10px; border-radius: 50%; mask-image: radial-gradient(transparent 35%,#000 40%,transparent 70%);
   opacity: .14; z-index: -1; pointer-events: none;
 }
-.application-gallery { padding-block: 8px; }
+.application-gallery.layout-container { padding-block: 8px; padding-inline: 36px; }
+.application-gallery .portfolio-nav {
+  width: 36px; height: 36px; padding: 0;
+  color: var(--brand-navy); background-color: var(--surface-white);
+  opacity: .5; transition: opacity .3s ease-in-out;
+}
+.application-gallery .portfolio-nav .material-symbols-outlined { font-size: 20px; }
+.application-gallery .portfolio-nav:not(:disabled):hover,
+.application-gallery .portfolio-nav:not(:disabled):focus-visible,
+.application-gallery .portfolio-nav:not(:disabled):active { opacity: 1; }
+.application-gallery .portfolio-nav:disabled { opacity: .25; }
+@media (min-width: 768px) {
+  .application-gallery.layout-container { padding-inline: 52px; }
+  .application-gallery .portfolio-nav { width: 44px; height: 44px; }
+  .application-gallery .portfolio-nav .material-symbols-outlined { font-size: 24px; }
+}
+@media (min-width: 992px) {
+  .application-gallery.layout-container { padding-inline: 64px; }
+  .application-gallery .portfolio-nav { width: 48px; height: 48px; }
+}
 .portfolio-slider {
   --portfolio-gap: 1rem;
-  margin: 0; padding-block: 4px 12px; overflow-y: hidden;
+  margin: 0; padding-block: 4px; overflow-y: hidden;
   scroll-snap-type: x mandatory; scrollbar-width: none;
   overscroll-behavior-x: contain; scroll-behavior: smooth;
 }
@@ -65,9 +84,6 @@
 .application-card.is-expanded .application-details { grid-template-rows: 1fr; opacity: 1; transform: translateY(0); }
 .application-description-wrapper { min-height: 0; overflow: hidden; }
 .application-description { margin-top: 12px; }
-.application-controls { margin-top: 20px; }
-.portfolio-progress { height: 2px; background: var(--border-default); }
-#slider-progress { width: 0; transition: width 200ms ease; }
 @media (min-width: 992px) {
   .portfolio-slider { --portfolio-gap: 1.5rem; }
   .portfolio-slider > .portfolio-item { flex-basis: calc((100% - 2 * var(--portfolio-gap)) / 3); width: calc((100% - 2 * var(--portfolio-gap)) / 3); }

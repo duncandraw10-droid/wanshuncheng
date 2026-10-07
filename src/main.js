@@ -396,7 +396,6 @@ document.querySelectorAll('.application-photo-button').forEach(button => {
 const portfolioSlider = document.getElementById('portfolio-slider');
 const portfolioPrev = document.getElementById('slider-prev');
 const portfolioNext = document.getElementById('slider-next');
-const portfolioProgress = document.getElementById('slider-progress');
 const portfolioHover = window.matchMedia('(min-width: 992px) and (hover: hover) and (pointer: fine)');
 const portfolioStates = [];
 
@@ -454,12 +453,7 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
     const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
     portfolioPrev.disabled = position <= 2;
     portfolioNext.disabled = range - position <= 2;
-    if (portfolioProgress) {
-      const visible = portfolioSlider.clientWidth / portfolioSlider.scrollWidth;
-      const fraction = range ? position / range : 0;
-      portfolioProgress.style.width = `${(visible + fraction * (1 - visible)) * 100}%`;
-      portfolioProgress.setAttribute('aria-valuenow', String(Math.round(fraction * 100)));
-    }
+
   }
   function movePortfolio(direction) {
     const items = portfolioSlider.querySelectorAll('.portfolio-item');
