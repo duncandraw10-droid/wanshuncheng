@@ -42,6 +42,7 @@
   --bs-heading-color: var(--text-primary);
 }
 :root {
+  color-scheme: only light;
   --type-hero: clamp(2rem, 9vw, 2.25rem);
   --type-section: clamp(1.75rem, 4vw, 2rem);
   --type-subheading: 1.25rem;
@@ -337,3 +338,24 @@ body { font-size: var(--type-body); font-weight: 400; }
 }
 
 .modal-header .btn, .opening-skip { min-width: 44px; min-height: 44px; }
+
+
+/* Render the supplied white logo through its alpha shape using an exact token.
+   Both WebKit and standard masks are included. The image remains accessible;
+   its original src, alt, transparent margins and navbar crop are unchanged. */
+.brand-logo { position: relative; }
+.loading-logo > img { display: block; }
+@supports (mask-image: url('/images/logo.png')) or (-webkit-mask-image: url('/images/logo.png')) {
+  .brand-logo > img { opacity: 0; filter: none; }
+  .brand-logo::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-color: var(--brand-blue);
+    -webkit-mask: url('/images/logo.png') center / 100% 100% no-repeat;
+    mask: url('/images/logo.png') center / 100% 100% no-repeat;
+    mask-mode: alpha;
+  }
+  .site-header .navbar-brand::before {
+    inset: auto; width: 139.037433%; aspect-ratio: 520 / 181;
+    left: -19.518717%; top: -85.074627%;
+  }
+}

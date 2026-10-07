@@ -218,15 +218,18 @@ if (document.readyState === 'loading') {
 
 // --- ScrollSpy for Navigation ---
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a[href^="#"]');
-const headerOffset = 80;
+const navLinks = document.querySelectorAll('.site-header a[href^="#"]');
 
 function updateActiveNav() {
   const scrollY = window.scrollY;
+  const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--site-header-height')) || 80;
+  // Anchor destinations leave 16px below the header; allow another 8px so
+  // the destination section is active immediately after a navigation click.
+  const activationOffset = headerHeight + 24;
   let currentSection = null;
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - headerOffset - 10;
+    const sectionTop = section.offsetTop - activationOffset;
     const sectionHeight = section.offsetHeight;
     if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
       currentSection = section.getAttribute('id');
@@ -245,12 +248,15 @@ function updateActiveNav() {
 }
 
 window.addEventListener('scroll', updateActiveNav, { passive: true });
+window.addEventListener('resize', updateActiveNav, { passive: true });
 // Trigger once on load
 updateActiveNav();
 
 
 // --- Bootstrap Image Modal ---
 let modalTriggerBtn = null;
+let modalOpening = false;
+let modalClosePending = false;
 const modalElement = document.getElementById('image-modal');
 const imageModal = modalElement ? bootstrap.Modal.getOrCreateInstance(modalElement) : null;
 
@@ -264,9 +270,25 @@ window.openModal = function(src, title) {
   if (titleEl) titleEl.textContent = title;
   imageModal.show();
 };
-window.closeModal = function() { imageModal?.hide(); };
-modalElement?.addEventListener('shown.bs.modal', () => modalElement.querySelector('button')?.focus());
-modalElement?.addEventListener('hidden.bs.modal', () => modalTriggerBtn?.focus());
+window.closeModal = function() {
+  // Bootstrap ignores hide() during its opening transition. Keep a quick
+  // close-button tap and finish closing as soon as the transition completes.
+  if (modalOpening) modalClosePending = true;
+  else imageModal?.hide();
+};
+modalElement?.addEventListener('show.bs.modal', () => {
+  modalOpening = true;
+  modalClosePending = false;
+});
+modalElement?.addEventListener('shown.bs.modal', () => {
+  modalOpening = false;
+  if (modalClosePending) imageModal?.hide();
+  else modalElement.querySelector('button')?.focus();
+});
+modalElement?.addEventListener('hidden.bs.modal', () => {
+  modalClosePending = false;
+  modalTriggerBtn?.focus();
+});
 
 // --- Bootstrap Toast & Copy ---
 const toastElement = document.getElementById('toast');
