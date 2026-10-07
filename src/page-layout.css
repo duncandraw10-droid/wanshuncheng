@@ -214,3 +214,15 @@
 /* Icon actions remain compact while offering a consistent interaction area. */
 .contact-value .btn-link { min-width: 44px; min-height: 44px; padding: 0 !important; justify-content: center; }
 .full-footer .row.w-100 > .footer-link { min-height: 44px; display: flex; align-items: center; }
+
+
+/* Match the two previous SVG viewports while allowing native lazy <img> loading.
+   The .factory-view ratio remains 37.25%; the original full photo is preserved. */
+.factory-photo-upper { --factory-photo-width: 100%; --factory-photo-center: -25.022999%; }
+.factory-photo-lower { --factory-photo-width: 100.187268%; --factory-photo-center: -75.252990%; }
+.factory-view picture { overflow: hidden; }
+.factory-view picture img {
+  position: absolute; left: 50%; top: 50%; max-width: none;
+  width: var(--factory-photo-width); height: auto;
+  transform: translate(-50%, var(--factory-photo-center));
+}

@@ -260,11 +260,14 @@ let modalClosePending = false;
 const modalElement = document.getElementById('image-modal');
 const imageModal = modalElement ? bootstrap.Modal.getOrCreateInstance(modalElement) : null;
 
-window.openModal = function(src, title) {
+window.openModal = function(src, title, webpSrc) {
   modalTriggerBtn = document.activeElement;
   const img = document.getElementById('modal-image');
   const titleEl = document.getElementById('modal-title');
   if (!img || !imageModal) return;
+  const webpSource = document.getElementById('modal-image-source');
+  if (webpSrc) webpSource?.setAttribute('srcset', webpSrc);
+  else webpSource?.removeAttribute('srcset');
   img.src = src;
   img.alt = title;
   if (titleEl) titleEl.textContent = title;
@@ -400,9 +403,13 @@ if (equipTabs.length > 0 && equipMainImg) {
       });
       const src = tab.getAttribute('data-img');
       const alt = tab.getAttribute('data-alt');
+      const webpSrc = tab.getAttribute('data-img-webp');
       equipMainImg.style.opacity = '0.3';
       clearTimeout(equipmentImageTimer);
       equipmentImageTimer = setTimeout(() => {
+        const webpSource = document.getElementById('equip-main-source');
+        if (webpSrc) webpSource?.setAttribute('srcset', webpSrc);
+        else webpSource?.removeAttribute('srcset');
         equipMainImg.src = src;
         equipMainImg.alt = alt;
         equipMainImg.style.opacity = '1';
@@ -433,5 +440,5 @@ document.getElementById('equip-prev')?.addEventListener('click', () => advanceEq
 document.getElementById('equip-next')?.addEventListener('click', () => advanceEquipment(1));
 
 document.querySelectorAll('.application-photo-button').forEach(button => {
-  button.addEventListener('click', () => openModal(button.dataset.photo, button.dataset.photoTitle));
+  button.addEventListener('click', () => openModal(button.dataset.photo, button.dataset.photoTitle, button.dataset.photoWebp));
 });
