@@ -5,7 +5,6 @@ const heroCarousel = heroElement ? bootstrap.Carousel.getOrCreateInstance(heroEl
   interval: 6500, ride: false, keyboard: true, touch: true, pause: false,
 }) : null;
 const openingScreen = document.getElementById('loadingArea');
-const openingSkip = document.getElementById('intro-skip');
 let openingTimers = [];
 let openingBusy = false;
 let heroHasFocus = false;
@@ -40,16 +39,15 @@ function playOpening() {
   setOpeningInert(true);
   openingScreen.classList.remove('d-none', 'opening-show', 'opening-logo-out', 'opening-leave');
   openingScreen.classList.add('d-flex');
-  openingSkip?.focus({ preventScroll: true });
   const schedule = (fn, delay) => openingTimers.push(setTimeout(fn, delay));
-  schedule(() => openingScreen.classList.add('opening-show'), 300);
-  schedule(() => openingScreen.classList.add('opening-logo-out'), 1550);
-  schedule(() => openingScreen.classList.add('opening-leave'), 1850);
-  schedule(() => document.body.classList.add('hero-entered'), 2200);
-  schedule(finishOpening, 3100);
+  // Reveal the hero behind the curtains so its entrance does not add another wait.
+  schedule(() => openingScreen.classList.add('opening-show'), 80);
+  schedule(() => document.body.classList.add('hero-entered'), 100);
+  schedule(() => openingScreen.classList.add('opening-logo-out'), 800);
+  schedule(() => openingScreen.classList.add('opening-leave'), 900);
+  schedule(finishOpening, 1300);
 }
 
-openingSkip?.addEventListener('click', finishOpening);
 document.addEventListener('keydown', event => {
   if (openingBusy && event.key === 'Escape') finishOpening();
 });

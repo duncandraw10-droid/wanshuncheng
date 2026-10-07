@@ -133,7 +133,7 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 #mobile-menu.collapsing { overflow: hidden; }
 body.intro-running { overflow: hidden; }
 .opening-screen { z-index: 2100; isolation: isolate; }
-.opening-panel { position: absolute; top: 0; bottom: 0; width: calc(50% + 1px); background: var(--surface-subtle); transition: transform .8s cubic-bezier(.65,0,.25,1); z-index: -1; }
+.opening-panel { position: absolute; top: 0; bottom: 0; width: calc(50% + 1px); background: var(--surface-subtle); transition: transform .4s cubic-bezier(.65,0,.25,1); z-index: -1; }
 .opening-panel-left { left: 0; }
 .opening-panel-right { right: 0; }
 .opening-leave .opening-panel-left { transform: translateX(-100%); }
@@ -142,12 +142,9 @@ body.intro-running { overflow: hidden; }
 .loading-logo { width: clamp(245px, 25vw, 360px); }
 .opening-caption { margin-top: .7rem; color: var(--text-secondary); font-size: .875rem; letter-spacing: .2em; }
 .loading-progress { height: 2px; width: 96px; background: var(--border-default); }
-.opening-show .opening-brand { animation: opening-logo-in .55s ease both; }
-.opening-show .progress-animate { animation: opening-progress 1.4s ease both; }
-.opening-logo-out .opening-brand { animation: opening-logo-out .3s ease both; }
-.opening-skip { bottom: max(30px,env(safe-area-inset-bottom)); right: 30px; color: var(--text-secondary); font-size: var(--type-helper); border: 1px solid var(--border-control); border-radius: 999px; }
-.opening-skip:hover { color: var(--brand-blue); border-color: var(--brand-blue); }
-.opening-leave .opening-skip { opacity: 0; pointer-events: none; }
+.opening-show .opening-brand { animation: opening-logo-in .24s ease both; }
+.opening-show .progress-animate { animation: opening-progress .7s ease both; }
+.opening-logo-out .opening-brand { animation: opening-logo-out .18s ease both; }
 @keyframes opening-logo-in { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
 @keyframes opening-logo-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-8px); } }
 @keyframes opening-progress { from { width: 0; } to { width: 100%; } }
@@ -331,7 +328,7 @@ body { font-size: var(--type-body); font-weight: 400; }
   .control-size { width: 44px; height: 44px; }
 }
 
-.modal-header .btn, .opening-skip { min-width: 44px; min-height: 44px; }
+.modal-header .btn { min-width: 44px; min-height: 44px; }
 
 
 /* Render the supplied white logo through its alpha shape using an exact token.
