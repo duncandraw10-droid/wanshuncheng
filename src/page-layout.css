@@ -15,24 +15,41 @@
   opacity: .14; z-index: -1; pointer-events: none;
 }
 .application-gallery { padding-block: 8px; }
-.portfolio-slider { padding-block: 6px 12px; overflow-y: hidden; }
-.portfolio-item { scroll-snap-align: start; }
-.application-card { width: 100%; aspect-ratio: 3 / 4; min-height: 390px; }
+.application-card { width: 100%; min-height: 480px; display: flex; align-items: flex-end; isolation: isolate; }
+.application-card > picture { position: absolute; inset: 0; }
 .application-card::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg,transparent 22%,rgba(23,43,70,.3) 45%,rgba(23,43,70,.95) 100%);
+  background: linear-gradient(180deg,transparent 0%,rgba(23,43,70,.76) 30%,rgba(23,43,70,.96) 65%,var(--brand-navy) 100%);
+  transform-origin: center bottom; transition: transform 450ms cubic-bezier(.2,.7,.3,1); z-index: 1;
 }
-.application-photo { position: absolute; inset: 0; transition: transform .5s ease; }
+.application-photo { position: absolute; inset: 0; transition: transform 450ms ease; }
 .application-photo-button { border: 0; background: transparent; z-index: 2; color: var(--text-on-dark); }
 .application-photo-button:focus-visible { outline-offset: -6px; outline-color: var(--text-on-dark); }
-.application-card-arrow { position: absolute; right: 22px; top: 22px; width: 44px; height: 44px; border: 1px solid var(--text-muted-on-dark); transition: background .2s,border-color .2s; }
-.application-photo-button:hover .application-card-arrow { background: var(--brand-blue); border-color: var(--brand-blue); }
-.application-card:has(.application-photo-button:hover) .application-photo { transform: scale(1.035); }
-.application-caption { padding: 30px 22px; z-index: 3; }
+.application-card-arrow { position: absolute; right: 24px; top: 24px; width: 44px; height: 44px; border: 1px solid var(--text-muted-on-dark); background: rgba(23,43,70,.45); transition: opacity 300ms ease,transform 450ms ease,background 200ms ease,border-color 200ms ease; }
+.application-card:focus-within .application-card-arrow { background: var(--brand-blue); border-color: var(--brand-blue); }
+.application-caption { position: relative; padding: 24px; z-index: 3; }
 .application-caption h3 { line-height: 1.45; }
 .application-caption p { line-height: 1.7; }
-.application-controls { margin-top: 36px; }
-.portfolio-progress, .equipment-controls .progress { height: 2px; background: var(--border-default); }
+.application-material { padding: 6px 12px; font-size: var(--type-helper); line-height: 1.5; color: var(--text-on-dark); background: rgba(255,255,255,.12); border: 1px solid rgba(203,213,225,.45); }
+.application-details { display: grid; grid-template-rows: 1fr; opacity: 1; transform: translateY(0); transition: grid-template-rows 450ms cubic-bezier(.2,.7,.3,1),opacity 350ms ease,transform 450ms ease; }
+.application-description-wrapper { min-height: 0; overflow: hidden; }
+.application-description { margin-top: 16px; }
+@media (min-width: 992px) {
+  .application-card { aspect-ratio: 4 / 5; }
+  .application-caption { position: absolute; inset-inline: 0; bottom: 0; }
+}
+/* Touch and smaller screens keep every description expanded by default. */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .application-card::after { transform: scaleY(.58); }
+  .application-details { grid-template-rows: 0fr; opacity: 0; transform: translateY(12px); }
+  .application-card-arrow { opacity: 0; transform: translateY(-8px); }
+  .application-card:hover::after, .application-card:focus-within::after { transform: scaleY(1); }
+  .application-card:hover .application-details, .application-card:focus-within .application-details { grid-template-rows: 1fr; opacity: 1; transform: translateY(0); }
+  .application-card:hover .application-card-arrow, .application-card:focus-within .application-card-arrow { opacity: 1; transform: translateY(0); }
+  .application-card:hover .application-card-arrow { background: var(--brand-blue); border-color: var(--brand-blue); }
+  .application-card:hover .application-photo { transform: scale(1.025); }
+}
+.equipment-controls .progress { height: 2px; background: var(--border-default); }
 .equipment-section { padding: var(--layout-space) 0 calc(var(--layout-space) + 1rem); isolation: isolate; }
 .equipment-intro .section-heading { max-width: 360px; }
 .equipment-feature-photo { --bs-aspect-ratio: 0%; height: 300px; overflow: hidden; }
@@ -97,8 +114,6 @@
   :root { --layout-space: 6rem; --section-heading-gap: 3rem; }
   .equipment-feature-photo { height: clamp(360px, 30vw, 420px); }
   .layout-container { padding-inline: 40px; }
-  .application-gallery { padding-inline: 36px !important; }
-  .application-card { min-height: 430px; }
   .company-facts { margin-top: 85px; }
   .company-fact { padding-block: 16px 26px; }
   .company-value { margin-bottom: 24px; }
@@ -110,8 +125,6 @@
   .equipment-feature-caption { padding: 24px; }
 }
 @media (min-width: 1600px) {
-  .application-gallery { max-width: 1920px; }
-  .application-card { max-height: 620px; }
   .equipment-section { padding-block: var(--layout-space); }
 }
 @media (max-width: 767.98px) {
@@ -125,14 +138,10 @@
   .capability-marker { width: 42px; }
   .capability-number { width: 18px; min-width: 18px; }
   .capability-marker .material-symbols-outlined { width: 20px; font-size: 20px; }
-  .application-controls .col { min-width: 80px; }
   .back-to-top { right: 24px; }
 }
 @media (max-width: 375px) {
   .layout-container { padding-inline: 24px; }
-  .application-gallery { padding-inline: 24px !important; }
-  .application-caption { padding: 24px 18px; }
-  .application-card { min-height: 400px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .application-photo { transition: none; }

@@ -79,12 +79,6 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .btn-dark { --bs-btn-bg: var(--brand-navy); --bs-btn-border-color: var(--brand-navy); }
 .section-heading { letter-spacing: -.025em;  }
 .readable-copy { max-width: 42rem; }
-.portfolio-slider { scroll-snap-type: x mandatory; scrollbar-width: none; }
-.portfolio-slider::-webkit-scrollbar { display: none; }
-.portfolio-item { scroll-snap-align: start; }
-.portfolio-item img { transition: transform 500ms; }
-.portfolio-progress { height: 4px; }
-#slider-progress { transition: width 300ms; }
 .control-size { width: 48px; height: 48px; padding: 0; flex-shrink: 0; }
 #equip-main-img { transition: opacity 300ms; }
 .list-dot { width: 6px; height: 6px; }

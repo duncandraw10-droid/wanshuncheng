@@ -330,61 +330,6 @@ window.copyTemplate = async function() {
 }
 
 
-// --- Portfolio Slider ---
-const slider = document.getElementById('portfolio-slider');
-const prevBtn = document.getElementById('slider-prev');
-const nextBtn = document.getElementById('slider-next');
-const progressBar = document.getElementById('slider-progress');
-
-if (slider && prevBtn && nextBtn) {
-  function updateSlider() {
-    const isAtStart = slider.scrollLeft <= 0;
-    const isAtEnd = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth;
-    
-    prevBtn.disabled = isAtStart;
-    nextBtn.disabled = isAtEnd;
-    
-    if (progressBar) {
-      const scrollRange = slider.scrollWidth - slider.clientWidth;
-      const scrollPercentage = scrollRange > 0 ? Math.min(1, Math.max(0, slider.scrollLeft / scrollRange)) : 0;
-      const minWidth = Math.min(100, slider.clientWidth / slider.scrollWidth * 100);
-      const width = Math.max(minWidth, minWidth + (scrollPercentage * (100 - minWidth)));
-      progressBar.style.width = `${width}%`;
-      progressBar.setAttribute('aria-valuenow', String(Math.round(width)));
-    }
-  }
-
-  // Initial check
-  updateSlider();
-  
-  slider.addEventListener('scroll', () => {
-    requestAnimationFrame(updateSlider);
-  });
-
-  const scrollByAmount = () => {
-    const item = slider.querySelector('.portfolio-item');
-    if(!item) return 0;
-    const nextItem = item.nextElementSibling;
-    return nextItem ? nextItem.offsetLeft - item.offsetLeft : item.offsetWidth;
-  };
-
-  prevBtn.addEventListener('click', () => {
-    slider.scrollBy({ left: -scrollByAmount(), behavior: heroMotion.matches ? 'instant' : 'smooth' });
-  });
-
-  nextBtn.addEventListener('click', () => {
-    slider.scrollBy({ left: scrollByAmount(), behavior: heroMotion.matches ? 'instant' : 'smooth' });
-  });
-
-  slider.addEventListener('keydown', event => {
-    if (event.target !== slider || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-    event.preventDefault();
-    slider.scrollBy({ left: scrollByAmount() * (event.key === 'ArrowLeft' ? -1 : 1), behavior: heroMotion.matches ? 'instant' : 'smooth' });
-  });
-
-  window.addEventListener('resize', updateSlider);
-}
-
 // Update current year
 const yearEl = document.getElementById('current-year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
 
