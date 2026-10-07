@@ -152,14 +152,22 @@
 .workflow-section { padding-block: var(--layout-space); }
 .workflow-step { border-top: 1px solid var(--border-default); padding-top: 24px; }
 .workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: 1.5; }
-.contact-section { padding-block: var(--layout-space); }
+.contact-section { padding-block: 56px; }
+.contact-section .section-title-row { margin-bottom: 2rem; }
+@media (min-width: 992px) {
+  .contact-section { padding-block: 72px; }
+}
 .contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: 24px 0; border-top: 1px solid var(--border-default); }
 .contact-panel-content, .contact-panel-footer { margin-inline-start: 32px; }
 .contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
 .contact-panel .contact-value { min-width: 0; }
+/* Match the 44px copy controls so all contact rows share one rhythm. */
+.contact-phone-details > div,
+.contact-preparation .contact-panel-content > li { min-height: 44px; }
+.contact-preparation .contact-panel-content > li { display: flex; align-items: center; }
 .contact-panel .btn:not(.btn-link) { border-radius: 999px; }
 .contact-copy-actions .btn { min-height: 44px; }
-.contact-preparation .list-dot { inset-inline-start: -14px; top: calc(.9em - 3px); }
+.contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
 .full-footer { padding-block: 65px calc(40px + env(safe-area-inset-bottom)) !important; }
 .full-footer .footer-link { line-height: 1.8; }
 .full-footer .footer-copyright { border-color: rgba(203,213,225,.35) !important; }
@@ -207,7 +215,6 @@
 .quality-icon { width: 64px; height: 64px; }
 .quality-icon svg { width: 36px; height: 36px; }
 .quality-card p { line-height: 1.8; }
-.contact-response { border-inline-start: 3px solid var(--brand-blue); padding-inline-start: 16px; }
 
 /* Bootstrap equipment pills and their shared machinery display stage. */
 .equipment-section { padding-block: var(--layout-space); isolation: isolate; }
