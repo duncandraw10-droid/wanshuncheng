@@ -337,55 +337,30 @@ window.copyTemplate = async function() {
 const yearEl = document.getElementById('current-year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
 
 
-// --- Equipment Tabs ---
-const equipTabs = document.querySelectorAll('.equip-tab');
-const equipMainImg = document.getElementById('equip-main-img');
-let equipmentImageTimer;
-if (equipTabs.length > 0 && equipMainImg) {
-  equipTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      equipTabs.forEach(t => {
-        const selected = t === tab;
-        t.classList.toggle('active', selected);
-        t.setAttribute('aria-pressed', String(selected));
-      });
-      const src = tab.getAttribute('data-img');
-      const alt = tab.getAttribute('data-alt');
-      const webpSrc = tab.getAttribute('data-img-webp');
-      equipMainImg.style.opacity = '0.3';
-      clearTimeout(equipmentImageTimer);
-      equipmentImageTimer = setTimeout(() => {
-        const webpSource = document.getElementById('equip-main-source');
-        if (webpSrc) webpSource?.setAttribute('srcset', webpSrc);
-        else webpSource?.removeAttribute('srcset');
-        equipMainImg.src = src;
-        equipMainImg.alt = alt;
-        equipMainImg.style.opacity = '1';
-        const index = Array.from(equipTabs).indexOf(tab);
-        const title = document.getElementById('equip-feature-title');
-        const description = document.getElementById('equip-feature-description');
-        const current = document.getElementById('equip-current');
-        const progress = document.getElementById('equip-progress');
-        if (title) title.textContent = tab.querySelector('h3').textContent;
-        if (description) description.textContent = tab.querySelector('p').textContent;
-        if (current) current.textContent = String(index + 1).padStart(2, '0');
-        if (progress) {
-          progress.style.width = `${(index + 1) / equipTabs.length * 100}%`;
-          progress.setAttribute('aria-valuenow', String(index + 1));
-        }
-      }, 150);
-    });
+// Bootstrap pills keep selection, focus and fade panels in sync.
+const equipmentSelection = document.querySelector('.equipment-selection');
+if (equipmentSelection) {
+  const equipmentDesktop = window.matchMedia('(min-width: 992px)');
+  const syncEquipmentOrientation = () => equipmentSelection.setAttribute(
+    'aria-orientation', equipmentDesktop.matches ? 'vertical' : 'horizontal',
+  );
+  syncEquipmentOrientation();
+  equipmentDesktop.addEventListener('change', syncEquipmentOrientation);
+  equipmentSelection.querySelectorAll('[data-bs-toggle="pill"]').forEach(tab => {
+    bootstrap.Tab.getOrCreateInstance(tab);
   });
-}
 
-// Equipment catalog controls keep the original selection attributes as their source.
-function advanceEquipment(direction) {
-  const index = Array.from(equipTabs).findIndex(tab => tab.classList.contains('active'));
-  const next = (index + direction + equipTabs.length) % equipTabs.length;
-  equipTabs[next]?.click();
+  // Warm the lazy-loaded panels shortly before the equipment section is visible.
+  const equipmentPreloader = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    equipmentSelection.querySelectorAll('[data-img-webp]').forEach(tab => {
+      const image = new Image();
+      image.src = tab.dataset.imgWebp;
+    });
+    equipmentPreloader.disconnect();
+  }, { rootMargin: '200px' });
+  equipmentPreloader.observe(document.getElementById('equipment'));
 }
-document.getElementById('equip-prev')?.addEventListener('click', () => advanceEquipment(-1));
-document.getElementById('equip-next')?.addEventListener('click', () => advanceEquipment(1));
 
 document.querySelectorAll('.application-photo-button').forEach(button => {
   button.addEventListener('click', () => openModal(button.dataset.photo, button.dataset.photoTitle, button.dataset.photoWebp));

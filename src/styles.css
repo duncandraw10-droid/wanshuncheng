@@ -80,7 +80,6 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .section-heading { letter-spacing: -.025em;  }
 .readable-copy { max-width: 42rem; }
 .control-size { width: 48px; height: 48px; padding: 0; flex-shrink: 0; }
-#equip-main-img { transition: opacity 300ms; }
 .list-dot { width: 6px; height: 6px; }
 .contact-label { min-width: 4rem; }
 .numbers { font-variant-numeric: tabular-nums; }

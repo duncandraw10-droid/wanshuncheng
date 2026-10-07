@@ -95,21 +95,6 @@
 @media (hover: hover) and (pointer: fine) {
   .application-card.is-expanded .application-photo { transform: scale(1.025); }
 }
-.equipment-controls .progress { height: 2px; background: var(--border-default); }
-.equipment-section { padding: var(--layout-space) 0 calc(var(--layout-space) + 1rem); isolation: isolate; }
-.equipment-intro .section-heading { max-width: 360px; }
-.equipment-feature-photo { --bs-aspect-ratio: 0%; height: 300px; overflow: hidden; }
-.equipment-feature-photo img { background: var(--surface-white); }
-.equipment-feature-caption { padding: 24px; min-height: 140px; }
-.equipment-number { font-size: var(--type-hero); line-height: 1.15; font-weight: 600; }
-.equipment-caption-line { width: 32px; height: 1px; }
-.equipment-controls .progress { min-width: 60px; }
-#equip-progress { width: 33.333%; transition: width .3s; }
-.equip-tab { padding: 20px 22px; background: var(--surface-white); border: 1px solid var(--border-control); border-radius: 0; transition: border-color .2s,background .2s; }
-.equip-tab:hover { border-color: var(--brand-blue); background: var(--surface-subtle); }
-.equip-tab.active { border-color: var(--brand-blue); background: var(--surface-subtle); box-shadow: inset 4px 0 var(--brand-blue); }
-.equip-tab.active h3 { color: var(--brand-blue); }
-.equip-tab p { line-height: 1.75; }
 .company-section { padding-block: var(--layout-space); isolation: isolate; }
 .company-scene { z-index: -2; opacity: .055; }
 .company-section .section-heading { color: var(--text-on-dark); }
@@ -152,13 +137,11 @@
 .back-to-top { position: absolute; right: 24px; top: -28px; width: 56px; height: 56px; z-index: 2; color: var(--brand-blue); border-color: var(--border-default); box-shadow: 0 4px 20px rgba(23,43,70,.08); }
 .back-to-top .material-symbols-outlined { transform: rotate(-90deg); }
 @media (min-width: 768px) {
-  .equipment-feature-photo { height: 360px; }
   .company-fact { border-inline-end: 1px solid rgba(203,213,225,.35); border-block-end: 0; }
   .company-fact:first-child { border-inline-start: 1px solid rgba(203,213,225,.35); }
 }
 @media (min-width: 992px) {
   :root { --layout-space: 6rem; --section-heading-gap: 3rem; }
-  .equipment-feature-photo { height: clamp(360px, 30vw, 420px); }
   .layout-container { padding-inline: 40px; }
   .company-facts { margin-top: 85px; }
   .company-fact { padding-block: 16px 26px; }
@@ -167,16 +150,7 @@
   .full-footer { padding-top: 75px !important; }
   .back-to-top { right: max(40px,calc((100vw - 1360px) / 2)); }
 }
-@media (min-width: 1200px) {
-  .equipment-feature-caption { padding: 24px; }
-}
-@media (min-width: 1600px) {
-  .equipment-section { padding-block: var(--layout-space); }
-}
 @media (max-width: 767.98px) {
-  .equipment-feature-caption { padding: 22px; gap: 18px !important; min-height: 0; }
-  .equipment-feature-caption p { line-height: 1.8; }
-  .equipment-intro .layout-pill { margin-top: 0; }
   .company-facts { margin-top: 40px; }
   .company-location { min-height: 45px; }
   .company-fact { padding-block: 26px; }
@@ -208,28 +182,45 @@
 .quality-card p { line-height: 1.8; }
 .contact-response { border-inline-start: 3px solid var(--brand-blue); padding-inline-start: 16px; }
 
-/* Cutout machinery uses a shared display stage and the site's Bootstrap grid. */
-.equipment-section { padding-block: var(--layout-space); }
+/* Bootstrap equipment pills and their shared machinery display stage. */
+.equipment-section { padding-block: var(--layout-space); isolation: isolate; }
 .equipment-section::before { display: none; }
-.equipment-intro { justify-content: center; }
-.equipment-selection .equip-tab { padding: 20px 22px; border-color: var(--border-default); border-radius: 12px; box-shadow: none; }
-.equipment-selection .equip-tab.active { border-color: var(--brand-blue); background: rgba(37,99,235,.045); box-shadow: inset 4px 0 var(--brand-blue); }
-.equipment-selection .equip-tab:hover { border-color: var(--brand-blue); }
-.equipment-feature-photo { height: 340px; isolation: isolate; overflow: hidden; background: var(--surface-subtle); }
-.equipment-feature-photo::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(37,99,235,.055); clip-path: polygon(75% 0,100% 0,100% 100%,30% 100%); }
-.equipment-feature-photo img { background: transparent; padding: 32px 24px 16px; z-index: 1; object-position: center bottom; }
-.equipment-feature-caption { min-height: 0; padding: 24px 0 20px; border-bottom: 1px solid var(--border-default); }
-.equipment-feature-caption h3 { margin-bottom: 12px !important; }
-.equipment-feature-caption p { line-height: 1.8; }
-.equipment-number { color: var(--brand-blue) !important; font-size: 20px; padding-top: 4px; }
-.equipment-controls { margin-top: 20px !important; }
-@media (min-width: 768px) {
-  .equipment-feature-photo { height: 440px; }
-  .equipment-feature-photo img { padding: 42px 40px 18px; }
+.equipment-intro, .equipment-display { min-width: 0; }
+.equipment-selection .equip-tab {
+  padding: 14px 20px; color: var(--text-primary); background: var(--surface-white);
+  border: 1px solid var(--border-default); border-radius: 12px;
+  transition: border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;
 }
-@media (min-width: 992px) {
-  .equipment-feature-photo { height: clamp(440px,32vw,520px); }
-  .equipment-feature-caption { padding-top: 28px; }
+.equipment-selection .equip-tab.active {
+  border-color: var(--brand-blue); background: rgba(37,99,235,.045);
+  box-shadow: inset 4px 0 var(--brand-blue);
+}
+.equipment-selection .equip-tab.active h3 { color: var(--brand-blue); }
+.equipment-selection .content-heading { line-height: 1.35; }
+.equipment-selection .equip-tab p { line-height: 1.65; }
+.equipment-feature-photo {
+  position: relative; height: 340px; isolation: isolate; overflow: hidden; background: var(--surface-subtle);
+}
+.equipment-feature-photo::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: rgba(37,99,235,.055); clip-path: polygon(75% 0,100% 0,100% 100%,30% 100%);
+}
+.equipment-feature-photo .tab-pane.fade { transition: opacity .3s ease-in-out; }
+.equipment-feature-photo img {
+  background: transparent; padding: 28px 24px 16px; object-position: center bottom;
+}
+@media (hover: hover) and (pointer: fine) {
+  .equipment-selection .equip-tab:hover {
+    border-color: var(--brand-blue); transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(23,43,70,.08);
+  }
+  .equipment-selection .equip-tab.active:hover {
+    box-shadow: inset 4px 0 var(--brand-blue),0 4px 12px rgba(23,43,70,.08);
+  }
+}
+@media (min-width: 768px) {
+  .equipment-feature-photo { height: 400px; }
+  .equipment-feature-photo img { padding: 28px 32px 16px; }
 }
 @media (max-width: 991.98px) {
   .equipment-selection .equip-tab { padding: 16px 6px; text-align: center !important; align-items: center; justify-content: center; }
@@ -239,7 +230,7 @@
 }
 @media (max-width: 375px) {
   .equipment-feature-photo { height: 300px; }
-  .equipment-feature-photo img { padding: 28px 20px 12px; }
+  .equipment-feature-photo img { padding: 24px 20px 12px; }
 }
 
 /* Supplied process photographs and two factory panorama viewports. */

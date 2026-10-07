@@ -289,48 +289,55 @@
   </div>
 </section><section id="equipment" class="equipment-section position-relative bg-white">
   <div class="container layout-container">
-    <div class="row g-4 g-lg-5 align-items-stretch">
+    <div class="section-title-block reveal">
+      <p class="helper-copy fw-semibold text-primary mb-3">EQUIPMENT</p>
+      <h2 class="section-heading fw-bold mb-0">廠內設備</h2>
+    </div>
+    <div class="row g-4 g-lg-5 align-items-center">
       <div class="col-12 col-lg-4 equipment-intro d-flex flex-column reveal">
-        <p class="helper-copy fw-semibold text-primary mb-3">EQUIPMENT</p>
-        <h2 class="section-heading fw-bold mb-4">廠內設備</h2>
-        <div class="row g-3 equipment-selection" role="group" aria-label="選擇廠內設備">
-        <div class="col-4 col-lg-12">
-          <button class="equip-tab btn text-start w-100 h-100 d-flex flex-column active" data-img="./images/equip-250t-cutout.webp" data-img-webp="./images/equip-250t-cutout.webp" data-alt="250T 熱固性壓機" data-tonnage="250" type="button" aria-pressed="true" aria-label="250T 熱固性壓機">
-            <h3 class="content-heading fw-semibold mb-0 mb-lg-2"><span>250T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
-            <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">提供中小尺寸部件的模壓成型，穩定性佳。</p>
-          </button>
+        <div class="row g-3 nav equipment-selection" role="tablist" aria-label="選擇廠內設備" aria-orientation="vertical">
+          <div class="col-4 col-lg-12" role="presentation">
+            <button id="equip-250t-tab" class="equip-tab btn text-start w-100 h-100 d-flex flex-column active" data-img="./images/equip-250t-cutout.webp" data-img-webp="./images/equip-250t-cutout.webp" data-alt="250T 熱固性壓機" data-tonnage="250" type="button" role="tab" data-bs-toggle="pill" data-bs-target="#equip-250t-pane" aria-controls="equip-250t-pane" aria-selected="true" aria-label="250T 熱固性壓機">
+              <h3 class="content-heading fw-semibold mb-0 mb-lg-1"><span>250T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
+              <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">提供中小尺寸部件的模壓成型，穩定性佳。</p>
+            </button>
+          </div>
+          <div class="col-4 col-lg-12" role="presentation">
+            <button id="equip-400t-tab" class="equip-tab btn text-start w-100 h-100 d-flex flex-column" data-img="./images/equip-400t-cutout.webp" data-img-webp="./images/equip-400t-cutout.webp" data-alt="400T 熱固性壓機" data-tonnage="400" type="button" role="tab" data-bs-toggle="pill" data-bs-target="#equip-400t-pane" aria-controls="equip-400t-pane" aria-selected="false" aria-label="400T 熱固性壓機">
+              <h3 class="content-heading fw-semibold mb-0 mb-lg-1"><span>400T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
+              <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">適合中大型 SMC／BMC 產品，具備優異的壓力控制。</p>
+            </button>
+          </div>
+          <div class="col-4 col-lg-12" role="presentation">
+            <button id="equip-500t-tab" class="equip-tab btn text-start w-100 h-100 d-flex flex-column" data-img="./images/equip-500t-cutout.webp" data-img-webp="./images/equip-500t-cutout.webp" data-alt="500T 熱固性壓機" data-tonnage="500" type="button" role="tab" data-bs-toggle="pill" data-bs-target="#equip-500t-pane" aria-controls="equip-500t-pane" aria-selected="false" aria-label="500T 熱固性壓機">
+              <h3 class="content-heading fw-semibold mb-0 mb-lg-1"><span>500T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
+              <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">廠內最大噸數設備，滿足大面積或高深度的特殊成型需求。</p>
+            </button>
+          </div>
         </div>
-        <div class="col-4 col-lg-12">
-          <button class="equip-tab btn text-start w-100 h-100 d-flex flex-column" data-img="./images/equip-400t-cutout.webp" data-img-webp="./images/equip-400t-cutout.webp" data-alt="400T 熱固性壓機" data-tonnage="400" type="button" aria-pressed="false" aria-label="400T 熱固性壓機">
-            <h3 class="content-heading fw-semibold mb-0 mb-lg-2"><span>400T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
-            <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">適合中大型 SMC／BMC 產品，具備優異的壓力控制。</p>
-          </button>
-        </div>
-        <div class="col-4 col-lg-12">
-          <button class="equip-tab btn text-start w-100 h-100 d-flex flex-column" data-img="./images/equip-500t-cutout.webp" data-img-webp="./images/equip-500t-cutout.webp" data-alt="500T 熱固性壓機" data-tonnage="500" type="button" aria-pressed="false" aria-label="500T 熱固性壓機">
-            <h3 class="content-heading fw-semibold mb-0 mb-lg-2"><span>500T</span><span class="d-none d-lg-inline"> 熱固性壓機</span></h3>
-            <p class="helper-copy text-body-secondary mb-0 d-none d-lg-block">廠內最大噸數設備，滿足大面積或高深度的特殊成型需求。</p>
-          </button>
-        </div>
-        </div>
-        <div class="equipment-cta d-none d-lg-block mt-4 pt-2"><a href="#contact" class="btn btn-primary rounded-pill layout-pill d-inline-flex align-items-center justify-content-center gap-3">討論產品需求<span class="material-symbols-outlined fs-5" aria-hidden="true">arrow_forward</span></a></div>
+        <div class="equipment-cta d-none d-lg-block mt-4"><a href="#contact" class="btn btn-primary rounded-pill layout-pill d-inline-flex align-items-center justify-content-center gap-3">討論產品需求<span class="material-symbols-outlined fs-5" aria-hidden="true">arrow_forward</span></a></div>
       </div>
       <div class="col-12 col-lg-8 equipment-display reveal">
-      <div class="equipment-feature">
-        <div class="ratio ratio-4x3 equipment-feature-photo rounded-4">
-          <picture class="d-block w-100 h-100">
-          <source id="equip-main-source" srcset="./images/equip-250t-cutout.webp" type="image/webp">
-          <img width="1143" height="1376" id="equip-main-img" src="./images/equip-250t-cutout.webp" alt="250T 熱壓成型機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
-        </picture></div>
-        <div class="equipment-feature-caption d-flex align-items-start gap-4" aria-live="polite" aria-atomic="true">
-          <span id="equip-current" class="equipment-number numbers text-body-secondary" aria-hidden="true">01</span>
-          <div><h3 id="equip-feature-title" class="content-heading fw-semibold mb-3">250T 熱固性壓機</h3><p id="equip-feature-description" class="body-copy text-body-secondary mb-0">提供中小尺寸部件的模壓成型，穩定性佳。</p></div>
+        <div id="equipment-tab-content" class="tab-content equipment-feature-photo rounded-4">
+          <div id="equip-250t-pane" class="tab-pane fade show active w-100 h-100" role="tabpanel" aria-labelledby="equip-250t-tab" tabindex="0">
+            <picture class="d-block w-100 h-100">
+              <source id="equip-main-source" srcset="./images/equip-250t-cutout.webp" type="image/webp">
+              <img width="1143" height="1376" id="equip-main-img" src="./images/equip-250t-cutout.webp" alt="250T 熱壓成型機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+            </picture>
+          </div>
+          <div id="equip-400t-pane" class="tab-pane fade w-100 h-100" role="tabpanel" aria-labelledby="equip-400t-tab" tabindex="0">
+            <picture class="d-block w-100 h-100">
+              <source srcset="./images/equip-400t-cutout.webp" type="image/webp">
+              <img width="1312" height="1199" src="./images/equip-400t-cutout.webp" alt="400T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+                </picture>
+          </div>
+          <div id="equip-500t-pane" class="tab-pane fade w-100 h-100" role="tabpanel" aria-labelledby="equip-500t-tab" tabindex="0">
+            <picture class="d-block w-100 h-100">
+              <source srcset="./images/equip-500t-cutout.webp" type="image/webp">
+              <img width="1221" height="1288" src="./images/equip-500t-cutout.webp" alt="500T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+                </picture>
+          </div>
         </div>
-      </div>
-      <div class="equipment-controls d-flex align-items-center gap-4 mt-4">
-        <div class="progress flex-grow-1"><div id="equip-progress" class="progress-bar" role="progressbar" aria-label="設備瀏覽進度" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"></div></div>
-        <div class="d-flex gap-3"><button id="equip-prev" type="button" class="btn btn-outline-secondary rounded-circle control-size d-flex align-items-center justify-content-center" aria-label="上一台設備"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span></button><button id="equip-next" type="button" class="btn btn-outline-secondary rounded-circle control-size d-flex align-items-center justify-content-center" aria-label="下一台設備"><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></button></div>
-      </div>
       </div>
       <div class="col-12 d-lg-none equipment-cta reveal"><a href="#contact" class="btn btn-primary rounded-pill layout-pill d-inline-flex align-items-center justify-content-center gap-3">討論產品需求<span class="material-symbols-outlined fs-5" aria-hidden="true">arrow_forward</span></a></div>
     </div>
