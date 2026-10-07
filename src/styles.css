@@ -292,10 +292,11 @@ body { font-size: var(--type-body); font-weight: 400; }
 /* Keep the subject of each supplied photo visible as the Hero crops responsively. */
 .hero-image .hero-forming-photo { object-position: 64% center; }
 .hero-image .hero-measurement-photo { object-position: 60% center; }
-.factory-panorama { display: block; overflow: hidden; }
+.hero-image .hero-factory-photo { object-position: center; }
 @media (max-width: 767.98px) {
   .hero-image .hero-forming-photo { object-position: 72% center; }
   .hero-image .hero-measurement-photo { object-position: 64% center; }
+  .hero-image .hero-factory-photo { object-position: 75% center; }
 }
 
 /* Brand states are shared by keyboard focus and disabled controls. */
