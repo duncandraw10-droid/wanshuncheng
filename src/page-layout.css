@@ -233,7 +233,8 @@
 .equipment-selection .content-heading { line-height: 1.35; }
 .equipment-selection .equip-tab p { line-height: 1.65; }
 .equipment-feature-photo {
-  position: relative; height: 340px; isolation: isolate; overflow: hidden; background: var(--surface-subtle);
+  --equipment-image-height: 340px;
+  position: relative; height: var(--equipment-image-height); isolation: isolate; overflow: hidden; background: var(--surface-subtle);
 }
 .equipment-feature-photo::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
@@ -253,7 +254,7 @@
   }
 }
 @media (min-width: 768px) {
-  .equipment-feature-photo { height: 400px; }
+  .equipment-feature-photo { --equipment-image-height: 400px; }
   .equipment-feature-photo img { padding: 28px 32px 16px; }
 }
 /* Desktop stage spans the heading, equipment tabs and contact action. */
@@ -267,13 +268,17 @@
   .equipment-feature-photo img[src$="equip-500t-cutout.webp"] { padding: 26px 24px 6px; }
 }
 @media (max-width: 991.98px) {
+  /* Keep the machinery stage size while allowing its mobile-only caption below. */
+  .equipment-feature-photo { height: auto; }
+  .equipment-feature-photo .tab-pane { height: auto !important; }
+  .equipment-feature-photo .tab-pane > picture { height: var(--equipment-image-height) !important; }
   .equipment-selection .equip-tab { padding: 16px 6px; text-align: center !important; align-items: center; justify-content: center; }
   .equipment-selection .equip-tab.active { box-shadow: inset 0 -3px var(--brand-blue); }
   .equipment-selection .content-heading { font-size: 20px; }
   .equipment-cta .layout-pill { width: 100%; }
 }
 @media (max-width: 375px) {
-  .equipment-feature-photo { height: 300px; }
+  .equipment-feature-photo { --equipment-image-height: 300px; }
   .equipment-feature-photo img { padding: 24px 20px 12px; }
 }
 
