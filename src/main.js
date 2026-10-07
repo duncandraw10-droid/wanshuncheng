@@ -367,7 +367,7 @@ document.querySelectorAll('.application-photo-button').forEach(button => {
 });
 
 
-// Native horizontal carousel: three cards on desktop, 1.2 cards on smaller screens.
+// Native carousel: three desktop cards, 1.2 tablet cards and one complete phone card.
 const portfolioSlider = document.getElementById('portfolio-slider');
 const portfolioPrev = document.getElementById('slider-prev');
 const portfolioNext = document.getElementById('slider-next');
@@ -386,6 +386,10 @@ document.querySelectorAll('.application-card').forEach(card => {
     if (photo) photo.tabIndex = open ? 0 : -1;
   } };
   portfolioStates.push(state);
+  // Captions sit below the square photo on smaller screens; their headings also toggle details.
+  card.querySelector('.application-caption')?.addEventListener('click', event => {
+    if (!portfolioHover.matches && event.target.closest('h3, .application-material')) toggle.click();
+  });
   toggle.addEventListener('click', () => {
     const open = !state.pinned;
     closePortfolioDetails();
@@ -428,6 +432,13 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
     const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
     portfolioPrev.disabled = position <= 2;
     portfolioNext.disabled = range - position <= 2;
+    const gallery = portfolioSlider.closest('.application-gallery');
+    const frame = portfolioSlider.querySelector('.application-image-frame');
+    if (gallery && frame) {
+      const photo = frame.getBoundingClientRect();
+      const center = photo.top - gallery.getBoundingClientRect().top + photo.height / 2;
+      gallery.style.setProperty('--portfolio-image-center', `${center}px`);
+    }
 
   }
   function movePortfolio(direction) {

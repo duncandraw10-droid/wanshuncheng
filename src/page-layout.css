@@ -47,7 +47,7 @@
   min-width: 0; scroll-snap-align: start;
 }
 .application-card { width: 100%; height: 500px; isolation: isolate; }
-.application-card > picture { position: absolute; inset: 0; }
+.application-card .application-image-frame { position: absolute; inset: 0; --bs-aspect-ratio: 0%; }
 /* The default overlay occupies only the bottom quarter of the photograph. */
 .application-card::after {
   content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 25%; pointer-events: none;
@@ -92,8 +92,38 @@
   .application-caption h3 { font-size: 22px; }
 }
 @media (min-width: 1200px) { .application-caption h3 { font-size: var(--type-subheading); } }
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
   .application-card.is-expanded .application-photo { transform: scale(1.025); }
+}
+/* Square photographs and readable captions on touch-sized screens. */
+@media (max-width: 991.98px) {
+  .portfolio-slider { align-items: flex-start; }
+  .application-card {
+    height: auto; align-self: flex-start; background: var(--surface-white);
+    border: 1px solid var(--border-default); border-radius: 12px;
+  }
+  .application-card .application-image-frame { position: relative; inset: auto; --bs-aspect-ratio: 100%; }
+  .application-card::after { display: none; }
+  .application-photo { object-position: center; transform: none; }
+  .application-detail-toggle {
+    bottom: auto !important; width: 100%; height: auto; aspect-ratio: 1 / 1;
+  }
+  .application-detail-toggle:focus-visible { outline-color: var(--brand-blue); }
+  .application-card .application-caption { position: relative; inset: auto; padding: 16px; pointer-events: auto !important; }
+  .application-caption h3 {
+    min-height: 2.7em; color: var(--text-primary) !important; text-shadow: none; cursor: pointer;
+  }
+  .application-material {
+    max-width: 100%; color: var(--text-primary); background: var(--surface-subtle);
+    border-color: var(--border-default); cursor: pointer;
+  }
+  .application-material::after { color: var(--brand-blue); flex-shrink: 0; }
+  .application-caption .application-description { color: var(--text-secondary) !important; }
+  .application-gallery .portfolio-nav { top: var(--portfolio-image-center,50%) !important; }
+}
+@media (max-width: 575.98px) {
+  .portfolio-slider > .portfolio-item { flex-basis: 100%; width: 100%; }
+  .application-caption h3 { min-height: 0; }
 }
 .company-section { padding-block: var(--layout-space); isolation: isolate; }
 .company-scene { z-index: -2; opacity: .055; }
