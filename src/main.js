@@ -290,7 +290,10 @@ modalElement?.addEventListener('shown.bs.modal', () => {
 });
 modalElement?.addEventListener('hidden.bs.modal', () => {
   modalClosePending = false;
-  modalTriggerBtn?.focus();
+  const returnTarget = modalTriggerBtn?.classList.contains('application-photo-button')
+    ? modalTriggerBtn.closest('.application-card')?.querySelector('.application-detail-toggle')
+    : modalTriggerBtn;
+  returnTarget?.focus();
 });
 
 // --- Bootstrap Toast & Copy ---
@@ -387,3 +390,99 @@ document.getElementById('equip-next')?.addEventListener('click', () => advanceEq
 document.querySelectorAll('.application-photo-button').forEach(button => {
   button.addEventListener('click', () => openModal(button.dataset.photo, button.dataset.photoTitle, button.dataset.photoWebp));
 });
+
+
+// Native horizontal carousel: three cards on desktop, 1.2 cards on smaller screens.
+const portfolioSlider = document.getElementById('portfolio-slider');
+const portfolioPrev = document.getElementById('slider-prev');
+const portfolioNext = document.getElementById('slider-next');
+const portfolioProgress = document.getElementById('slider-progress');
+const portfolioHover = window.matchMedia('(min-width: 992px) and (hover: hover) and (pointer: fine)');
+const portfolioStates = [];
+
+document.querySelectorAll('.application-card').forEach(card => {
+  const toggle = card.querySelector('.application-detail-toggle');
+  const details = card.querySelector('.application-details');
+  const photo = card.querySelector('.application-photo-button');
+  if (!toggle || !details) return;
+  const state = { card, pinned: false, setExpanded(open) {
+    card.classList.toggle('is-expanded', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    details.setAttribute('aria-hidden', String(!open));
+    if (photo) photo.tabIndex = open ? 0 : -1;
+  } };
+  portfolioStates.push(state);
+  toggle.addEventListener('click', () => {
+    const open = !state.pinned;
+    closePortfolioDetails();
+    state.pinned = open;
+    state.setExpanded(open);
+  });
+  card.addEventListener('pointerenter', () => {
+    if (portfolioHover.matches) state.setExpanded(true);
+  });
+  card.addEventListener('pointerleave', () => {
+    if (!state.pinned && !card.contains(document.activeElement)) state.setExpanded(false);
+  });
+  card.addEventListener('focusin', () => {
+    if (portfolioHover.matches) state.setExpanded(true);
+  });
+  card.addEventListener('focusout', event => {
+    if (!card.contains(event.relatedTarget) && !state.pinned && !(portfolioHover.matches && card.matches(':hover'))) state.setExpanded(false);
+  });
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      state.pinned = false;
+      state.setExpanded(false);
+    }
+  });
+});
+
+function closePortfolioDetails() {
+  portfolioStates.forEach(state => { state.pinned = false; state.setExpanded(false); });
+}
+portfolioHover.addEventListener('change', closePortfolioDetails);
+document.addEventListener('pointerdown', event => {
+  if (!event.target.closest('.application-card')) closePortfolioDetails();
+});
+
+if (portfolioSlider && portfolioPrev && portfolioNext) {
+  let pendingFrame = 0;
+  function updatePortfolioControls() {
+    const range = Math.max(0, portfolioSlider.scrollWidth - portfolioSlider.clientWidth);
+    const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
+    portfolioPrev.disabled = position <= 2;
+    portfolioNext.disabled = range - position <= 2;
+    if (portfolioProgress) {
+      const visible = portfolioSlider.clientWidth / portfolioSlider.scrollWidth;
+      const fraction = range ? position / range : 0;
+      portfolioProgress.style.width = `${(visible + fraction * (1 - visible)) * 100}%`;
+      portfolioProgress.setAttribute('aria-valuenow', String(Math.round(fraction * 100)));
+    }
+  }
+  function movePortfolio(direction) {
+    const items = portfolioSlider.querySelectorAll('.portfolio-item');
+    const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : portfolioSlider.clientWidth;
+    closePortfolioDetails();
+    portfolioSlider.scrollBy({ left: direction * step, behavior: heroMotion.matches ? 'instant' : 'smooth' });
+  }
+  portfolioPrev.addEventListener('click', () => movePortfolio(-1));
+  portfolioNext.addEventListener('click', () => movePortfolio(1));
+  portfolioSlider.addEventListener('keydown', event => {
+    if (event.target !== portfolioSlider || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') movePortfolio(event.key === 'ArrowLeft' ? -1 : 1);
+    else {
+      closePortfolioDetails();
+      portfolioSlider.scrollTo({ left: event.key === 'Home' ? 0 : portfolioSlider.scrollWidth, behavior: heroMotion.matches ? 'instant' : 'smooth' });
+    }
+  });
+  portfolioSlider.addEventListener('scroll', () => {
+    closePortfolioDetails();
+    if (pendingFrame) return;
+    pendingFrame = requestAnimationFrame(() => { pendingFrame = 0; updatePortfolioControls(); });
+  }, { passive: true });
+  new ResizeObserver(updatePortfolioControls).observe(portfolioSlider);
+  updatePortfolioControls();
+}
