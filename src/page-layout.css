@@ -256,6 +256,16 @@
   .equipment-feature-photo { height: 400px; }
   .equipment-feature-photo img { padding: 28px 32px 16px; }
 }
+/* Desktop stage spans the heading, equipment tabs and contact action. */
+@media (min-width: 992px) {
+  .equipment-feature-photo { height: auto; min-height: 500px; }
+  .equipment-feature-photo .tab-pane { position: absolute; inset: 0; }
+  .equipment-feature-photo img { padding: 16px 24px; object-position: center; }
+  /* Balance the supplied cutouts' transparent margins and floor shadows. */
+  .equipment-feature-photo img[src$="equip-250t-cutout.webp"] { padding: 30px 27px 2px 21px; }
+  .equipment-feature-photo img[src$="equip-400t-cutout.webp"] { padding: 13px 48px 19px 0; }
+  .equipment-feature-photo img[src$="equip-500t-cutout.webp"] { padding: 26px 24px 6px; }
+}
 @media (max-width: 991.98px) {
   .equipment-selection .equip-tab { padding: 16px 6px; text-align: center !important; align-items: center; justify-content: center; }
   .equipment-selection .equip-tab.active { box-shadow: inset 0 -3px var(--brand-blue); }
