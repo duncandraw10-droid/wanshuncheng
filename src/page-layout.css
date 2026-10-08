@@ -220,6 +220,12 @@
 .quality-icon { width: 64px; height: 64px; }
 .quality-icon svg { width: 36px; height: 36px; }
 .quality-card p { line-height: 1.8; }
+@media (max-width: 767.98px) {
+  .quality-title-row { margin-bottom: 1rem; }
+  .quality-icon { width: 44px; height: 44px; }
+  .quality-icon svg { width: 26px; height: 26px; }
+  .quality-card-heading .content-heading { min-width: 0; }
+}
 
 /* Bootstrap equipment pills and their shared machinery display stage. */
 .equipment-section { padding-block: var(--layout-space); isolation: isolate; }
