@@ -182,6 +182,8 @@ body.intro-running { overflow: hidden; }
 .hero-arrow.carousel-control-next { right: 18px; }
 @media (max-width: 1199.98px) {
   .hero-arrow { display: none; }
+}
+@media (max-width: 991.98px) {
   .site-header > .container, #mobile-menu > .container, .hero-copy .container, .hero-controls .container { padding-inline: 24px; }
 }
 @media (max-width: 767.98px) {
@@ -207,17 +209,15 @@ body.intro-running { overflow: hidden; }
 }
 @media (min-width: 1200px) {
   #hero { height: max(660px,calc(100svh - var(--site-header-height))); max-height: 880px; }
-  .site-header > .container { width: 80%; max-width: 1320px; }
   .hero-image img { object-position: center; }
   .hero-image::after { background: linear-gradient(90deg,rgba(23,43,70,.68),rgba(23,43,70,.45) 38%,rgba(23,43,70,.12) 72%,rgba(23,43,70,.06)); }
-  .hero-copy .container, .hero-controls .container { width: 80%; max-width: 1320px; }
   .hero-text { padding-top: 32px; padding-bottom: 116px; }
   .hero-title { max-width: 520px; }
   .hero-actions .btn { min-width: 204px; min-height: 54px; }
   .hero-description { max-width: 440px; }
   .hero-arrow { width: 48px; height: 48px; }
-  .hero-arrow.carousel-control-prev { left: max(18px,calc((100vw - 1320px) / 2 - 88px)); }
-  .hero-arrow.carousel-control-next { right: max(18px,calc((100vw - 1320px) / 2 - 88px)); }
+  .hero-arrow.carousel-control-prev { left: max(18px,calc((100vw - var(--site-container-max-width)) / 2 + 16px)); }
+  .hero-arrow.carousel-control-next { right: max(18px,calc((100vw - var(--site-container-max-width)) / 2 + 16px)); }
 }
 .motion-ready .hero-animate { opacity: 0; }
 .hero-entered .carousel-item.active .hero-animate { animation: hero-copy-in .8s .32s cubic-bezier(.22,.61,.36,1) both; }

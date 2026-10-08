@@ -1,6 +1,6 @@
 /* Full-page composition. Bootstrap supplies grids, spacing and native components. */
-:root { --layout-space: 3.5rem; --section-heading-gap: 2rem; }
-.layout-container { max-width: 1440px; padding-inline: 24px; }
+:root { --layout-space: 3.5rem; --section-heading-gap: 2rem; --site-container-max-width: 1440px; --site-container-padding: 40px; }
+.layout-container { max-width: var(--site-container-max-width); padding-inline: 24px; }
 .layout-pill { min-height: 54px; padding: 14px 28px; min-width: 190px; font-weight: 600; }
 .section-title-block, .section-title-row { margin-bottom: var(--section-heading-gap); }
 .application-section { padding-block: var(--layout-space); isolation: isolate; }
@@ -179,13 +179,19 @@
 }
 @media (min-width: 992px) {
   :root { --layout-space: 6rem; --section-heading-gap: 3rem; }
-  .layout-container { padding-inline: 40px; }
+  .layout-container, .site-container { padding-inline: var(--site-container-padding); }
+  .site-container { width: 100%; max-width: var(--site-container-max-width); }
   .company-facts { margin-top: 85px; }
   .company-fact { padding-block: 16px 26px; }
   .company-value { margin-bottom: 24px; }
   .company-location { margin-bottom: 24px; }
   .full-footer { padding-top: 75px !important; }
   .back-to-top { right: max(40px,calc((100vw - 1360px) / 2)); }
+}
+/* Reserve room for the Hero controls and share the same desktop content edges. */
+@media (min-width: 1200px) {
+  :root { --site-container-padding: 80px; }
+  .application-gallery.layout-container { padding-inline: var(--site-container-padding); }
 }
 @media (max-width: 767.98px) {
   .company-facts { margin-top: 40px; }
