@@ -265,6 +265,7 @@ body { font-size: var(--type-body); font-weight: 400; }
 .site-footer .footer-link:hover { color: var(--text-on-dark); }
 .hero-actions .btn-primary { border-color: var(--brand-blue); color: var(--text-on-dark); }
 /* Keep the text and arrow together as one centred group on every hero slide. */
+.hero-actions .hero-primary-cta { min-width: 0; width: auto; padding-inline: 16px !important; }
 .hero-cta-label { display: block; line-height: 1.5; }
 .hero-actions .btn-primary:hover, .hero-actions .btn-primary:active {
   background: var(--brand-navy); border-color: var(--border-control); color: var(--text-on-dark);
