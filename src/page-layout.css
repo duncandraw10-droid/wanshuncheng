@@ -18,6 +18,7 @@
 .application-gallery .portfolio-nav {
   width: 36px; height: 36px; padding: 0;
   color: var(--brand-navy); background-color: var(--surface-white);
+  top: var(--portfolio-image-center,50%) !important;
   opacity: .5; transition: opacity .3s ease-in-out;
 }
 .application-gallery .portfolio-nav .material-symbols-outlined { font-size: 20px; }
@@ -46,27 +47,27 @@
   width: calc((100% - var(--portfolio-gap)) / 1.2);
   min-width: 0; scroll-snap-align: start;
 }
-.application-card { width: 100%; height: 500px; isolation: isolate; }
-.application-card .application-image-frame { position: absolute; inset: 0; --bs-aspect-ratio: 0%; }
-/* The default overlay occupies only the bottom quarter of the photograph. */
+.application-card { width: 100%; padding-bottom: 168px; background: var(--brand-navy); border-radius: 12px; isolation: isolate; }
+.application-card .application-image-frame { position: relative; --bs-aspect-ratio: 75%; }
+/* Reserve a caption area so the default state leaves the entire desktop photo visible. */
 .application-card::after {
   content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 25%; pointer-events: none;
   background: linear-gradient(to top, #172B46 0%,rgba(23,43,70,.94) 38%,rgba(23,43,70,.72) 72%,transparent 100%);
   transition: height 450ms cubic-bezier(.2,.7,.3,1); z-index: 1;
 }
 .application-card.is-expanded::after { height: 85%; }
-.application-photo { position: absolute; inset: 0; transition: transform 450ms ease; }
-.application-detail-toggle { border: 0; background: transparent; color: var(--text-on-dark); z-index: 2; }
-.application-detail-toggle:focus-visible { outline-offset: -6px; outline-color: var(--text-on-dark); }
+.application-photo { position: absolute; inset: 0; }
+.application-detail-toggle { min-height: 44px; padding: 0 2px; border: 0; border-radius: 4px; background: transparent; color: var(--text-on-dark); font-size: var(--type-helper); text-decoration: underline; text-underline-offset: 4px; }
+.application-detail-toggle:focus-visible { outline-color: var(--text-on-dark); }
+.application-detail-chevron { flex-shrink: 0; transition: transform 300ms ease; }
+.application-card.is-expanded .application-detail-chevron { transform: rotate(180deg); }
 .application-photo-button {
   top: 18px; right: 18px; width: 44px; height: 44px;
   padding: 0; border: 1px solid var(--text-muted-on-dark); background: rgba(23,43,70,.55);
   color: var(--text-on-dark); z-index: 4;
-  opacity: 0; visibility: hidden; transform: translateY(-8px);
-  transition: opacity 300ms ease,transform 450ms ease,visibility 300ms,background 200ms ease;
+  transition: background-color 200ms ease;
 }
 .application-card-arrow { width: 100%; height: 100%; }
-.application-card.is-expanded .application-photo-button { opacity: 1; visibility: visible; transform: translateY(0); }
 .application-photo-button:hover, .application-photo-button:focus-visible { background: var(--brand-blue); border-color: var(--brand-blue); }
 .application-caption { position: absolute; inset-inline: 0; bottom: 0; padding: 18px; z-index: 3; }
 .application-caption h3 { font-size: 20px; line-height: 1.35; text-shadow: 0 2px 8px #172B46,0 0 20px rgba(23,43,70,.65); }
@@ -75,8 +76,6 @@
   padding: 4px 10px; font-size: var(--type-helper); line-height: 1.5; color: var(--text-on-dark);
   background: rgba(23,43,70,.45); border: 1px solid rgba(203,213,225,.55);
 }
-.application-material::after { content: '+'; font-size: 18px; line-height: 1; margin-left: 10px; }
-.application-card.is-expanded .application-material::after { content: '−'; }
 .application-details {
   display: grid; grid-template-rows: 0fr; opacity: 0; transform: translateY(12px);
   transition: grid-template-rows 450ms cubic-bezier(.2,.7,.3,1),opacity 350ms ease,transform 450ms ease;
@@ -87,27 +86,24 @@
 @media (min-width: 992px) {
   .portfolio-slider { --portfolio-gap: 1.5rem; }
   .portfolio-slider > .portfolio-item { flex-basis: calc((100% - 2 * var(--portfolio-gap)) / 3); width: calc((100% - 2 * var(--portfolio-gap)) / 3); }
-  .application-card { height: 540px; }
+  .application-photo { object-fit: contain !important; object-position: center; }
   .application-caption { padding: 20px; }
-  .application-caption h3 { font-size: 22px; }
+  .application-caption h3 { font-size: 22px; min-height: 2.7em; }
 }
-@media (min-width: 1200px) { .application-caption h3 { font-size: var(--type-subheading); } }
-@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
-  .application-card.is-expanded .application-photo { transform: scale(1.025); }
+@media (min-width: 1200px) {
+  .application-caption h3 { font-size: var(--type-subheading); }
 }
 /* Square photographs and readable captions on touch-sized screens. */
 @media (max-width: 991.98px) {
   .portfolio-slider { align-items: flex-start; }
   .application-card {
-    height: auto; align-self: flex-start; background: var(--surface-white);
+    padding-bottom: 0; align-self: flex-start; background: var(--surface-white);
     border: 1px solid var(--border-default); border-radius: 12px;
   }
   .application-card .application-image-frame { position: relative; inset: auto; --bs-aspect-ratio: 100%; }
   .application-card::after { display: none; }
   .application-photo { object-position: center; transform: none; }
-  .application-detail-toggle {
-    bottom: auto !important; width: 100%; height: auto; aspect-ratio: 1 / 1;
-  }
+  .application-detail-toggle { color: var(--brand-blue); }
   .application-detail-toggle:focus-visible { outline-color: var(--brand-blue); }
   .application-card .application-caption { position: relative; inset: auto; padding: 16px; pointer-events: auto !important; }
   .application-caption h3 {
@@ -117,9 +113,7 @@
     max-width: 100%; color: var(--text-primary); background: var(--surface-subtle);
     border-color: var(--border-default); cursor: pointer;
   }
-  .application-material::after { color: var(--brand-blue); flex-shrink: 0; }
   .application-caption .application-description { color: var(--text-secondary) !important; }
-  .application-gallery .portfolio-nav { top: var(--portfolio-image-center,50%) !important; }
 }
 @media (max-width: 575.98px) {
   .portfolio-slider > .portfolio-item { flex-basis: 100%; width: 100%; }

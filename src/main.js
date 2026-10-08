@@ -375,21 +375,27 @@ const portfolioStates = [];
 document.querySelectorAll('.application-card').forEach(card => {
   const toggle = card.querySelector('.application-detail-toggle');
   const details = card.querySelector('.application-details');
-  const photo = card.querySelector('.application-photo-button');
+  const label = toggle?.querySelector('.application-detail-label');
+  const title = card.querySelector('h3')?.textContent.trim();
   if (!toggle || !details) return;
   const state = { card, pinned: false, setExpanded(open) {
     card.classList.toggle('is-expanded', open);
     toggle.setAttribute('aria-expanded', String(open));
     details.setAttribute('aria-hidden', String(!open));
-    if (photo) photo.tabIndex = open ? 0 : -1;
+    const action = open ? '收起介紹' : '查看介紹';
+    if (label) label.textContent = action;
+    toggle.setAttribute('aria-label', `${title}：${action}`);
   } };
   portfolioStates.push(state);
+  card.querySelector('.application-image-frame')?.addEventListener('click', () => {
+    if (!portfolioHover.matches) toggle.click();
+  });
   // Captions sit below the square photo on smaller screens; their headings also toggle details.
   card.querySelector('.application-caption')?.addEventListener('click', event => {
     if (!portfolioHover.matches && event.target.closest('h3, .application-material')) toggle.click();
   });
   toggle.addEventListener('click', () => {
-    const open = !state.pinned;
+    const open = !card.classList.contains('is-expanded');
     closePortfolioDetails();
     state.pinned = open;
     state.setExpanded(open);
@@ -399,9 +405,6 @@ document.querySelectorAll('.application-card').forEach(card => {
   });
   card.addEventListener('pointerleave', () => {
     if (!state.pinned && !card.contains(document.activeElement)) state.setExpanded(false);
-  });
-  card.addEventListener('focusin', () => {
-    if (portfolioHover.matches) state.setExpanded(true);
   });
   card.addEventListener('focusout', event => {
     if (!card.contains(event.relatedTarget) && !state.pinned && !(portfolioHover.matches && card.matches(':hover'))) state.setExpanded(false);
@@ -430,6 +433,22 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
     const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
     portfolioPrev.disabled = position <= 2;
     portfolioNext.disabled = range - position <= 2;
+    const items = portfolioSlider.querySelectorAll('.portfolio-item');
+    if (items.length) {
+      const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : portfolioSlider.clientWidth;
+      const first = Math.max(0, Math.min(items.length - 1, Math.round(position / step)));
+      const gap = step - items[0].offsetWidth;
+      const visible = Math.max(1, Math.floor((portfolioSlider.clientWidth + gap) / step + .01));
+      const values = {
+        'portfolio-current': String(first + 1),
+        'portfolio-visible-end': visible > 1 ? `–${Math.min(items.length, first + visible)}` : '',
+        'portfolio-total': String(items.length),
+      };
+      Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element && element.textContent !== value) element.textContent = value;
+      });
+    }
     const gallery = portfolioSlider.closest('.application-gallery');
     const frame = portfolioSlider.querySelector('.application-image-frame');
     if (gallery && frame) {
