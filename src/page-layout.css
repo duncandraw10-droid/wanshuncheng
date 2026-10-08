@@ -190,7 +190,12 @@
 @media (max-width: 767.98px) {
   .company-facts { margin-top: 40px; }
   .company-location { min-height: 45px; }
-  .company-fact { padding-block: 26px; }
+  /* Keep all three facts together without squeezing the descriptions. */
+  .company-fact { min-width: 0; padding: 16px 8px; border-block-end: 0; }
+  .company-fact + .company-fact { border-inline-start: 1px solid rgba(203,213,225,.35); }
+  .company-value { display: flex; align-items: baseline; justify-content: center; gap: 4px; font-size: clamp(1.75rem,8vw,2.25rem); line-height: 1.2; margin-bottom: 8px; white-space: nowrap; }
+  .company-unit { padding-left: 0; font-size: var(--type-helper); }
+  .company-fact .content-heading { font-size: var(--type-helper); line-height: 1.65; text-wrap: balance; }
   .capability-feature .ratio { min-height: 0; }
   .capability-marker { width: 20px; }
   .capability-marker .material-symbols-outlined { width: 20px; font-size: 20px; }
