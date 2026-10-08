@@ -320,6 +320,7 @@
 }
 
 @media (max-width: 991.98px) {
+  .footer-contact-label, .footer-contact-value { line-height: 1.2; }
   .footer-contact-row { min-height: 44px; }
   .footer-contact-value a { min-height: 44px; }
 }
