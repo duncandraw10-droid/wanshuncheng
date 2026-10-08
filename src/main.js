@@ -426,12 +426,75 @@ document.addEventListener('pointerdown', event => {
 
 if (portfolioSlider && portfolioPrev && portfolioNext) {
   let pendingFrame = 0;
+  const gallery = portfolioSlider.closest('.application-gallery');
+  const autoplayButton = document.getElementById('portfolio-autoplay');
+  const autoplayInterval = 4000;
+  let autoplayTimer = 0;
+  let userPaused = false;
+  let inView = false;
+  let hovered = false;
+  let pointerDown = false;
+  let photoOpen = false;
+
+  function schedulePortfolioAutoplay() {
+    clearTimeout(autoplayTimer);
+    autoplayTimer = 0;
+    const focusInside = gallery.contains(document.activeElement) && document.activeElement !== autoplayButton && document.activeElement.matches(':focus-visible');
+    const expanded = portfolioStates.some(state => state.card.classList.contains('is-expanded'));
+    if (userPaused || !inView || document.hidden || heroMotion.matches || hovered || pointerDown || focusInside || expanded || photoOpen) return;
+    if (portfolioSlider.scrollWidth <= portfolioSlider.clientWidth + 2) return;
+    autoplayTimer = window.setTimeout(() => {
+      const range = portfolioSlider.scrollWidth - portfolioSlider.clientWidth;
+      if (range - portfolioSlider.scrollLeft <= 2) portfolioSlider.scrollTo({ left: 0, behavior: 'smooth' });
+      else movePortfolio(1);
+      schedulePortfolioAutoplay();
+    }, autoplayInterval);
+  }
+
+  function updateAutoplayButton() {
+    if (!autoplayButton) return;
+    const paused = userPaused || heroMotion.matches;
+    autoplayButton.querySelector('.portfolio-autoplay-icon path').setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M7 5h3v14H7zM14 5h3v14h-3z');
+    autoplayButton.querySelector('.portfolio-autoplay-label').textContent = paused ? '開始輪播' : '暫停輪播';
+    autoplayButton.setAttribute('aria-label', `${paused ? '開始' : '暫停'}承製案例自動輪播`);
+    autoplayButton.disabled = heroMotion.matches;
+    autoplayButton.title = heroMotion.matches ? '依照您的減少動態效果設定，已停用自動輪播' : '';
+  }
+
+  autoplayButton?.addEventListener('click', () => {
+    userPaused = !userPaused;
+    updateAutoplayButton();
+    schedulePortfolioAutoplay();
+  });
+  gallery.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse' && portfolioHover.matches) { hovered = true; schedulePortfolioAutoplay(); }
+  });
+  gallery.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse') { hovered = false; schedulePortfolioAutoplay(); }
+  });
+  gallery.addEventListener('pointerdown', () => { pointerDown = true; schedulePortfolioAutoplay(); });
+  const releasePointer = () => { pointerDown = false; schedulePortfolioAutoplay(); };
+  document.addEventListener('pointerup', releasePointer);
+  document.addEventListener('pointercancel', releasePointer);
+  gallery.addEventListener('focusin', schedulePortfolioAutoplay);
+  gallery.addEventListener('focusout', () => queueMicrotask(schedulePortfolioAutoplay));
+  portfolioHover.addEventListener('change', () => { hovered = portfolioHover.matches && gallery.matches(':hover'); schedulePortfolioAutoplay(); });
+  document.addEventListener('visibilitychange', schedulePortfolioAutoplay);
+  heroMotion.addEventListener('change', () => { updateAutoplayButton(); schedulePortfolioAutoplay(); });
+  modalElement?.addEventListener('show.bs.modal', () => { photoOpen = true; schedulePortfolioAutoplay(); });
+  modalElement?.addEventListener('hidden.bs.modal', () => { photoOpen = false; schedulePortfolioAutoplay(); });
+  new MutationObserver(schedulePortfolioAutoplay).observe(portfolioSlider, { attributes: true, attributeFilter: ['class'], subtree: true });
+  new IntersectionObserver(entries => {
+    inView = entries[0].isIntersecting && entries[0].intersectionRatio >= .2;
+    schedulePortfolioAutoplay();
+  }, { threshold: [0, .2] }).observe(portfolioSlider);
+  updateAutoplayButton();
+
   function updatePortfolioControls() {
     const range = Math.max(0, portfolioSlider.scrollWidth - portfolioSlider.clientWidth);
     const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
     portfolioPrev.disabled = position <= 2;
     portfolioNext.disabled = range - position <= 2;
-    const gallery = portfolioSlider.closest('.application-gallery');
     const frame = portfolioSlider.querySelector('.application-image-frame');
     if (gallery && frame) {
       const photo = frame.getBoundingClientRect();
@@ -459,10 +522,11 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
   });
   portfolioSlider.addEventListener('scroll', () => {
     closePortfolioDetails();
+    schedulePortfolioAutoplay();
     if (pendingFrame) return;
     pendingFrame = requestAnimationFrame(() => { pendingFrame = 0; updatePortfolioControls(); });
   }, { passive: true });
-  new ResizeObserver(updatePortfolioControls).observe(portfolioSlider);
+  new ResizeObserver(() => { updatePortfolioControls(); schedulePortfolioAutoplay(); }).observe(portfolioSlider);
   updatePortfolioControls();
 }
 

@@ -42,6 +42,8 @@
   overscroll-behavior-x: contain; scroll-behavior: smooth;
 }
 .portfolio-slider::-webkit-scrollbar { display: none; }
+.portfolio-autoplay-control { min-height: 44px; font-size: var(--type-helper); }
+.portfolio-autoplay-icon { flex-shrink: 0; }
 .portfolio-slider > .portfolio-item {
   flex: 0 0 calc((100% - var(--portfolio-gap)) / 1.2);
   width: calc((100% - var(--portfolio-gap)) / 1.2);
@@ -148,9 +150,6 @@
 .capability-marker .material-symbols-outlined { width: 24px; }
 .capability-row h3 { line-height: 1.4; }
 .capability-row p { line-height: 1.65; }
-.capability-footer .helper-copy { line-height: 1.6; }
-.capability-next-step { max-width: 100%; min-width: 0; }
-.capability-next-step .helper-copy { min-width: 0; }
 @media (min-width: 992px) {
   .capability-row { padding-top: 0; }
 }
