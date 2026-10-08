@@ -139,8 +139,8 @@ body.intro-running { overflow: hidden; }
 .opening-leave .opening-panel-left { transform: translateX(-100%); }
 .opening-leave .opening-panel-right { transform: translateX(100%); }
 .opening-brand { opacity: 0; }
-.loading-logo { width: clamp(245px, 25vw, 360px); }
-.opening-caption { margin-top: .7rem; color: var(--text-secondary); font-size: .875rem; letter-spacing: .2em; }
+.loading-logo { width: clamp(245px, 25vw, 360px); aspect-ratio: 520 / 156; overflow: hidden; }
+.opening-caption { color: var(--text-secondary); font-size: .875rem; letter-spacing: .2em; }
 .loading-progress { height: 2px; width: 96px; background: var(--border-default); }
 .opening-show .opening-brand { animation: opening-logo-in .24s ease both; }
 .opening-show .progress-animate { animation: opening-progress .7s ease both; }
@@ -350,6 +350,8 @@ body { font-size: var(--type-body); font-weight: 400; }
     mask: url('/images/logo.webp') center / 100% 100% no-repeat;
     mask-mode: alpha;
   }
+  /* Crop only the splash logo's empty lower edge; keep its alpha shape at the original ratio. */
+  .brand-logo.loading-logo::before { bottom: auto; aspect-ratio: 520 / 181; }
   .site-header .navbar-brand::before {
     inset: auto; width: 139.037433%; aspect-ratio: 520 / 181;
     left: -19.518717%; top: -85.074627%;
