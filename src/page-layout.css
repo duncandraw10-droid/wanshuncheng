@@ -168,11 +168,8 @@
 .contact-panel .btn:not(.btn-link) { border-radius: 999px; }
 .contact-copy-actions .btn { min-height: 44px; }
 .contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
-.full-footer { padding-block: 65px calc(40px + env(safe-area-inset-bottom)) !important; }
+.full-footer { padding-block: 48px calc(48px + env(safe-area-inset-bottom)) !important; }
 .full-footer .footer-link { line-height: 1.8; }
-.full-footer .footer-copyright { border-color: rgba(203,213,225,.35) !important; }
-.back-to-top { position: absolute; right: 24px; top: -28px; width: 56px; height: 56px; z-index: 2; color: var(--brand-blue); border-color: var(--border-default); box-shadow: 0 4px 20px rgba(23,43,70,.08); }
-.back-to-top .material-symbols-outlined { transform: rotate(-90deg); }
 @media (min-width: 768px) {
   .company-fact { border-inline-end: 1px solid rgba(203,213,225,.35); border-block-end: 0; }
   .company-fact:first-child { border-inline-start: 1px solid rgba(203,213,225,.35); }
@@ -185,8 +182,7 @@
   .company-fact { padding-block: 16px 26px; }
   .company-value { margin-bottom: 24px; }
   .company-location { margin-bottom: 24px; }
-  .full-footer { padding-top: 75px !important; }
-  .back-to-top { right: max(40px,calc((100vw - 1360px) / 2)); }
+  .full-footer { padding-block: 56px calc(56px + env(safe-area-inset-bottom)) !important; }
 }
 /* Reserve room for the Hero controls and share the same desktop content edges. */
 @media (min-width: 1200px) {
@@ -217,8 +213,9 @@
 /* Footer labels and values share a first-line baseline, including wrapped addresses. */
 .footer-contact-label,
 .footer-contact-value { line-height: 1.8; }
-.footer-contact-label { min-width: 4.5rem; min-height: 1.8em; }
-.footer-contact-label .material-symbols-outlined { line-height: 1; flex-shrink: 0; }
+.footer-contact-row { min-height: 36px; }
+.footer-contact-label { width: 4rem; }
+.footer-contact-value a { display: inline-block; }
 .footer-contact-value { min-width: 0; }
 
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
@@ -316,16 +313,13 @@
   #quality .col-lg-3 { width: 50%; }
 }
 
-/* Footer stacks keep Bootstrap gutters while matching the mobile spacing scale. */
-.footer-copyright p { margin-bottom: 0; }
 @media (max-width: 991.98px) {
-  .full-footer > .container > .row { --bs-gutter-y: 1.5rem; }
-  .full-footer .col-lg-6 > .mb-5 { margin-bottom: 1.5rem !important; }
+  .footer-contact-row { min-height: 44px; }
+  .footer-contact-value a { min-height: 44px; }
 }
 
 /* Icon actions remain compact while offering a consistent interaction area. */
 .contact-value .btn-link { min-width: 44px; min-height: 44px; padding: 0 !important; justify-content: center; }
-.full-footer .row.w-100 > .footer-link { min-height: 44px; display: flex; align-items: center; }
 
 
 /* Match the two previous SVG viewports while allowing native lazy <img> loading.

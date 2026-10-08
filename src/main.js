@@ -333,10 +333,6 @@ window.copyTemplate = async function() {
 }
 
 
-// Update current year
-const yearEl = document.getElementById('current-year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-
 // Bootstrap pills keep selection, focus and fade panels in sync.
 const equipmentSelection = document.querySelector('.equipment-selection');
 if (equipmentSelection) {
