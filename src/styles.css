@@ -270,6 +270,7 @@ body { font-size: var(--type-body); font-weight: 400; }
 .hero-cta-label { display: block; line-height: 1; transform: translateY(-.75px); }
 .hero-cta-arrow { width: 20px; height: 20px; flex-shrink: 0; }
 @media (min-width: 992px) {
+  .hero-actions .hero-primary-cta { width: 174px; }
   .hero-cta-content { transform: translateX(.75px); }
 }
 .hero-actions .btn-primary:hover, .hero-actions .btn-primary:active {
