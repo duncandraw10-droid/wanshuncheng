@@ -264,12 +264,8 @@ body { font-size: var(--type-body); font-weight: 400; }
 .site-footer .footer-link { color: var(--text-muted-on-dark); }
 .site-footer .footer-link:hover { color: var(--text-on-dark); }
 .hero-actions .btn-primary { border-color: var(--brand-blue); color: var(--text-on-dark); }
-/* Centre the label independently of the decorative arrow on every hero slide. */
+/* Keep the text and arrow together as one centred group on every hero slide. */
 .hero-cta-label { display: block; line-height: 1.5; }
-.hero-cta-arrow { right: 24px; }
-@media (min-width: 992px) {
-  .hero-actions .hero-primary-cta { padding-inline: 48px !important; }
-}
 .hero-actions .btn-primary:hover, .hero-actions .btn-primary:active {
   background: var(--brand-navy); border-color: var(--border-control); color: var(--text-on-dark);
 }
