@@ -357,7 +357,12 @@
 @media (max-width: 991.98px) {
   .footer-logo-frame { width: 280px; }
 }
-.full-footer .footer-contact-label { font-weight: 500 !important; color: var(--text-muted-on-dark) !important; width: 3rem; }
+.full-footer .footer-contact-label { font-weight: 500 !important; color: var(--text-muted-on-dark) !important; width: 4.5rem; }
+.footer-contact-icon { width: 20px; height: 20px; flex-shrink: 0; }
+@media (max-width: 991.98px) {
+  .full-footer .footer-contact-label { width: 4rem; }
+  .footer-contact-icon { width: 18px; height: 18px; }
+}
 .full-footer .footer-contact-value,
 .full-footer .footer-contact-value .footer-link { color: var(--text-on-dark); }
 .footer-nav-link { display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; }
