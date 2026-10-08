@@ -139,7 +139,7 @@ body.intro-running { overflow: hidden; }
 .opening-leave .opening-panel-left { transform: translateX(-100%); }
 .opening-leave .opening-panel-right { transform: translateX(100%); }
 .opening-brand { opacity: 0; }
-.loading-logo { width: clamp(245px, 25vw, 360px); aspect-ratio: 520 / 156; overflow: hidden; }
+.loading-logo { width: clamp(245px, 25vw, 360px); aspect-ratio: 520 / 144; overflow: hidden; }
 .opening-caption { color: var(--text-secondary); font-size: .875rem; letter-spacing: .2em; }
 .loading-progress { height: 2px; width: 96px; background: var(--border-default); }
 .opening-show .opening-brand { animation: opening-logo-in .24s ease both; }
