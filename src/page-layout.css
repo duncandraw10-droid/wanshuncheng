@@ -139,15 +139,19 @@
 .company-value { font-size: var(--type-hero); font-weight: 700; line-height: 1.3; margin-bottom: 20px; }
 .company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: 8px; }
 .company-location { min-height: calc(var(--type-hero) * 1.3); margin-bottom: 20px; }
-.capability-section { padding-block: var(--layout-space); }
-.capability-feature, .capability-list, .capability-copy { min-width: 0; }
-.capability-feature { overflow: hidden; }
-.capability-feature .ratio { min-height: 300px; }
-.capability-row { padding-block: 28px; border-bottom: 1px solid var(--border-default); }
-.capability-row:first-child { padding-top: 0; }
+.capability-section { padding-block: clamp(48px, 5vw, 72px); }
+.capability-section .section-title-row { margin-bottom: 28px; }
+.capability-copy { min-width: 0; }
+.capability-row { padding-block: 20px; border-bottom: 1px solid var(--border-default); }
+.capability-grid > :first-child .capability-row { padding-top: 0; }
 .capability-marker { width: 24px; padding-top: 4px; }
 .capability-marker .material-symbols-outlined { width: 24px; }
-.capability-row p { line-height: 1.85; }
+.capability-row h3 { line-height: 1.4; }
+.capability-row p { line-height: 1.65; }
+.capability-footer .helper-copy { line-height: 1.6; }
+@media (min-width: 992px) {
+  .capability-row { padding-top: 0; }
+}
 .workflow-section { padding-block: var(--layout-space); }
 .workflow-step { border-top: 1px solid var(--border-default); padding-top: 24px; }
 .workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: 1.5; }
@@ -198,7 +202,6 @@
   .company-value { display: flex; align-items: baseline; justify-content: center; gap: 4px; font-size: clamp(1.75rem,8vw,2.25rem); line-height: 1.2; margin-bottom: 8px; white-space: nowrap; }
   .company-unit { padding-left: 0; font-size: var(--type-helper); }
   .company-fact .content-heading { font-size: var(--type-helper); line-height: 1.65; text-wrap: balance; }
-  .capability-feature .ratio { min-height: 0; }
   .capability-marker { width: 20px; }
   .capability-marker .material-symbols-outlined { width: 20px; font-size: 20px; }
   .back-to-top { right: 24px; }
