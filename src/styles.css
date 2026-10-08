@@ -304,7 +304,7 @@ body { font-size: var(--type-body); font-weight: 400; }
 @media (min-width: 992px) {
   :root {
     --type-hero: clamp(3rem, 3.5vw, 3.5rem);
-    --type-section: clamp(2.25rem, 2.8vw, 2.5rem);
+    --type-section: 2rem;
     --type-subheading: 1.5rem;
     --type-body: 1.125rem;
   }
