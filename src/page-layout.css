@@ -339,3 +339,16 @@
 @media (min-width: 992px) {
   .contact-preparation-details > ul.contact-panel-content { display: flex !important; }
 }
+
+/* Company details and sitemap follow one shared responsive footer grid. */
+.full-footer .footer-company h2 { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.5; }
+.full-footer .footer-contact-label { font-weight: 500 !important; color: var(--text-muted-on-dark) !important; width: 3rem; }
+.full-footer .footer-contact-value,
+.full-footer .footer-contact-value .footer-link { color: var(--text-on-dark); }
+.footer-nav-link { display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; }
+.full-footer .footer-contact-button { --bs-btn-color: var(--brand-navy); --bs-btn-bg: var(--surface-white); --bs-btn-border-color: var(--surface-white); --bs-btn-hover-color: var(--text-on-dark); --bs-btn-hover-bg: var(--brand-blue); --bs-btn-hover-border-color: var(--brand-blue); --bs-btn-active-color: var(--text-on-dark); --bs-btn-active-bg: var(--brand-blue); --bs-btn-active-border-color: var(--brand-blue); }
+.full-footer a:focus-visible { outline: 2px solid var(--surface-white); outline-offset: 4px; }
+.footer-copyright { border-top: 1px solid rgba(203, 213, 225, .3); }
+@media (max-width: 991.98px) {
+  .footer-navigation { margin-top: 2rem; }
+}
