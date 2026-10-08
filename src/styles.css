@@ -116,12 +116,12 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .site-header > .container { min-height: calc(var(--site-header-height) - 17px); }
 /* Preserve the original image; frame its visible artwork without transparent margins. */
 .site-header .navbar-brand {
-  position: relative; overflow: hidden; width: clamp(140px, 41vw, 160px); aspect-ratio: 374 / 67;
+  position: relative; overflow: hidden; width: clamp(140px, 41vw, 160px); aspect-ratio: 416 / 77;
   flex-shrink: 0;
 }
 .site-logo {
-  position: absolute; width: 139.037433%; max-width: none; height: auto;
-  left: -19.518717%; top: -85.074627%;
+  position: absolute; width: 125%; max-width: none; height: auto;
+  left: -12.5%; top: -67.532468%;
 }
 .site-header .nav-link { color: var(--text-primary); font-size: .9375rem; font-weight: 600 !important; }
 .site-header .nav-link:hover, .site-header .nav-link.active { color: var(--brand-blue); }
@@ -370,7 +370,9 @@ body { font-size: var(--type-body); font-weight: 400; }
   /* Crop only the splash logo's empty lower edge; keep its alpha shape at the original ratio. */
   .brand-logo.loading-logo::before { bottom: auto; aspect-ratio: 520 / 181; }
   .site-header .navbar-brand::before {
-    inset: auto; width: 139.037433%; aspect-ratio: 520 / 181;
-    left: -19.518717%; top: -85.074627%;
+    inset: auto; width: 125%; aspect-ratio: 520 / 181;
+    left: -12.5%; top: -67.532468%;
+    -webkit-mask-image: url('/images/logo-topbar.png');
+    mask-image: url('/images/logo-topbar.png');
   }
 }
