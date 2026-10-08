@@ -217,6 +217,8 @@
 .footer-contact-label { width: 4rem; }
 .footer-contact-value a { display: inline-block; }
 .footer-contact-value { min-width: 0; }
+/* End the company column at the registration text so the CTA shares its bottom edge. */
+.full-footer .footer-contact-row:last-child { min-height: 0; }
 
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
 .quality-section { padding-block: var(--layout-space); }
