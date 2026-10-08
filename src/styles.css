@@ -172,7 +172,21 @@ body.intro-running { overflow: hidden; }
 .hero-controls { z-index: 4; bottom: clamp(44px,calc(50% - 250px),180px); }
 .hero-scroll-cue { z-index: 4; bottom: calc(16px + env(safe-area-inset-bottom,0px)); }
 .hero-scroll-cue a { min-height: 44px; font-size: var(--type-helper); text-shadow: 0 1px 6px rgba(23,43,70,.8); border-radius: 24px; transition: background-color .2s ease; }
-.hero-scroll-cue a:hover, .hero-scroll-cue a:focus-visible { background-color: rgba(23,43,70,.3); }
+.hero-scroll-cue a { animation: hero-cue-breathe 2.6s ease-in-out infinite; }
+.hero-scroll-cue svg { animation: hero-cue-float 2.6s ease-in-out infinite; }
+.hero-scroll-cue a:hover, .hero-scroll-cue a:focus-visible { background-color: rgba(23,43,70,.3); animation: none; }
+.hero-scroll-cue a:hover svg, .hero-scroll-cue a:focus-visible svg { animation: none; }
+@keyframes hero-cue-breathe {
+  0%, 100% { text-shadow: 0 1px 6px rgba(23,43,70,.8), 0 0 2px rgba(255,255,255,.1); }
+  50% { text-shadow: 0 1px 6px rgba(23,43,70,.8), 0 0 12px rgba(255,255,255,.75); }
+}
+@keyframes hero-cue-float {
+  0%, 100% { transform: translateY(-3px); }
+  50% { transform: translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue a, .hero-scroll-cue svg { animation: none; }
+}
 .hero-page > span:first-child { font-family: Inter,system-ui,sans-serif; font-weight: 600; font-size: 44px; line-height: 1.2; letter-spacing: -.04em; }
 .hero-total { font-size: 18px; color: var(--text-on-dark); margin-left: 10px; }
 .hero-dots { margin-left: 4px; gap: 0 !important; }
