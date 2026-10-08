@@ -435,22 +435,6 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
     const position = Math.max(0, Math.min(range, portfolioSlider.scrollLeft));
     portfolioPrev.disabled = position <= 2;
     portfolioNext.disabled = range - position <= 2;
-    const items = portfolioSlider.querySelectorAll('.portfolio-item');
-    if (items.length) {
-      const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : portfolioSlider.clientWidth;
-      const first = Math.max(0, Math.min(items.length - 1, Math.round(position / step)));
-      const gap = step - items[0].offsetWidth;
-      const visible = Math.max(1, Math.floor((portfolioSlider.clientWidth + gap) / step + .01));
-      const values = {
-        'portfolio-current': String(first + 1),
-        'portfolio-visible-end': visible > 1 ? `–${Math.min(items.length, first + visible)}` : '',
-        'portfolio-total': String(items.length),
-      };
-      Object.entries(values).forEach(([id, value]) => {
-        const element = document.getElementById(id);
-        if (element && element.textContent !== value) element.textContent = value;
-      });
-    }
     const gallery = portfolioSlider.closest('.application-gallery');
     const frame = portfolioSlider.querySelector('.application-image-frame');
     if (gallery && frame) {
