@@ -170,6 +170,9 @@ body.intro-running { overflow: hidden; }
 .hero-entered .hero-sweep { animation: hero-diagonal-reveal 1.15s cubic-bezier(.22,.61,.36,1) both; }
 @keyframes hero-diagonal-reveal { from { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); } to { clip-path: polygon(0 0,0 0,0 100%,0 100%); } }
 .hero-controls { z-index: 4; bottom: clamp(44px,calc(50% - 250px),180px); }
+.hero-scroll-cue { z-index: 4; bottom: calc(16px + env(safe-area-inset-bottom,0px)); }
+.hero-scroll-cue a { min-height: 44px; font-size: var(--type-helper); text-shadow: 0 1px 6px rgba(23,43,70,.8); border-radius: 24px; transition: background-color .2s ease; }
+.hero-scroll-cue a:hover, .hero-scroll-cue a:focus-visible { background-color: rgba(23,43,70,.3); }
 .hero-page > span:first-child { font-family: Inter,system-ui,sans-serif; font-weight: 600; font-size: 44px; line-height: 1.2; letter-spacing: -.04em; }
 .hero-total { font-size: 18px; color: var(--text-on-dark); margin-left: 10px; }
 .hero-dots { margin-left: 4px; gap: 0 !important; }
@@ -185,6 +188,9 @@ body.intro-running { overflow: hidden; }
 }
 @media (max-width: 991.98px) {
   .site-header > .container, #mobile-menu > .container, .hero-copy .container, .hero-controls .container { padding-inline: 24px; }
+  #hero { height: max(560px,calc(100svh - var(--site-header-height) - 24px)); }
+  .hero-text { padding-bottom: calc(156px + env(safe-area-inset-bottom,0px)); }
+  .hero-controls { bottom: calc(80px + env(safe-area-inset-bottom,0px)); }
 }
 @media (max-width: 767.98px) {
   .hero-image::after { background: linear-gradient(180deg,rgba(23,43,70,.26),rgba(23,43,70,.57) 32%,rgba(23,43,70,.57) 66%,rgba(23,43,70,.3)); }
@@ -197,7 +203,6 @@ body.intro-running { overflow: hidden; }
   .hero-controls > .container > .d-flex { gap: 14px !important; }
 }
 @media (max-width: 359.98px) {
-  .hero-controls { bottom: 44px; }
   .site-header > .container, #mobile-menu > .container, .hero-copy .container, .hero-controls .container { padding-inline: 24px; }
   .hero-actions { gap: 10px 12px !important; }
   .hero-actions .btn { padding-inline: 16px !important; }
