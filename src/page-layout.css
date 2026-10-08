@@ -216,12 +216,12 @@
 
 /* Footer labels and values share a first-line baseline, including wrapped addresses. */
 .footer-contact-label,
-.footer-contact-value { line-height: 1.5; }
+.footer-contact-value { line-height: 1.6; }
 .footer-contact-row { min-height: 32px; }
 .footer-contact-label { width: 4rem; }
 .full-footer .footer-contact-value a { display: inline-block; line-height: inherit; }
 .footer-contact-value { min-width: 0; }
-/* End the company column at the registration text so the CTA shares its bottom edge. */
+/* End the company column at the final contact line so the CTA shares its bottom edge. */
 .full-footer .footer-contact-row:last-child { min-height: 0; }
 
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
