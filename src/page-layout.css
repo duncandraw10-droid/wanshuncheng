@@ -166,6 +166,7 @@
 .contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
 .contact-panel .contact-value { min-width: 0; }
 /* Match the 44px copy controls so all contact rows share one rhythm. */
+.contact-phone-details { line-height: 1.5; }
 .contact-phone-details > div,
 .contact-preparation .contact-panel-content > li { min-height: 44px; }
 .contact-preparation .contact-panel-content > li { display: flex; align-items: center; }
