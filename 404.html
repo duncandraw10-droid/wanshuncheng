@@ -8,7 +8,9 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-B4193HZQEP');
+    if (['wsctw.com', 'www.wsctw.com', 'duncandraw10-droid.github.io'].includes(location.hostname)) {
+      gtag('config', 'G-B4193HZQEP');
+    }
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,9 +22,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@600&amp;display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css"><link rel="stylesheet" href="./src/styles.css"></head>
 <body class="bg-dark text-white d-flex flex-column min-vh-100">
 

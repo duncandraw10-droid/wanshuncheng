@@ -8,12 +8,14 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-B4193HZQEP');
+    if (['wsctw.com', 'www.wsctw.com', 'duncandraw10-droid.github.io'].includes(location.hostname)) {
+      gtag('config', 'G-B4193HZQEP');
+    }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="only light">
-  <title>萬順承實業有限公司 | SMC/BMC 模壓成型代工</title>
+  <title>桃園 SMC／BMC 模壓成型代工與模具移轉｜萬順承實業</title>
   
   <meta name="description" content="萬順承實業具備 35 年 SMC/BMC 模壓成型經驗。廠房位於桃園楊梅，配備 250T、400T、500T 熱壓設備，提供從圖面評估、模具移轉到試作與量產的專業代工服務。">
   <meta name="keywords" content="SMC 模壓代工, BMC 模壓成型, FRP 玻璃纖維, 現有模具移轉, 試作與量產, 桃園楊梅, 熱壓成型, 複合材料, 萬順承實業">
@@ -21,17 +23,35 @@
   <link href="https://wsctw.com/" rel="canonical">
   
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://duncandraw10-droid.github.io/wanshuncheng/">
-  <meta property="og:title" content="萬順承實業有限公司 | SMC/BMC 模壓成型代工">
+  <meta property="og:url" content="https://wsctw.com/">
+  <meta property="og:title" content="桃園 SMC／BMC 模壓成型代工與模具移轉｜萬順承實業">
   <meta property="og:description" content="具備 35 年產業經驗，專注於提供穩定的複合材料熱壓成型代工服務。從評估、試作到量產交付，滿足 B2B 採購需求。">
-  <meta property="og:image" content="https://duncandraw10-droid.github.io/wanshuncheng/images/forming-process.webp">
+  <meta property="og:image" content="https://wsctw.com/images/forming-process.webp">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://wsctw.com/#organization",
+  "name": "萬順承實業有限公司",
+  "url": "https://wsctw.com/",
+  "logo": "https://wsctw.com/images/logo.webp",
+  "telephone": "+886-3-4721912",
+  "email": "fan6772@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "上湖里上湖三路166巷2號",
+    "addressLocality": "楊梅區",
+    "addressRegion": "桃園市",
+    "addressCountry": "TW"
+  }
+}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&amp;display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@600&amp;display=swap">
   <script defer src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css"><link rel="stylesheet" href="./src/styles.css">
   <link rel="stylesheet" href="./src/page-layout.css"></head>
@@ -620,7 +640,9 @@
           <span class="material-symbols-outlined text-primary" aria-hidden="true">list_alt</span>
           <h3 class="text-dark content-heading fw-semibold mb-0">詢價前可準備的資料</h3>
         </div>
-        <ul class="contact-panel-content list-unstyled d-flex flex-column gap-2 body-copy text-body-secondary mb-0">
+        <details class="contact-preparation-details" open>
+          <summary class="contact-preparation-summary contact-panel-content d-lg-none helper-copy fw-semibold text-primary">查看準備資料（選填）</summary>
+        <ul class="contact-panel-content list-unstyled d-flex flex-column gap-2 body-copy text-body-secondary mb-0 mt-3 mt-lg-0">
           <li class="position-relative"><span class="list-dot rounded-circle bg-primary position-absolute" aria-hidden="true"></span>產品用途與尺寸</li>
           <li class="position-relative"><span class="list-dot rounded-circle bg-primary position-absolute" aria-hidden="true"></span>材料需求（如已知）</li>
           <li class="position-relative"><span class="list-dot rounded-circle bg-primary position-absolute" aria-hidden="true"></span>預計數量</li>
@@ -628,6 +650,7 @@
           <li class="position-relative"><span class="list-dot rounded-circle bg-primary position-absolute" aria-hidden="true"></span>希望交期</li>
           <li class="position-relative"><span class="list-dot rounded-circle bg-primary position-absolute" aria-hidden="true"></span>圖面或產品照片</li>
         </ul>
+        </details>
       </div>
     </div>
     <div class="col d-flex">
@@ -664,6 +687,7 @@
             <dd class="numbers text-secondary mb-0 contact-value">03-4728290</dd>
           </div>
         </dl>
+        <p class="contact-panel-content helper-copy text-body-secondary mb-3">每日 08:00–17:00 營業<br>通常 1 個工作天內回覆</p>
         <div class="contact-panel-footer mt-auto pt-4 border-top border-light-subtle">
           <a href="tel:0932271570" class="btn btn-primary w-100 d-inline-flex align-items-center justify-content-center gap-2 py-3 px-3 fw-bold text-center">
             <span class="material-symbols-outlined fs-5" aria-hidden="true">smartphone</span>
@@ -695,6 +719,7 @@
             </button>
           </div>
         </div>
+        <p class="contact-panel-content helper-copy text-body-secondary mb-3">每日 08:00–17:00 營業<br>通常 1 個工作天內回覆</p>
         <div class="contact-panel-footer mt-auto pt-4 border-top border-light-subtle">
           <a href="mailto:fan6772@gmail.com?subject=模壓代工詢價&amp;body=您好，我們有模壓成型的需求，請協助評估：%0D%0A%0D%0A1.%20產品用途與尺寸：%0D%0A2.%20材料需求（如已知）：%0D%0A3.%20預計數量：%0D%0A4.%20是否已有模具：%0D%0A5.%20希望交期：%0D%0A%0D%0A（請記得夾帶圖面或照片檔案）" class="btn btn-dark w-100 d-inline-flex align-items-center justify-content-center gap-2 py-3 px-3 fw-bold text-center">
             <span class="material-symbols-outlined fs-5" aria-hidden="true">mail</span>
@@ -768,20 +793,23 @@
 
       <!-- Right: Links & Button -->
       <div class="col-12 col-lg-5 d-flex flex-column justify-content-between align-items-start align-items-lg-end gap-4">
-        <!-- Links Grid -->
-        <div class="row g-3 w-100">
+        <nav class="row g-3 w-100" aria-label="頁尾導覽">
           <a href="#applications" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">承製案例</a>
-          <a href="#capabilities" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">製造能力</a>
           <a href="#equipment" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">設備能力</a>
-          <a href="#workflow" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">合作流程</a>
           <a href="#about" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">關於萬順承</a>
+          <a href="#capabilities" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">製造能力</a>
+          <a href="#workflow" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">合作流程</a>
+          <a href="#contact" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">聯絡詢價</a>
           <a href="#quality" class="fw-bold fs-6 text-white rounded py-1 col-6 col-md-4 footer-link text-decoration-none">品質管理</a>
+        </nav>
+        <div class="d-flex flex-wrap gap-3 justify-content-start justify-content-lg-end">
+          <a href="tel:0932271570" class="btn btn-light rounded-pill d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3"><span class="material-symbols-outlined fs-5" aria-hidden="true">call</span>直接致電</a>
+          <a href="mailto:fan6772@gmail.com" class="btn btn-outline-light rounded-pill d-inline-flex align-items-center justify-content-center gap-2 px-4 py-3"><span class="material-symbols-outlined fs-5" aria-hidden="true">mail</span>Email 詢價</a>
         </div>
-        
-        <!-- Action Button -->
-        <a href="#contact" class="btn btn-light rounded-pill px-5 py-3 fw-bold">
-          聯絡我們
-        </a>
+        <div class="d-flex flex-wrap gap-4 helper-copy">
+          <a href="#contact" class="footer-link text-muted-on-dark">聯絡我們</a>
+          <a href="./privacy.html" class="footer-link text-muted-on-dark">資料用途與隱私說明</a>
+        </div>
       </div>
       
     </div>

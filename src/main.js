@@ -307,6 +307,7 @@ window.copyToClipboard = async function(text) {
   try {
     await navigator.clipboard.writeText(text);
     showToast('已複製！');
+    trackContact('contact_copy', { contact_method: text.includes('@') ? 'email' : 'phone', contact_location: 'contact', contact_action: 'copy' });
   } catch (err) {
     showToast('複製失敗，請手動複製：' + text);
   }
@@ -325,6 +326,7 @@ window.copyTemplate = async function() {
   try {
     await navigator.clipboard.writeText(template);
     showToast('已複製！');
+    trackContact('contact_copy', { contact_method: 'email', contact_location: 'contact', contact_action: 'copy_template' });
   } catch (err) {
     showToast('複製失敗，請手動複製。');
   }
@@ -483,3 +485,41 @@ if (portfolioSlider && portfolioPrev && portfolioNext) {
   new ResizeObserver(updatePortfolioControls).observe(portfolioSlider);
   updatePortfolioControls();
 }
+
+
+// Preparation is expandable on small screens; desktop keeps all six items visible.
+const preparationDetails = document.querySelector('.contact-preparation-details');
+if (preparationDetails) {
+  const contactDesktop = window.matchMedia('(min-width: 992px)');
+  const syncPreparation = () => { preparationDetails.open = contactDesktop.matches; };
+  syncPreparation();
+  contactDesktop.addEventListener('change', syncPreparation);
+}
+
+// Measure contact intent without sending personal details or mailto query text.
+// Preview/local traffic must not pollute the production property.
+const analyticsHosts = new Set(['wsctw.com', 'www.wsctw.com', 'duncandraw10-droid.github.io']);
+function trackContact(eventName, parameters) {
+  if (!analyticsHosts.has(location.hostname) || typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, { ...parameters, transport_type: 'beacon' });
+}
+function contactLocation(element) {
+  if (element.closest('footer')) return 'footer';
+  if (element.closest('header')) return 'topbar';
+  return element.closest('section')?.id || 'other';
+}
+document.addEventListener('click', event => {
+  const anchor = event.target.closest('a[href]');
+  if (!anchor) return;
+  const href = anchor.getAttribute('href');
+  const contact_location = contactLocation(anchor);
+  if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+    trackContact('contact_click', {
+      contact_method: href.startsWith('tel:') ? 'phone' : 'email',
+      contact_location,
+      contact_action: 'open',
+    });
+  } else if (href === '#contact') {
+    trackContact('inquiry_cta_click', { contact_location });
+  }
+});

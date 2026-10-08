@@ -334,3 +334,10 @@
   width: var(--factory-photo-width); height: auto;
   transform: translate(-50%, var(--factory-photo-center));
 }
+
+/* Keep preparation first while shortening the mobile contact journey. */
+.contact-preparation-summary { min-height: 44px; cursor: pointer; padding-block: 10px; }
+.contact-preparation-summary:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 4px; border-radius: 4px; }
+@media (min-width: 992px) {
+  .contact-preparation-details > .contact-panel-content { display: flex !important; }
+}
