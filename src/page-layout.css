@@ -147,7 +147,6 @@
 .workflow-step { border-top: 1px solid var(--border-default); padding-top: 24px; }
 .workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: 1.5; }
 .workflow-copy { min-width: 0; }
-.workflow-result { line-height: 1.7; }
 .contact-section { padding-block: 56px; }
 .contact-section .section-title-row { margin-bottom: 2rem; }
 @media (min-width: 992px) {
