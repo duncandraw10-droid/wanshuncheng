@@ -1,6 +1,6 @@
 /* Full-page composition. Bootstrap supplies grids, spacing and native components. */
 :root { --layout-space: var(--space-56); --section-heading-gap: var(--space-32); --site-container-max-width: 1440px; --site-container-padding: var(--space-40); }
-.layout-container { max-width: var(--site-container-max-width); padding-inline: var(--space-24); }
+.layout-container { max-width: var(--site-container-max-width); padding-inline: var(--mobile-container-padding); }
 .layout-pill { min-height: 54px; padding: 14px var(--space-28); min-width: 190px; }
 .section-title-block, .section-title-row { margin-bottom: var(--section-heading-gap); }
 .application-section, .equipment-section, .company-section,
