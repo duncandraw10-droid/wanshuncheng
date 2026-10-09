@@ -368,7 +368,7 @@
 @media (min-width: 992px) {
   .footer-site-map {
     display: grid; grid-template-columns: repeat(3, max-content);
-    gap: 20px 48px; width: max-content; max-width: 100%;
+    gap: 20px 72px; width: max-content; max-width: 100%;
     align-self: flex-end; margin: 0;
   }
   .footer-site-map > .col { width: auto; margin: 0; padding: 0; }
