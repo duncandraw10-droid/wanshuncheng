@@ -327,7 +327,7 @@
 /* Keep preparation first while shortening the mobile contact journey. */
 .contact-preparation-details > ul.contact-panel-content { gap: var(--space-8); }
 @media (max-width: 991.98px) {
-  .contact-preparation-details > ul.contact-panel-content { gap: 6px; }
+  .contact-preparation-details > ul.contact-panel-content { gap: var(--space-4); }
 }
 .contact-preparation-summary { min-height: 44px; cursor: pointer; padding-block: 10px; }
 .contact-preparation-summary:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 4px; border-radius: var(--radius-inline); }
