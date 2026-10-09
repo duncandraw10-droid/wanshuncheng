@@ -141,7 +141,7 @@
 .company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: var(--space-8); }
 .capability-section .section-title-row { margin-bottom: var(--space-28); }
 .capability-copy { min-width: 0; }
-.capability-row { padding-block: var(--space-20); border-bottom: 1px solid var(--border-default); }
+.capability-row { padding-block: var(--space-20); }
 .capability-grid > :first-child .capability-row { padding-top: 0; }
 .capability-marker { width: 24px; padding-top: var(--space-4); }
 .capability-marker .material-symbols-outlined { width: 24px; }
