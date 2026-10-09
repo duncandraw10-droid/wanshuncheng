@@ -66,10 +66,8 @@ export function initPortfolio({ motion, modalElement }) {
   if (portfolioSlider && portfolioPrev && portfolioNext) {
     let pendingFrame = 0;
     const gallery = portfolioSlider.closest('.application-gallery');
-    const autoplayButton = document.getElementById('portfolio-autoplay');
     const autoplayInterval = 4000;
     let autoplayTimer = 0;
-    let userPaused = false;
     let inView = false;
     let hovered = false;
     let pointerDown = false;
@@ -78,9 +76,9 @@ export function initPortfolio({ motion, modalElement }) {
     function schedulePortfolioAutoplay() {
       clearTimeout(autoplayTimer);
       autoplayTimer = 0;
-      const focusInside = gallery.contains(document.activeElement) && document.activeElement !== autoplayButton && document.activeElement.matches(':focus-visible');
+      const focusInside = gallery.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
       const expanded = portfolioStates.some(state => state.card.classList.contains('is-expanded'));
-      if (userPaused || !inView || document.hidden || motion.matches || hovered || pointerDown || focusInside || expanded || photoOpen) return;
+      if (!inView || document.hidden || motion.matches || hovered || pointerDown || focusInside || expanded || photoOpen) return;
       if (portfolioSlider.scrollWidth <= portfolioSlider.clientWidth + 2) return;
       autoplayTimer = window.setTimeout(() => {
         const range = portfolioSlider.scrollWidth - portfolioSlider.clientWidth;
@@ -90,20 +88,6 @@ export function initPortfolio({ motion, modalElement }) {
       }, autoplayInterval);
     }
 
-    function updateAutoplayButton() {
-      if (!autoplayButton) return;
-      const paused = userPaused || motion.matches;
-      autoplayButton.querySelector('.portfolio-autoplay-icon path').setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M7 5h3v14H7zM14 5h3v14h-3z');
-      autoplayButton.setAttribute('aria-label', `${paused ? '開始' : '暫停'}承製案例自動輪播`);
-      autoplayButton.disabled = motion.matches;
-      autoplayButton.title = motion.matches ? '依照您的減少動態效果設定，已停用自動輪播' : '';
-    }
-
-    autoplayButton?.addEventListener('click', () => {
-      userPaused = !userPaused;
-      updateAutoplayButton();
-      schedulePortfolioAutoplay();
-    });
     gallery.addEventListener('pointerenter', event => {
       if (event.pointerType === 'mouse' && portfolioHover.matches) { hovered = true; schedulePortfolioAutoplay(); }
     });
@@ -122,7 +106,7 @@ export function initPortfolio({ motion, modalElement }) {
     gallery.addEventListener('focusout', () => queueMicrotask(schedulePortfolioAutoplay));
     portfolioHover.addEventListener('change', () => { hovered = portfolioHover.matches && gallery.matches(':hover'); schedulePortfolioAutoplay(); });
     document.addEventListener('visibilitychange', schedulePortfolioAutoplay);
-    motion.addEventListener('change', () => { updateAutoplayButton(); schedulePortfolioAutoplay(); });
+    motion.addEventListener('change', schedulePortfolioAutoplay);
     modalElement?.addEventListener('show.bs.modal', () => { photoOpen = true; schedulePortfolioAutoplay(); });
     modalElement?.addEventListener('hidden.bs.modal', () => { photoOpen = false; schedulePortfolioAutoplay(); });
     syncAutoplay = schedulePortfolioAutoplay;
@@ -130,7 +114,6 @@ export function initPortfolio({ motion, modalElement }) {
       inView = entries[0].isIntersecting && entries[0].intersectionRatio >= .2;
       schedulePortfolioAutoplay();
     }, { threshold: [0, .2] }).observe(portfolioSlider);
-    updateAutoplayButton();
 
     function updatePortfolioControls() {
       const range = Math.max(0, portfolioSlider.scrollWidth - portfolioSlider.clientWidth);

@@ -42,8 +42,6 @@
   overscroll-behavior-x: contain; scroll-behavior: smooth;
 }
 .portfolio-slider::-webkit-scrollbar { display: none; }
-.portfolio-autoplay-control { min-width: 44px; min-height: 44px; }
-.portfolio-autoplay-icon { flex-shrink: 0; }
 .portfolio-slider > .portfolio-item {
   flex: 0 0 calc((100% - var(--portfolio-gap)) / 1.2);
   width: calc((100% - var(--portfolio-gap)) / 1.2);
