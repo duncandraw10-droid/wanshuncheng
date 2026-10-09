@@ -149,13 +149,18 @@
 .capability-grid > :first-child .capability-row { padding-top: 0; }
 .capability-marker { width: 24px; padding-top: var(--space-4); }
 .capability-marker .material-symbols-outlined { width: 24px; }
-.capability-row h3 { line-height: var(--leading-heading); }
-.capability-row p { line-height: var(--leading-compact-copy); }
+.capability-row h3, .workflow-section .content-heading { line-height: var(--leading-heading); }
+.capability-row p, .workflow-section .body-copy { line-height: var(--leading-compact-copy); }
 @media (min-width: 992px) {
   .capability-row { padding-top: 0; }
 }
-.workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-ui); }
+.workflow-grid { --bs-gutter-y: var(--space-20); }
+.workflow-step { padding-bottom: var(--space-20); }
+.workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .workflow-copy { min-width: 0; }
+@media (min-width: 1200px) {
+  .workflow-grid { --bs-gutter-y: 0; }
+}
 .contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: var(--space-24) 0; border-top: 1px solid var(--border-default); }
 .contact-panel-content, .contact-panel-footer { margin-inline-start: var(--space-32); }
 .contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
