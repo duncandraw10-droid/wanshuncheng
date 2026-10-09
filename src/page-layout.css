@@ -218,7 +218,8 @@
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
 .quality-icon { width: 64px; height: 64px; }
 .quality-icon svg { width: 36px; height: 36px; }
-.quality-card p { line-height: var(--leading-compact-copy); margin-bottom: var(--space-12); }
+.quality-card p { position: relative; padding-inline-start: var(--space-16); line-height: var(--leading-compact-copy); margin-bottom: var(--space-12); }
+.quality-card p::before { content: ""; position: absolute; inset-inline-start: 0; top: calc(.825em - 3px); width: 6px; height: 6px; background-color: currentColor; }
 @media (max-width: 767.98px) {
   .quality-icon { width: 44px; height: 44px; }
   .quality-icon svg { width: 26px; height: 26px; }
