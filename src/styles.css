@@ -83,10 +83,7 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .list-dot { width: 6px; height: 6px; }
 .contact-label { min-width: 4rem; }
 .numbers { font-variant-numeric: tabular-nums; }
-#contact .card { overflow-wrap: anywhere; }
-#contact .card > .d-flex.justify-content-between { gap: .5rem; }
 .site-footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom)) !important; }
-.site-footer .footer-link { color: var(--text-muted-on-dark); }
 .site-footer .footer-link:hover { color: var(--surface-white); }
 .modal-photo { max-height: 80vh; width: 100%; }
 .toast-container { padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
@@ -95,14 +92,6 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .motion-ready .reveal.is-visible { opacity: 1; transform: none; }
 .error-icon { width: 80px; height: 80px; }
 .error-glow { width: 24rem; height: 24rem; filter: blur(64px); }
-@media (min-width: 768px) {
-  .delay-0 { transition-delay: 0ms; }
-  .delay-60 { transition-delay: 100ms; }
-  .delay-120 { transition-delay: 200ms; }
-  .delay-180 { transition-delay: 300ms; }
-  .delay-240 { transition-delay: 400ms; }
-  .delay-300 { transition-delay: 500ms; }
-}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -296,11 +285,6 @@ body { font-size: var(--type-body); font-weight: 400; }
   --bs-btn-active-color: var(--text-on-dark); --bs-btn-active-bg: var(--brand-blue);
   --bs-btn-active-border-color: var(--brand-blue);
 }
-.form-control, .form-select {
-  color: var(--text-primary); background-color: var(--surface-white); border-color: var(--border-control);
-}
-.form-control:focus, .form-select:focus { border-color: var(--brand-blue); }
-.form-control::placeholder { color: var(--text-secondary); }
 @media (min-width: 992px) {
   :root {
     --type-hero: clamp(3rem, 3.5vw, 3.5rem);
@@ -357,7 +341,6 @@ body { font-size: var(--type-body); font-weight: 400; }
 }
 
 .modal-header .btn { min-width: 44px; min-height: 44px; }
-
 
 /* Render the supplied white logo through its alpha shape using an exact token.
    Both WebKit and standard masks are included. The image remains accessible;

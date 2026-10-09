@@ -1,19 +1,13 @@
-# Image Replacement Checklist
+# 圖片維護
 
-All current images are placeholders with the "示意圖" (Illustration) label. Please replace them with actual company assets.
+`public/images/` 只保留目前正式頁面使用的資產。網站已使用公司提供的圖片，沒有「示意圖」佔位素材。
 
-| Description | Recommended Aspect Ratio | Notes |
-| :--- | :--- | :--- |
-| **Hero Background** | 16:9 | High quality, wide shot of the factory floor or main presses. |
-| **Machine 4x250T** | 16:10 | Clear shot of the press machines. |
-| **Temperature Control** | 16:10 | Shot of the control panel or temperature regulation units. |
-| **Secondary Processing** | 16:10 | Shot of the grinding, CNC, or finishing station. |
-| **Quality Control** | 16:10 | Shot of measurement tools, calipers, or the QC room. |
-| **Application: Box/Structure** | 16:10 | Real product sample: SMC box or structural liner. |
-| **Application: Industrial Plate** | 16:10 | Real product sample: Flat industrial shielding/plate. |
-| **Application: Outdoor/Traffic** | 16:10 | Real product sample: Anti-glare board or outdoor fixture. |
-| **Application: Medical Cover** | 16:10 | Real product sample: Medical equipment cover. |
-| **Application: High Voltage** | 16:10 | Real product sample: Electrical insulation board. |
-| **Application: Heavy Machinery** | 16:10 | Real product sample: Engine cover or machinery housing. |
+- 一般照片使用 WebP；現有 Topbar 與 Footer 的透明 Logo 為 PNG，請保留其透明度與色彩處理。
+- 首屏 Hero 圖保留優先載入設定；下方案例、工廠與設備圖片保留 `loading="lazy"`、`decoding="async"` 及尺寸資訊。
+- 更換 `<picture>` 時，同步更新 `<source srcset>`、`<img src>` 及圖片放大按鈕的 `data-photo`／`data-photo-webp`，並核對 `alt` 與品項名稱。
+- 設備圖片需同步核對對應分頁與預載入的 `data-img-webp`。機台仍以 contain 置中呈現。
+- 工廠雙全景使用同一張圖的上下裁切，不要改變 `factory-view`、`factory-photo-upper`／`factory-photo-lower` 比例設定。
+- 手機案例圖片使用 1:1 容器與 object-fit: cover，不拉伸原圖；桌機保留既有漸層介紹效果。
+- 分享圖片與企業 Logo 使用正式網址 `https://wsctw.com/images/...`，更換檔名時也要檢查 `<head>`。
 
-*Note: Once replaced, please update the HTML `img` tags to remove the `<span class="...">示意圖</span>` overlay.*
+不要直接修改 `dist/`；修改來源檔案後重新執行建置。

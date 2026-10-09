@@ -654,7 +654,7 @@
             <dt class="fw-medium contact-label flex-shrink-0">手機</dt>
             <dd class="d-flex align-items-center gap-2 mb-0 contact-value">
               <a href="tel:0932271570" class="numbers fw-bold text-dark text-nowrap">0932-271570</a>
-              <button type="button" onclick="copyToClipboard('0932271570')" class="text-secondary p-1 btn btn-link d-inline-flex align-items-center flex-shrink-0" title="複製號碼" aria-label="複製手機號碼">
+              <button type="button" data-copy-text="0932271570" class="text-secondary p-1 btn btn-link d-inline-flex align-items-center flex-shrink-0" title="複製號碼" aria-label="複製手機號碼">
                 <span class="material-symbols-outlined fs-5" aria-hidden="true">content_copy</span>
               </button>
             </dd>
@@ -663,7 +663,7 @@
             <dt class="fw-medium contact-label flex-shrink-0">電話</dt>
             <dd class="d-flex align-items-center gap-2 mb-0 contact-value">
               <a href="tel:034721912" class="numbers text-dark text-nowrap">03-4721912</a>
-              <button type="button" onclick="copyToClipboard('034721912')" class="text-secondary p-1 btn btn-link d-inline-flex align-items-center flex-shrink-0" title="複製號碼" aria-label="複製電話號碼">
+              <button type="button" data-copy-text="034721912" class="text-secondary p-1 btn btn-link d-inline-flex align-items-center flex-shrink-0" title="複製號碼" aria-label="複製電話號碼">
                 <span class="material-symbols-outlined fs-5" aria-hidden="true">content_copy</span>
               </button>
             </dd>
@@ -695,11 +695,11 @@
           </div>
           <p class="small text-secondary lh-lg mb-0">點擊下方「開啟郵件」將會開啟您的郵件程式，可夾帶 PDF、照片或 CAD 圖檔。</p>
           <div class="contact-copy-actions d-flex flex-wrap justify-content-start gap-2">
-            <button type="button" onclick="copyToClipboard('fan6772@gmail.com')" class="btn btn-outline-secondary bg-white border-control text-body fw-medium fs-6 d-inline-flex align-items-center justify-content-start gap-1 py-2 px-2 text-start">
+            <button type="button" data-copy-text="fan6772@gmail.com" class="btn btn-outline-secondary bg-white border-control text-body fw-medium fs-6 d-inline-flex align-items-center justify-content-start gap-1 py-2 px-2 text-start">
               <span class="material-symbols-outlined fs-5" aria-hidden="true">content_copy</span>
               複製信箱
             </button>
-            <button type="button" onclick="copyTemplate()" class="btn btn-outline-secondary bg-white border-control text-body fw-medium fs-6 d-inline-flex align-items-center justify-content-start gap-1 py-2 px-2 text-start">
+            <button type="button" data-copy-template class="btn btn-outline-secondary bg-white border-control text-body fw-medium fs-6 d-inline-flex align-items-center justify-content-start gap-1 py-2 px-2 text-start">
               <span class="material-symbols-outlined fs-5" aria-hidden="true">assignment</span>
               複製範本
             </button>
@@ -765,7 +765,7 @@
 <div id="image-modal" class="modal fade" aria-modal="true" role="dialog" aria-labelledby="modal-title" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content bg-dark text-white border-0">
   <div class="modal-header border-0">
     <div id="modal-title" class="modal-title fs-5 fw-bold">設備圖片</div>
-    <button onclick="closeModal()" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center p-2" aria-label="關閉圖片">
+    <button data-modal-close class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center p-2" aria-label="關閉圖片">
       <span class="material-symbols-outlined fs-4 d-block" aria-hidden="true">close</span>
     </button>
   </div>
