@@ -52,9 +52,9 @@
   width: calc((100% - var(--portfolio-gap)) / 1.2);
   min-width: 0; scroll-snap-align: start;
 }
-.application-card { width: 100%; padding-bottom: var(--portfolio-caption-reserve); background: var(--brand-navy); border-radius: var(--radius-card); isolation: isolate; }
-.application-card .application-image-frame { position: relative; --bs-aspect-ratio: 75%; }
-/* Reserve a caption area so the default state leaves the entire desktop photo visible. */
+.application-card { width: 100%; background: var(--brand-navy); border-radius: var(--radius-card); isolation: isolate; }
+.application-card .application-image-frame { position: relative; }
+/* Desktop captions appear over the photograph with a bottom-up gradient. */
 .application-card::after {
   content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 25%; pointer-events: none;
   background: linear-gradient(to top, #172B46 0%,rgba(23,43,70,.94) 38%,rgba(23,43,70,.72) 72%,transparent 100%);
@@ -95,7 +95,6 @@
   .application-card { height: var(--portfolio-card-height); padding-bottom: 0; }
   .application-card .application-image-frame { position: absolute; inset: 0; --bs-aspect-ratio: 0%; }
   .application-card::after { height: 30%; }
-  .application-card.is-expanded::after { height: 85%; }
   .application-photo { object-fit: cover !important; object-position: center; }
   .application-caption { padding: var(--space-20); }
   .application-caption h3 { font-size: 22px; min-height: 0; }
@@ -209,7 +208,6 @@
 .footer-contact-label,
 .footer-contact-value { line-height: var(--leading-footer); }
 .footer-contact-row { min-height: 32px; }
-.footer-contact-label { width: 4rem; }
 .full-footer .footer-contact-value a { display: inline-block; line-height: inherit; }
 .footer-contact-value { min-width: 0; }
 /* End the company column at the final contact line so the CTA shares its bottom edge. */

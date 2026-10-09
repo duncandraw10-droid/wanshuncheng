@@ -25,7 +25,7 @@ export function initContact() {
       await navigator.clipboard.writeText(text);
       showToast('已複製！');
       trackContact('contact_copy', { contact_method: text.includes('@') ? 'email' : 'phone', contact_location: 'contact', contact_action: 'copy' });
-    } catch (err) {
+    } catch {
       showToast('複製失敗，請手動複製：' + text);
     }
   }
@@ -36,7 +36,7 @@ export function initContact() {
       await navigator.clipboard.writeText(inquiryTemplate);
       showToast('已複製！');
       trackContact('contact_copy', { contact_method: 'email', contact_location: 'contact', contact_action: 'copy_template' });
-    } catch (err) {
+    } catch {
       showToast('複製失敗，請手動複製。');
     }
   }

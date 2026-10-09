@@ -79,7 +79,7 @@
 
 間距使用 `--space-*`，尺度為 4、8、12、16、20、24、28、32、40、48、56、64、72、80、96px。區塊上下內距由 `--layout-space` 引用 56／96；標題間距由 `--section-heading-gap` 引用 32／48。保留機台透明邊界的逐張視覺校正內距，避免共用尺度使機台偏移。
 
-Hero 桌機主按鈕寬度由 `--hero-cta-width: 174px` 管理；桌機案例高度及手機文字區預留高度分別由 `--portfolio-card-height: 540px`、`--portfolio-caption-reserve: 168px` 管理。不要重新追加舊的 204px 最小寬度覆寫。
+Hero 桌機主按鈕寬度由 `--hero-cta-width: 174px` 管理；桌機案例高度由 `--portfolio-card-height: 540px` 管理；手機圖片維持 1:1，文字區依實際內容自然增高。不要重新追加舊的 204px 最小寬度覆寫。
 
 ## Logo 正式資產
 
