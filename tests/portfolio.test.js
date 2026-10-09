@@ -24,7 +24,6 @@ function setup() {
   const button = new Element(), card = new Element(), toggle = new Element(), modal = new Element();
   const doc = new Element(), motion = new Element(), hover = new Element();
   button.children['.portfolio-autoplay-icon path'] = new Element();
-  button.children['.portfolio-autoplay-label'] = new Element();
   button.insideGallery = true;
   toggle.children['.application-detail-label'] = new Element();
   card.children = { '.application-detail-toggle': toggle, '.application-details': new Element(), h3: { textContent: '案例' }, '.application-image-frame': new Element(), '.application-caption': new Element() };
@@ -62,7 +61,8 @@ test('advances one card, wraps and preserves user pause across section visits', 
   h.slider.scrollLeft = 900; h.tick(); h.flush(); assert.equal(h.slider.scrollLeft, 0);
   h.button.emit('click'); assert.equal(h.timers.size, 0);
   h.visible(false); h.visible(true); assert.equal(h.timers.size, 0);
-  assert.equal(h.button.children['.portfolio-autoplay-label'].textContent, '開始輪播');
+  assert.equal(h.button.attributes['aria-label'], '開始承製案例自動輪播');
+  assert.equal(h.button.children['.portfolio-autoplay-icon path'].attributes.d, 'M8 5v14l11-7z');
   h.button.emit('click'); assert.equal(h.timers.size, 1);
   h.next.emit('click'); h.flush(); assert.equal(h.slider.scrollLeft, 300);
   h.prev.emit('click'); h.flush(); assert.equal(h.slider.scrollLeft, 0);

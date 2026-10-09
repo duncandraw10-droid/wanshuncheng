@@ -94,7 +94,6 @@ export function initPortfolio({ motion, modalElement }) {
       if (!autoplayButton) return;
       const paused = userPaused || motion.matches;
       autoplayButton.querySelector('.portfolio-autoplay-icon path').setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M7 5h3v14H7zM14 5h3v14h-3z');
-      autoplayButton.querySelector('.portfolio-autoplay-label').textContent = paused ? '開始輪播' : '暫停輪播';
       autoplayButton.setAttribute('aria-label', `${paused ? '開始' : '暫停'}承製案例自動輪播`);
       autoplayButton.disabled = motion.matches;
       autoplayButton.title = motion.matches ? '依照您的減少動態效果設定，已停用自動輪播' : '';
