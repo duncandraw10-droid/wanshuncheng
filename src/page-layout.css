@@ -336,11 +336,12 @@
 }
 
 /* Company details and sitemap follow one shared responsive footer grid. */
-.full-footer .footer-company h2 { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: var(--leading-ui); }
+.full-footer .footer-company h2 { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: var(--leading-ui); margin-bottom: var(--space-40); }
 /* Display the supplied white artwork at its own ratio, framing only transparent margins. */
 .footer-logo-frame { display: block; position: relative; overflow: hidden; width: 320px; max-width: 100%; aspect-ratio: 661 / 77; }
 .footer-logo-image { position: absolute; width: 109.379727%; max-width: none; height: auto; left: -4.689864%; top: -67.532468%; }
 @media (max-width: 991.98px) {
+  .full-footer .footer-company h2 { margin-bottom: var(--space-32); }
   .footer-logo-frame { width: 280px; }
 }
 .full-footer .footer-contact-label { font-weight: 500 !important; color: var(--text-muted-on-dark) !important; width: 4.5rem; }
