@@ -35,6 +35,7 @@ test('home page keeps usable contact actions, media and formal-domain SEO', () =
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(schema.url, 'https://wsctw.com/');
   assert.equal(schema.email, 'info@wsctw.com');
+  assert.equal(schema.logo, 'https://wsctw.com/images/logo-topbar.png');
   assert.ok(html.includes('data-copy-text="info@wsctw.com"'));
   for (const page of ['index.html', 'privacy.html']) {
     const content = fs.readFileSync(path.join(root, page), 'utf8');

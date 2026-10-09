@@ -1,7 +1,7 @@
 /* Full-page composition. Bootstrap supplies grids, spacing and native components. */
-:root { --layout-space: 56px; --section-heading-gap: 2rem; --site-container-max-width: 1440px; --site-container-padding: 40px; }
-.layout-container { max-width: var(--site-container-max-width); padding-inline: 24px; }
-.layout-pill { min-height: 54px; padding: 14px 28px; min-width: 190px; font-weight: 600; }
+:root { --layout-space: var(--space-56); --section-heading-gap: var(--space-32); --site-container-max-width: 1440px; --site-container-padding: var(--space-40); }
+.layout-container { max-width: var(--site-container-max-width); padding-inline: var(--space-24); }
+.layout-pill { min-height: 54px; padding: 14px var(--space-28); min-width: 190px; }
 .section-title-block, .section-title-row { margin-bottom: var(--section-heading-gap); }
 .application-section, .equipment-section, .company-section,
 .capability-section, .quality-section, .workflow-section,
@@ -14,10 +14,10 @@
 .application-section::after {
   content: ''; position: absolute; top: 10px; right: -140px; width: 320px; height: 320px;
   background-image: radial-gradient(var(--brand-blue) 1px, transparent 1.3px);
-  background-size: 10px 10px; border-radius: 50%; mask-image: radial-gradient(transparent 35%,#000 40%,transparent 70%);
+  background-size: 10px 10px; border-radius: var(--radius-circle); mask-image: radial-gradient(transparent 35%,#000 40%,transparent 70%);
   opacity: .14; z-index: -1; pointer-events: none;
 }
-.application-gallery.layout-container { padding-block: 8px; padding-inline: 36px; }
+.application-gallery.layout-container { padding-block: var(--space-8); padding-inline: 36px; }
 .application-gallery .portfolio-nav {
   width: 36px; height: 36px; padding: 0;
   color: var(--brand-navy); background-color: var(--surface-white);
@@ -35,12 +35,12 @@
   .application-gallery .portfolio-nav .material-symbols-outlined { font-size: 24px; }
 }
 @media (min-width: 992px) {
-  .application-gallery.layout-container { padding-inline: 64px; }
+  .application-gallery.layout-container { padding-inline: var(--space-64); }
   .application-gallery .portfolio-nav { width: 48px; height: 48px; }
 }
 .portfolio-slider {
   --portfolio-gap: 1rem;
-  margin: 0; padding-block: 4px; overflow-y: hidden;
+  margin: 0; padding-block: var(--space-4); overflow-y: hidden;
   scroll-snap-type: x mandatory; scrollbar-width: none;
   overscroll-behavior-x: contain; scroll-behavior: smooth;
 }
@@ -50,7 +50,7 @@
   width: calc((100% - var(--portfolio-gap)) / 1.2);
   min-width: 0; scroll-snap-align: start;
 }
-.application-card { width: 100%; padding-bottom: 168px; background: var(--brand-navy); border-radius: 12px; isolation: isolate; }
+.application-card { width: 100%; padding-bottom: var(--portfolio-caption-reserve); background: var(--brand-navy); border-radius: var(--radius-card); isolation: isolate; }
 .application-card .application-image-frame { position: relative; --bs-aspect-ratio: 75%; }
 /* Reserve a caption area so the default state leaves the entire desktop photo visible. */
 .application-card::after {
@@ -60,7 +60,7 @@
 }
 .application-card.is-expanded::after { height: 85%; }
 .application-photo { position: absolute; inset: 0; }
-.application-detail-toggle { min-height: 44px; padding: 0 2px; border: 0; border-radius: 4px; background: transparent; color: var(--text-on-dark); font-size: var(--type-helper); text-decoration: underline; text-underline-offset: 4px; }
+.application-detail-toggle { min-height: 44px; padding: 0 2px; border: 0; border-radius: var(--radius-inline); background: transparent; color: var(--text-on-dark); font-size: var(--type-helper); text-decoration: underline; text-underline-offset: 4px; }
 .application-detail-toggle:focus-visible { outline-color: var(--text-on-dark); }
 .application-detail-chevron { flex-shrink: 0; transition: transform 300ms ease; }
 .application-card.is-expanded .application-detail-chevron { transform: rotate(180deg); }
@@ -73,10 +73,10 @@
 .application-card-arrow { width: 100%; height: 100%; }
 .application-photo-button:hover, .application-photo-button:focus-visible { background: var(--brand-blue); border-color: var(--brand-blue); }
 .application-caption { position: absolute; inset-inline: 0; bottom: 0; padding: 18px; z-index: 3; }
-.application-caption h3 { font-size: 20px; line-height: 1.35; text-shadow: 0 2px 8px #172B46,0 0 20px rgba(23,43,70,.65); }
-.application-caption p { line-height: 1.65; }
+.application-caption h3 { font-size: 20px; line-height: var(--leading-card-title); text-shadow: 0 2px 8px #172B46,0 0 20px rgba(23,43,70,.65); }
+.application-caption p { line-height: var(--leading-compact-copy); }
 .application-material {
-  padding: 4px 10px; font-size: var(--type-helper); line-height: 1.5; color: var(--text-on-dark);
+  padding: var(--space-4) 10px; font-size: var(--type-helper); line-height: var(--leading-ui); color: var(--text-on-dark);
   background: rgba(23,43,70,.45); border: 1px solid rgba(203,213,225,.55);
 }
 .application-details {
@@ -85,17 +85,17 @@
 }
 .application-card.is-expanded .application-details { grid-template-rows: 1fr; opacity: 1; transform: translateY(0); }
 .application-description-wrapper { min-height: 0; overflow: hidden; }
-.application-description { margin-top: 12px; }
+.application-description { margin-top: var(--space-12); }
 @media (min-width: 992px) {
   .portfolio-slider { --portfolio-gap: 1.5rem; }
   .portfolio-slider > .portfolio-item { flex-basis: calc((100% - 2 * var(--portfolio-gap)) / 3); width: calc((100% - 2 * var(--portfolio-gap)) / 3); }
   /* Desktop: put the caption over the photo with a bottom-up gradient. */
-  .application-card { height: 540px; padding-bottom: 0; }
+  .application-card { height: var(--portfolio-card-height); padding-bottom: 0; }
   .application-card .application-image-frame { position: absolute; inset: 0; --bs-aspect-ratio: 0%; }
   .application-card::after { height: 30%; }
   .application-card.is-expanded::after { height: 85%; }
   .application-photo { object-fit: cover !important; object-position: center; }
-  .application-caption { padding: 20px; }
+  .application-caption { padding: var(--space-20); }
   .application-caption h3 { font-size: 22px; min-height: 0; }
 }
 @media (min-width: 1200px) {
@@ -106,14 +106,14 @@
   .portfolio-slider { align-items: flex-start; }
   .application-card {
     padding-bottom: 0; align-self: flex-start; background: var(--surface-white);
-    border: 1px solid var(--border-default); border-radius: 12px;
+    border: 1px solid var(--border-default); border-radius: var(--radius-card);
   }
   .application-card .application-image-frame { position: relative; inset: auto; --bs-aspect-ratio: 100%; }
   .application-card::after { display: none; }
   .application-photo { object-position: center; transform: none; }
   .application-detail-toggle { color: var(--brand-blue); }
   .application-detail-toggle:focus-visible { outline-color: var(--brand-blue); }
-  .application-card .application-caption { position: relative; inset: auto; padding: 16px; pointer-events: auto !important; }
+  .application-card .application-caption { position: relative; inset: auto; padding: var(--space-16); pointer-events: auto !important; }
   .application-caption h3 {
     min-height: 2.7em; color: var(--text-primary) !important; text-shadow: none; cursor: pointer;
   }
@@ -130,75 +130,69 @@
 .company-section { isolation: isolate; }
 .company-section .section-heading { color: var(--text-on-dark); }
 .company-overview .section-heading { max-width: 300px; }
-.company-overview p { line-height: 1.9; }
-.company-orbit { position: absolute; width: 440px; height: 440px; z-index: -1; pointer-events: none; border-radius: 50%; background-image: radial-gradient(var(--text-muted-on-dark) 1.5px,transparent 1.7px); background-size: 11px 11px; mask-image: radial-gradient(transparent 43%,#000 44%,transparent 68%); opacity: .28; }
+.company-overview p { line-height: var(--leading-company); }
+.company-orbit { position: absolute; width: 440px; height: 440px; z-index: -1; pointer-events: none; border-radius: var(--radius-circle); background-image: radial-gradient(var(--text-muted-on-dark) 1.5px,transparent 1.7px); background-size: 11px 11px; mask-image: radial-gradient(transparent 43%,#000 44%,transparent 68%); opacity: .28; }
 .company-orbit-first { top: -240px; left: -160px; }
 .company-orbit-last { bottom: -260px; right: -180px; width: 600px; height: 600px; }
-.company-facts { margin-top: 65px; }
-.company-fact { padding: 30px 24px; text-align: center; border-block-end: 1px solid rgba(203,213,225,.35); }
+.company-fact { padding: 30px var(--space-24); text-align: center; border-block-end: 1px solid rgba(203,213,225,.35); }
 .company-fact:last-child { border-block-end: 0; }
 .company-fact .content-heading { font-size: var(--type-subheading); }
-.company-value { font-size: var(--type-hero); font-weight: 700; line-height: 1.3; margin-bottom: 20px; }
-.company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: 8px; }
-.capability-section .section-title-row { margin-bottom: 28px; }
+.company-value { font-size: var(--type-hero); font-weight: 700; line-height: var(--leading-stat); margin-bottom: var(--space-20); }
+.company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: var(--space-8); }
+.capability-section .section-title-row { margin-bottom: var(--space-28); }
 .capability-copy { min-width: 0; }
-.capability-row { padding-block: 20px; border-bottom: 1px solid var(--border-default); }
+.capability-row { padding-block: var(--space-20); border-bottom: 1px solid var(--border-default); }
 .capability-grid > :first-child .capability-row { padding-top: 0; }
-.capability-marker { width: 24px; padding-top: 4px; }
+.capability-marker { width: 24px; padding-top: var(--space-4); }
 .capability-marker .material-symbols-outlined { width: 24px; }
-.capability-row h3 { line-height: 1.4; }
-.capability-row p { line-height: 1.65; }
+.capability-row h3 { line-height: var(--leading-heading); }
+.capability-row p { line-height: var(--leading-compact-copy); }
 @media (min-width: 992px) {
   .capability-row { padding-top: 0; }
 }
-.workflow-step { border-top: 1px solid var(--border-default); padding-top: 24px; }
-.workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: 1.5; }
+.workflow-step { border-top: 1px solid var(--border-default); padding-top: var(--space-24); }
+.workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-ui); }
 .workflow-copy { min-width: 0; }
 .contact-section .section-title-row { margin-bottom: 2rem; }
-.contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: 24px 0; border-top: 1px solid var(--border-default); }
-.contact-panel-content, .contact-panel-footer { margin-inline-start: 32px; }
+.contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: var(--space-24) 0; border-top: 1px solid var(--border-default); }
+.contact-panel-content, .contact-panel-footer { margin-inline-start: var(--space-32); }
 .contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
 .contact-panel .contact-value { min-width: 0; }
 /* Match the 44px copy controls so all contact rows share one rhythm. */
-.contact-phone-details { line-height: 1.5; }
+.contact-phone-details { line-height: var(--leading-ui); }
 .contact-phone-details > div,
 .contact-preparation .contact-panel-content > li { min-height: 44px; }
 .contact-preparation .contact-panel-content > li { display: flex; align-items: center; }
-.contact-panel .btn:not(.btn-link) { border-radius: 999px; }
+.contact-panel .btn:not(.btn-link) { border-radius: var(--radius-pill); }
 .contact-copy-actions .btn { min-height: 44px; }
 .contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
 .full-footer { padding-block: var(--layout-space) calc(var(--layout-space) + env(safe-area-inset-bottom)) !important; }
-.full-footer .footer-link { line-height: 1.8; }
+.full-footer .footer-link { line-height: var(--leading-body); }
 @media (min-width: 768px) {
   .company-fact { border-inline-end: 1px solid rgba(203,213,225,.35); border-block-end: 0; }
   .company-fact:first-child { border-inline-start: 1px solid rgba(203,213,225,.35); }
 }
 @media (min-width: 992px) {
-  :root { --layout-space: 96px; --section-heading-gap: 3rem; }
+  :root { --layout-space: var(--space-96); --section-heading-gap: var(--space-48); }
   .layout-container, .site-container { padding-inline: var(--site-container-padding); }
   .site-container { width: 100%; max-width: var(--site-container-max-width); }
-  .company-facts { margin-top: 85px; }
-  .company-fact { padding-block: 16px 26px; }
-  .company-value { margin-bottom: 24px; }
+  .company-fact { padding-block: var(--space-16) 26px; }
+  .company-value { margin-bottom: var(--space-24); }
 }
 /* Reserve room for the Hero controls and share the same desktop content edges. */
 @media (min-width: 1200px) {
-  :root { --site-container-padding: 80px; }
+  :root { --site-container-padding: var(--space-80); }
   .application-gallery.layout-container { padding-inline: var(--site-container-padding); }
 }
 @media (max-width: 767.98px) {
-  .company-facts { margin-top: 40px; }
   /* Keep all three facts together without squeezing the descriptions. */
-  .company-fact { min-width: 0; padding: 16px 8px; border-block-end: 0; }
+  .company-fact { min-width: 0; padding: var(--space-16) var(--space-8); border-block-end: 0; }
   .company-fact + .company-fact { border-inline-start: 1px solid rgba(203,213,225,.35); }
-  .company-value { display: flex; align-items: baseline; justify-content: center; gap: 4px; font-size: clamp(1.75rem,8vw,2.25rem); line-height: 1.2; margin-bottom: 8px; white-space: nowrap; }
+  .company-value { display: flex; align-items: baseline; justify-content: center; gap: var(--space-4); font-size: clamp(1.75rem,8vw,2.25rem); line-height: var(--leading-tight); margin-bottom: var(--space-8); white-space: nowrap; }
   .company-unit { padding-left: 0; font-size: var(--type-helper); }
-  .company-fact .content-heading { font-size: var(--type-helper); line-height: 1.65; text-wrap: balance; }
+  .company-fact .content-heading { font-size: var(--type-helper); line-height: var(--leading-compact-copy); text-wrap: balance; }
   .capability-marker { width: 20px; }
   .capability-marker .material-symbols-outlined { width: 20px; font-size: 20px; }
-}
-@media (max-width: 375px) {
-  .layout-container { padding-inline: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .application-photo { transition: none; }
@@ -206,7 +200,7 @@
 
 /* Footer labels and values share a first-line baseline, including wrapped addresses. */
 .footer-contact-label,
-.footer-contact-value { line-height: 1.6; }
+.footer-contact-value { line-height: var(--leading-footer); }
 .footer-contact-row { min-height: 32px; }
 .footer-contact-label { width: 4rem; }
 .full-footer .footer-contact-value a { display: inline-block; line-height: inherit; }
@@ -217,7 +211,7 @@
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
 .quality-icon { width: 64px; height: 64px; }
 .quality-icon svg { width: 36px; height: 36px; }
-.quality-card p { line-height: 1.8; }
+.quality-card p { line-height: var(--leading-body); }
 @media (max-width: 767.98px) {
   .quality-title-row { margin-bottom: 1rem; }
   .quality-icon { width: 44px; height: 44px; }
@@ -229,8 +223,8 @@
 .equipment-section { isolation: isolate; }
 .equipment-intro, .equipment-display { min-width: 0; }
 .equipment-selection .equip-tab {
-  padding: 14px 20px; color: var(--text-primary); background: var(--surface-white);
-  border: 1px solid var(--border-default); border-radius: 12px;
+  padding: 14px var(--space-20); color: var(--text-primary); background: var(--surface-white);
+  border: 1px solid var(--border-default); border-radius: var(--radius-card);
   transition: border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;
 }
 .equipment-selection .equip-tab.active {
@@ -238,8 +232,8 @@
   box-shadow: inset 4px 0 var(--brand-blue);
 }
 .equipment-selection .equip-tab.active h3 { color: var(--brand-blue); }
-.equipment-selection .content-heading { line-height: 1.35; }
-.equipment-selection .equip-tab p { line-height: 1.65; }
+.equipment-selection .content-heading { line-height: var(--leading-card-title); }
+.equipment-selection .equip-tab p { line-height: var(--leading-compact-copy); }
 .equipment-feature-photo {
   --equipment-image-height: 340px;
   position: relative; height: var(--equipment-image-height); isolation: isolate; overflow: hidden; background: var(--surface-subtle);
@@ -250,7 +244,7 @@
 }
 .equipment-feature-photo .tab-pane.fade { transition: opacity .3s ease-in-out; }
 .equipment-feature-photo img {
-  background: transparent; padding: 28px 24px 16px; object-position: center bottom;
+  background: transparent; padding: var(--space-28) var(--space-24) var(--space-16); object-position: center bottom;
 }
 @media (hover: hover) and (pointer: fine) {
   .equipment-selection .equip-tab:hover {
@@ -263,40 +257,40 @@
 }
 @media (min-width: 768px) {
   .equipment-feature-photo { --equipment-image-height: 400px; }
-  .equipment-feature-photo img { padding: 28px 32px 16px; }
+  .equipment-feature-photo img { padding: var(--space-28) var(--space-32) var(--space-16); }
 }
 /* Desktop stage spans the heading, equipment tabs and contact action. */
 @media (min-width: 992px) {
   .equipment-feature-photo { height: auto; min-height: 500px; }
   .equipment-feature-photo .tab-pane { position: absolute; inset: 0; }
-  .equipment-feature-photo img { padding: 16px 24px; object-position: center; }
+  .equipment-feature-photo img { padding: var(--space-16) var(--space-24); object-position: center; }
   /* Balance the supplied cutouts' transparent margins and floor shadows. */
   .equipment-feature-photo img[src$="equip-250t-cutout.webp"] { padding: 30px 27px 2px 21px; }
-  .equipment-feature-photo img[src$="equip-400t-cutout.webp"] { padding: 13px 48px 19px 0; }
-  .equipment-feature-photo img[src$="equip-500t-cutout.webp"] { padding: 26px 24px 6px; }
+  .equipment-feature-photo img[src$="equip-400t-cutout.webp"] { padding: 13px var(--space-48) 19px 0; }
+  .equipment-feature-photo img[src$="equip-500t-cutout.webp"] { padding: 26px var(--space-24) 6px; }
 }
 @media (max-width: 991.98px) {
   /* Keep the machinery stage size while allowing its mobile-only caption below. */
   .equipment-feature-photo { height: auto; }
   .equipment-feature-photo .tab-pane { height: auto !important; }
   .equipment-feature-photo .tab-pane > picture { height: var(--equipment-image-height) !important; }
-  .equipment-selection .equip-tab { padding: 16px 6px; text-align: center !important; align-items: center; justify-content: center; }
+  .equipment-selection .equip-tab { padding: var(--space-16) 6px; text-align: center !important; align-items: center; justify-content: center; }
   .equipment-selection .equip-tab.active { box-shadow: inset 0 -3px var(--brand-blue); }
   .equipment-selection .content-heading { font-size: 20px; }
   .equipment-cta .layout-pill { width: 100%; }
 }
 @media (max-width: 375px) {
   .equipment-feature-photo { --equipment-image-height: 300px; }
-  .equipment-feature-photo img { padding: 24px 20px 12px; }
+  .equipment-feature-photo img { padding: var(--space-24) var(--space-20) var(--space-12); }
 }
 
 /* Supplied process photographs and two factory panorama viewports. */
-.company-gallery { margin-top: 40px; }
-.company-gallery + .company-facts { margin-top: 48px; }
+.company-gallery { margin-top: var(--space-40); }
+.company-gallery + .company-facts { margin-top: var(--space-48); }
 .factory-view { --bs-aspect-ratio: 37.25%; background: var(--surface-subtle); }
 @media (max-width: 767.98px) {
-  .company-gallery { margin-top: 32px; }
-  .company-gallery + .company-facts { margin-top: 32px; }
+  .company-gallery { margin-top: var(--space-32); }
+  .company-gallery + .company-facts { margin-top: var(--space-32); }
 }
 
 /* Quality paragraphs retain their reading order and shared starting axis. */
@@ -306,8 +300,7 @@
 }
 
 @media (max-width: 991.98px) {
-  .footer-contact-label, .footer-contact-value { line-height: 1.2; }
-  .footer-contact-row { min-height: 32px; }
+  .footer-contact-label, .footer-contact-value { line-height: var(--leading-tight); }
   .footer-contact-value a { min-height: 32px; }
 }
 
@@ -327,13 +320,13 @@
 
 /* Keep preparation first while shortening the mobile contact journey. */
 .contact-preparation-summary { min-height: 44px; cursor: pointer; padding-block: 10px; }
-.contact-preparation-summary:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 4px; border-radius: 4px; }
+.contact-preparation-summary:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 4px; border-radius: var(--radius-inline); }
 @media (min-width: 992px) {
   .contact-preparation-details > ul.contact-panel-content { display: flex !important; }
 }
 
 /* Company details and sitemap follow one shared responsive footer grid. */
-.full-footer .footer-company h2 { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.5; }
+.full-footer .footer-company h2 { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: var(--leading-ui); }
 /* Display the supplied white artwork at its own ratio, framing only transparent margins. */
 .footer-logo-frame { display: block; position: relative; overflow: hidden; width: 320px; max-width: 100%; aspect-ratio: 661 / 77; }
 .footer-logo-image { position: absolute; width: 109.379727%; max-width: none; height: auto; left: -4.689864%; top: -67.532468%; }
@@ -352,11 +345,11 @@
 @media (min-width: 992px) {
   .footer-site-map {
     display: grid; grid-template-columns: repeat(3, max-content);
-    gap: 20px 72px; width: max-content; max-width: 100%;
+    gap: var(--space-20) var(--space-72); width: max-content; max-width: 100%;
     align-self: flex-end; margin: 0;
   }
   .footer-site-map > .col { width: auto; margin: 0; padding: 0; }
-  .full-footer .footer-site-map .footer-nav-link { min-height: 36px; padding-block: 4px; line-height: 1.5; }
+  .full-footer .footer-site-map .footer-nav-link { min-height: 36px; padding-block: var(--space-4); line-height: var(--leading-ui); }
 }
 .full-footer .footer-contact-button { --bs-btn-color: var(--brand-navy); --bs-btn-bg: var(--surface-white); --bs-btn-border-color: var(--surface-white); --bs-btn-hover-color: var(--text-on-dark); --bs-btn-hover-bg: var(--brand-blue); --bs-btn-hover-border-color: var(--brand-blue); --bs-btn-active-color: var(--text-on-dark); --bs-btn-active-bg: var(--brand-blue); --bs-btn-active-border-color: var(--brand-blue); }
 .full-footer a:focus-visible { outline: 2px solid var(--surface-white); outline-offset: 4px; }
