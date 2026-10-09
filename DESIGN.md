@@ -69,4 +69,5 @@ Hero 桌機主按鈕寬度由 `--hero-cta-width: 174px` 管理；桌機案例高
 
 - Topbar、開場動畫、隱私政策頁及企業結構化資料統一使用 `logo-topbar.png`。
 - 藍色 Logo 使用透明遮罩呈現 `--brand-blue`，短版圖形採同一裁切比例；Footer 保留白色完整名稱的 `logo-footer.png`。
+- 開場 Logo 寬度為 `clamp(176px, 18vw, 259px)`，維持上一版可見圖形的大小；圖形比例為 416／77。
 - 舊 `logo.webp` 已無正式頁面引用並移除。

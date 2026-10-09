@@ -168,7 +168,8 @@ body.intro-running { overflow: hidden; }
 .opening-leave .opening-panel-left { transform: translateX(-100%); }
 .opening-leave .opening-panel-right { transform: translateX(100%); }
 .opening-brand { opacity: 0; }
-.loading-logo { width: clamp(245px, 25vw, 360px); aspect-ratio: 416 / 77; overflow: hidden; }
+/* Match the previous opening logo's visible size after cropping transparent margins. */
+.loading-logo { width: clamp(176px, 18vw, 259px); aspect-ratio: 416 / 77; overflow: hidden; }
 .opening-caption { color: var(--text-secondary); font-size: .875rem; letter-spacing: .2em; }
 .loading-progress { height: 2px; width: 96px; background: var(--border-default); }
 .opening-show .opening-brand { animation: opening-logo-in .24s ease both; }
