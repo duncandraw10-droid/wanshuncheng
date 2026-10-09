@@ -1,5 +1,5 @@
 /* Full-page composition. Bootstrap supplies grids, spacing and native components. */
-:root { --layout-space: var(--space-56); --section-heading-gap: var(--space-32); --site-container-max-width: 1440px; --site-container-padding: var(--space-40); }
+:root { --layout-space: var(--space-56); --footer-bottom-space: var(--space-32); --section-heading-gap: var(--space-32); --site-container-max-width: 1440px; --site-container-padding: var(--space-40); }
 .layout-container { max-width: var(--site-container-max-width); padding-inline: var(--mobile-container-padding); }
 .layout-pill { min-height: 54px; padding: 14px var(--space-28); min-width: 190px; }
 .section-title-block, .section-title-row { margin-bottom: var(--section-heading-gap); }
@@ -172,14 +172,14 @@
 .contact-panel .btn:not(.btn-link) { border-radius: var(--radius-pill); }
 .contact-copy-actions .btn { min-height: 44px; }
 .contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
-.full-footer { padding-block: var(--layout-space) calc(var(--layout-space) + env(safe-area-inset-bottom)) !important; }
+.full-footer { padding-block: var(--layout-space) calc(var(--footer-bottom-space) + env(safe-area-inset-bottom)) !important; }
 .full-footer .footer-link { line-height: var(--leading-body); }
 @media (min-width: 768px) {
   .company-fact { border-inline-end: 1px solid rgba(203,213,225,.35); border-block-end: 0; }
   .company-fact:first-child { border-inline-start: 1px solid rgba(203,213,225,.35); }
 }
 @media (min-width: 992px) {
-  :root { --layout-space: var(--space-96); --section-heading-gap: var(--space-48); }
+  :root { --layout-space: var(--space-96); --footer-bottom-space: var(--space-64); --section-heading-gap: var(--space-48); }
   .layout-container, .site-container { padding-inline: var(--site-container-padding); }
   .site-container { width: 100%; max-width: var(--site-container-max-width); }
   .company-fact { padding-block: var(--space-16) 26px; }
