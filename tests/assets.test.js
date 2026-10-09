@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-const root = path.resolve(new URL('..', import.meta.url).pathname);
+const root = fileURLToPath(new URL('..', import.meta.url));
 for (const page of ['index.html', 'privacy.html', '404.html']) {
   test(`${page}: all local references and accessible control targets exist`, () => {
     const html = fs.readFileSync(path.join(root, page), 'utf8');
