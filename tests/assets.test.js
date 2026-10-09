@@ -25,7 +25,7 @@ test('home page keeps usable contact actions, media and formal-domain SEO', () =
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(html.includes('tel:034721912'));
   assert.ok(html.includes('tel:0932271570'));
-  assert.ok(html.includes('mailto:fan6772@gmail.com'));
+  assert.ok(html.includes('mailto:info@wsctw.com'));
   assert.ok(html.includes('https://wsctw.com/'));
   assert.equal([...html.matchAll(/class="[^\"]*\bportfolio-item\b/g)].length, 6);
   assert.equal([...html.matchAll(/class="[^\"]*\bequip-tab\b/g)].length, 3);
@@ -34,4 +34,13 @@ test('home page keeps usable contact actions, media and formal-domain SEO', () =
   assert.ok(html.includes('data-modal-close'));
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(schema.url, 'https://wsctw.com/');
+  assert.equal(schema.email, 'info@wsctw.com');
+  assert.ok(html.includes('data-copy-text="info@wsctw.com"'));
+  for (const page of ['index.html', 'privacy.html']) {
+    const content = fs.readFileSync(path.join(root, page), 'utf8');
+    assert.ok(!content.includes('fan6772@gmail.com'));
+    for (const match of content.matchAll(/href="mailto:([^"?]+)(?:\?[^"\n]*)?"/g)) {
+      assert.equal(match[1], 'info@wsctw.com');
+    }
+  }
 });
