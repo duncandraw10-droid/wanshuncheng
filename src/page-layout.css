@@ -1,9 +1,12 @@
 /* Full-page composition. Bootstrap supplies grids, spacing and native components. */
-:root { --layout-space: 3.5rem; --section-heading-gap: 2rem; --site-container-max-width: 1440px; --site-container-padding: 40px; }
+:root { --layout-space: 56px; --section-heading-gap: 2rem; --site-container-max-width: 1440px; --site-container-padding: 40px; }
 .layout-container { max-width: var(--site-container-max-width); padding-inline: 24px; }
 .layout-pill { min-height: 54px; padding: 14px 28px; min-width: 190px; font-weight: 600; }
 .section-title-block, .section-title-row { margin-bottom: var(--section-heading-gap); }
-.application-section { padding-block: var(--layout-space); isolation: isolate; }
+.application-section, .equipment-section, .company-section,
+.capability-section, .quality-section, .workflow-section,
+.contact-section { padding-block: var(--layout-space); }
+.application-section { isolation: isolate; }
 .application-section::before {
   content: ''; position: absolute; inset: 0; background: var(--border-default);
   opacity: .22; clip-path: polygon(90% 0,100% 0,100% 100%,60% 100%); z-index: -1;
@@ -124,7 +127,7 @@
   .portfolio-slider > .portfolio-item { flex-basis: 100%; width: 100%; }
   .application-caption h3 { min-height: 0; }
 }
-.company-section { padding-block: var(--layout-space); isolation: isolate; }
+.company-section { isolation: isolate; }
 .company-section .section-heading { color: var(--text-on-dark); }
 .company-overview .section-heading { max-width: 300px; }
 .company-overview p { line-height: 1.9; }
@@ -137,7 +140,6 @@
 .company-fact .content-heading { font-size: var(--type-subheading); }
 .company-value { font-size: var(--type-hero); font-weight: 700; line-height: 1.3; margin-bottom: 20px; }
 .company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: 8px; }
-.capability-section { padding-block: clamp(48px, 5vw, 72px); }
 .capability-section .section-title-row { margin-bottom: 28px; }
 .capability-copy { min-width: 0; }
 .capability-row { padding-block: 20px; border-bottom: 1px solid var(--border-default); }
@@ -149,15 +151,10 @@
 @media (min-width: 992px) {
   .capability-row { padding-top: 0; }
 }
-.workflow-section { padding-block: var(--layout-space); }
 .workflow-step { border-top: 1px solid var(--border-default); padding-top: 24px; }
 .workflow-index { font-size: var(--type-subheading); font-weight: 600; line-height: 1.5; }
 .workflow-copy { min-width: 0; }
-.contact-section { padding-block: 56px; }
 .contact-section .section-title-row { margin-bottom: 2rem; }
-@media (min-width: 992px) {
-  .contact-section { padding-block: 72px; }
-}
 .contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: 24px 0; border-top: 1px solid var(--border-default); }
 .contact-panel-content, .contact-panel-footer { margin-inline-start: 32px; }
 .contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
@@ -170,20 +167,19 @@
 .contact-panel .btn:not(.btn-link) { border-radius: 999px; }
 .contact-copy-actions .btn { min-height: 44px; }
 .contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
-.full-footer { padding-block: 48px calc(48px + env(safe-area-inset-bottom)) !important; }
+.full-footer { padding-block: var(--layout-space) calc(var(--layout-space) + env(safe-area-inset-bottom)) !important; }
 .full-footer .footer-link { line-height: 1.8; }
 @media (min-width: 768px) {
   .company-fact { border-inline-end: 1px solid rgba(203,213,225,.35); border-block-end: 0; }
   .company-fact:first-child { border-inline-start: 1px solid rgba(203,213,225,.35); }
 }
 @media (min-width: 992px) {
-  :root { --layout-space: 6rem; --section-heading-gap: 3rem; }
+  :root { --layout-space: 96px; --section-heading-gap: 3rem; }
   .layout-container, .site-container { padding-inline: var(--site-container-padding); }
   .site-container { width: 100%; max-width: var(--site-container-max-width); }
   .company-facts { margin-top: 85px; }
   .company-fact { padding-block: 16px 26px; }
   .company-value { margin-bottom: 24px; }
-  .full-footer { padding-block: 56px calc(56px + env(safe-area-inset-bottom)) !important; }
 }
 /* Reserve room for the Hero controls and share the same desktop content edges. */
 @media (min-width: 1200px) {
@@ -219,7 +215,6 @@
 .full-footer .footer-contact-row:last-child { min-height: 0; }
 
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
-.quality-section { padding-block: var(--layout-space); }
 .quality-icon { width: 64px; height: 64px; }
 .quality-icon svg { width: 36px; height: 36px; }
 .quality-card p { line-height: 1.8; }
@@ -231,7 +226,7 @@
 }
 
 /* Bootstrap equipment pills and their shared machinery display stage. */
-.equipment-section { padding-block: var(--layout-space); isolation: isolate; }
+.equipment-section { isolation: isolate; }
 .equipment-intro, .equipment-display { min-width: 0; }
 .equipment-selection .equip-tab {
   padding: 14px 20px; color: var(--text-primary); background: var(--surface-white);

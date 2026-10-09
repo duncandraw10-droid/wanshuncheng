@@ -83,7 +83,6 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .list-dot { width: 6px; height: 6px; }
 .contact-label { min-width: 4rem; }
 .numbers { font-variant-numeric: tabular-nums; }
-.site-footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom)) !important; }
 .site-footer .footer-link:hover { color: var(--surface-white); }
 .modal-photo { max-height: 80vh; width: 100%; }
 .toast-container { padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
