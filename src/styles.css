@@ -81,6 +81,9 @@
   --space-72: 72px;
   --space-80: 80px;
   --space-96: 96px;
+  --action-gap-primary: var(--space-12);
+  --action-gap-secondary: 6px;
+  --action-gap-compact: var(--space-4);
   --hero-cta-width: 174px;
   --portfolio-card-height: 540px;
   --portfolio-caption-reserve: 168px;
@@ -378,6 +381,9 @@ body { font-size: var(--type-body); font-weight: 400; }
 }
 .cta-primary { font-weight: var(--weight-cta); }
 .cta-secondary { font-weight: var(--weight-secondary-action); }
+.action-gap-primary { gap: var(--action-gap-primary); }
+.action-gap-secondary { gap: var(--action-gap-secondary); }
+.action-gap-compact { gap: var(--action-gap-compact); }
 @media (max-width: 767.98px) {
   .control-size { width: 44px; height: 44px; }
 }

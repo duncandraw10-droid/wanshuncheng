@@ -50,6 +50,14 @@
 
 主要操作使用 `.cta-primary`／`--weight-cta: 600`，包括聯絡詢價、討論產品需求、開始詢價、撥打手機、開啟郵件及 Footer 聯絡我們。次要操作使用 `.cta-secondary`／`--weight-secondary-action: 500`，包括 Hero 次要連結、複製操作與外框按鈕；不要再加會衝突的 `fw-*` 類別。
 
+文字與箭頭間距使用以下共用 Token 與 `.action-gap-*` 類別，文字與箭頭整組置中；手機 Hero 主要 CTA 繼續只顯示文字。純圖示按鈕及電話、Email 等非箭頭圖示操作保留原設定。
+
+| 箭頭間距 Token | 值 | 使用情境 |
+| --- | --- | --- |
+| `--action-gap-primary` | 12px | Hero 詢價、討論產品需求、開始詢價、Footer 聯絡我們 |
+| `--action-gap-secondary` | 6px | Hero 次要操作、手機查看承製案例 |
+| `--action-gap-compact` | 4px | Topbar／手機選單詢價、案例查看介紹 |
+
 | 行高 Token | 值 | 使用情境 |
 | --- | --- | --- |
 | `--leading-solid` | 1 | 圖示、Hero 按鈕文字群組 |
