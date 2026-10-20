@@ -3,11 +3,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { renderSharedLayout } from '../build/shared-layout.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-for (const page of ['index.html', 'privacy.html', '404.html']) {
+const subpages = ['smc-bmc-molding.html', 'mold-transfer.html', 'cases/smc-protective-box.html', 'cases/bmc-tabletop.html'];
+const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+function readPage(page) {
+  return renderSharedLayout(fs.readFileSync(path.join(root, page), 'utf8'), homepage, page.startsWith('cases/') ? '../' : './');
+}
+for (const page of ['index.html', 'privacy.html', '404.html', ...subpages]) {
   test(`${page}: all local references and accessible control targets exist`, () => {
-    const html = fs.readFileSync(path.join(root, page), 'utf8');
+    const html = readPage(page);
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
     assert.equal(ids.length, new Set(ids).size, 'duplicate element IDs');
     for (const match of html.matchAll(/\baria-controls="([^"]+)"/g)) {
@@ -15,9 +21,16 @@ for (const page of ['index.html', 'privacy.html', '404.html']) {
     }
     for (const match of html.matchAll(/\b(?:src|srcset|href|data-photo|data-photo-webp|data-img-webp)="([^"]+)"/g)) {
       const url = match[1];
-      if (/^(?:https?:|data:|mailto:|tel:|#)/.test(url) || url === './' || url.startsWith('./#')) continue;
-      const relative = url.replace(/^\.\//, '').replace(/^\//, '');
-      assert.ok(fs.existsSync(path.join(root, relative)) || fs.existsSync(path.join(root, 'public', relative)), `missing local asset: ${url}`);
+      if (/^(?:https?:|data:|mailto:|tel:)/.test(url) || !url) continue;
+      const target = new URL(url, `https://wsctw.com/${page}`);
+      const relative = decodeURIComponent(target.pathname).replace(/^\//, '') || 'index.html';
+      const sourcePath = path.join(root, relative);
+      assert.ok(fs.existsSync(sourcePath) || fs.existsSync(path.join(root, 'public', relative)), `missing local asset: ${url}`);
+      if (target.hash) {
+        const targetPage = relative.endsWith('/') ? relative + 'index.html' : relative;
+        const content = readPage(targetPage);
+        assert.ok(content.includes(`id="${target.hash.slice(1)}"`), `missing anchor: ${url}`);
+      }
     }
   });
 }
@@ -45,4 +58,43 @@ test('home page keeps usable contact actions, media and formal-domain SEO', () =
       assert.equal(match[1], 'info@wsctw.com');
     }
   }
+});
+
+
+test('service and case pages expose unique SEO, meaningful content and linked inquiry paths', () => {
+  const titles = new Set();
+  for (const page of subpages) {
+    const html = readPage(page);
+    assert.equal([...html.matchAll(/<h1\b/g)].length, 1, page);
+    assert.equal([...html.matchAll(/<link rel="canonical"/g)].length, 1, page);
+    assert.ok(html.includes(`href="https://wsctw.com/${page}"`));
+    assert.ok(html.includes(`property="og:url" content="https://wsctw.com/${page}"`));
+    const title = html.match(/<title>(.*?)<\/title>/)[1];
+    assert.ok(!titles.has(title)); titles.add(title);
+    const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+    assert.ok(graph.some(item => item['@type'] === 'BreadcrumbList' && item.itemListElement.at(-1).item === `https://wsctw.com/${page}`));
+    assert.ok(graph.some(item => item['@type'] === 'Organization' && item.email === 'info@wsctw.com'));
+    assert.ok(html.includes('id="contact"'));
+    assert.ok(html.includes('href="tel:034721912"'));
+    assert.ok(html.includes('href="mailto:info@wsctw.com"'));
+    assert.ok(!html.includes('<!-- shared:'));
+    assert.ok(!html.includes('loadingArea'));
+    assert.ok(!html.includes('<form'));
+    const header = html.match(/<header\b[\s\S]*?<\/header>/)[0];
+    const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
+    for (const [fragment, original] of [[header, homepage.match(/<header\b[\s\S]*?<\/header>/)[0]], [footer, homepage.match(/<footer\b[\s\S]*?<\/footer>/)[0]]]) {
+      const normalized = fragment.replace(/(?:\.\/|\.\.\/)#/g, '#').replace(/\.\.\//g, './');
+      assert.equal(normalized, original, `global chrome drift in ${page}`);
+    }
+    if (!page.startsWith('cases/')) {
+      assert.ok([...html.matchAll(/<details class="subpage-faq"/g)].length >= 4);
+      assert.ok(graph.some(item => item['@type'] === 'Service'));
+    } else {
+      assert.ok(html.includes('href="../smc-bmc-molding.html"'));
+      assert.ok(html.includes('href="../mold-transfer.html"'));
+    }
+    assert.ok(fs.readFileSync(path.join(root, 'public/sitemap.xml'), 'utf8').includes(`https://wsctw.com/${page}`));
+    assert.ok(fs.readFileSync(path.join(root, 'vite.config.js'), 'utf8').includes(`./${page}`));
+  }
+  for (const page of subpages) assert.ok(homepage.includes(`href="./${page}"`), `missing homepage entry: ${page}`);
 });

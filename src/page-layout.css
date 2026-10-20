@@ -367,3 +367,12 @@
 @media (max-width: 991.98px) {
   .footer-navigation { margin-top: 2rem; }
 }
+
+/* Links to the two detailed case pages live inside the existing introductions. */
+.application-case-link { min-height: 44px; color: var(--text-on-dark); text-decoration: underline; text-underline-offset: 4px; font-size: var(--type-helper); }
+.application-case-link:hover { color: var(--text-on-dark); }
+.application-case-link:focus-visible { outline-color: var(--text-on-dark); }
+@media (max-width: 991.98px) {
+  .application-case-link, .application-case-link:hover { color: var(--brand-blue); }
+  .application-case-link:focus-visible { outline-color: var(--brand-blue); }
+}

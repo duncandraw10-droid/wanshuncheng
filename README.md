@@ -20,6 +20,11 @@ npm run build
 | 檔案 | 用途 |
 | --- | --- |
 | `index.html` | 首頁資訊、SEO／分享標籤、企業結構化資料與 GA4 設定 |
+| `smc-bmc-molding.html`、`mold-transfer.html` | 模壓成型與模具移轉服務、採購 FAQ |
+| `cases/*.html` | 防護箱體與桌面板案例詳情 |
+| `build/shared-layout.js` | Vite 在開發／建置時，從首頁取得共用 Topbar、Footer 並調整跨頁路徑 |
+| `src/subpages.css`、`src/subpages.js` | 子頁版型、手機導覽與聯絡事件，沿用共用設計 Token |
+| `public/sitemap.xml`、`public/robots.txt` | 正式網站頁面索引入口 |
 | `privacy.html` | 隱私說明 |
 | `404.html` | 找不到頁面的返回入口 |
 | `src/styles.css` | 品牌色彩、字級、按鈕、Logo 與 Hero 動畫 |
@@ -65,3 +70,11 @@ GA4：`G-B4193HZQEP`。僅正式網域及原 GitHub Pages 網域會啟用設定�
 詢價透過 `tel:`、`mailto:` 或複製資料；目前沒有站內表單送出服務。請勿加入無法收件的送出按鈕或未確認的設備規格。
 
 圖片更新請參閱 `IMAGE_REPLACEMENT.md`；視覺規範請參閱 `DESIGN.md`。
+
+## 服務與案例子頁
+
+四頁主文均為靜態 HTML，建置時即完整輸出，不依賴瀏覽器載入才出現。每頁有獨立 Title、Description、Canonical、OG 分享設定、企業與麵包屑結構化資料；服務頁另有 Service 資料。FAQ 使用原生 details／summary，支援鍵盤與無 JavaScript 閱讀。
+
+子頁中的 `<!-- shared:header -->` 與 `<!-- shared:footer -->` 由 Vite 在資產處理前展開，來源為 `index.html` 的同名元素，因此修改全站導覽、Logo 或 Footer 資料時只需修改首頁。子頁的首頁區塊連結導回首頁；詢價按鈕則前往當頁電話／Email 區。子頁不播放開場動畫，也不啟動首頁輪播。
+
+新增頁面時，須同時加入 Vite 多頁入口、sitemap 與連結檢查。案例只使用既有產品照片與已確認資訊；產品名稱不代表公開特定測試等級或認證。

@@ -65,12 +65,14 @@ test('advances one card, wraps and supports manual controls without a play/pause
 
 test('pauses for hover, drag, expanded text, image zoom and keyboard reading', () => {
   const h = setup(); h.visible(true);
+  const details = h.card.children['.application-details'];
+  assert.equal(details.inert, true);
   h.gallery.emit('pointerenter', { pointerType: 'mouse' }); assert.equal(h.timers.size, 0);
   h.gallery.emit('pointerleave', { pointerType: 'mouse' }); assert.equal(h.timers.size, 1);
   h.gallery.emit('pointerdown'); assert.equal(h.timers.size, 0);
   h.doc.emit('pointercancel'); assert.equal(h.timers.size, 1);
-  h.toggle.emit('click'); assert.equal(h.timers.size, 0); assert.equal(h.toggle.attributes['aria-expanded'], 'true');
-  h.toggle.emit('click'); assert.equal(h.timers.size, 1); assert.equal(h.toggle.attributes['aria-expanded'], 'false');
+  h.toggle.emit('click'); assert.equal(h.timers.size, 0); assert.equal(h.toggle.attributes['aria-expanded'], 'true'); assert.equal(details.inert, false);
+  h.toggle.emit('click'); assert.equal(h.timers.size, 1); assert.equal(h.toggle.attributes['aria-expanded'], 'false'); assert.equal(details.inert, true);
   h.modal.emit('show.bs.modal'); assert.equal(h.timers.size, 0);
   h.modal.emit('hidden.bs.modal'); assert.equal(h.timers.size, 1);
   const focus = new Element(); focus.insideGallery = true; focus.focusVisible = true; h.doc.activeElement = focus;

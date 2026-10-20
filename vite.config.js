@@ -1,9 +1,21 @@
 import { defineConfig } from 'vite'
 import { fileURLToPath } from 'node:url'
+import { readFileSync } from 'node:fs'
+import { renderSharedLayout } from './build/shared-layout.js'
 
 export default defineConfig({
   base: './',
   plugins: [{
+    name: 'shared-site-layout',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, context) {
+        if (!html.includes('<!-- shared:')) return html
+        const homepage = readFileSync(new URL('./index.html', import.meta.url), 'utf8')
+        return renderSharedLayout(html, homepage, context.path.startsWith('/cases/') ? '../' : './')
+      },
+    },
+  }, {
     name: 'preserve-module-script-defer',
     apply: 'build',
     transformIndexHtml: {
@@ -22,6 +34,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        molding: fileURLToPath(new URL('./smc-bmc-molding.html', import.meta.url)),
+        transfer: fileURLToPath(new URL('./mold-transfer.html', import.meta.url)),
+        box: fileURLToPath(new URL('./cases/smc-protective-box.html', import.meta.url)),
+        tabletop: fileURLToPath(new URL('./cases/bmc-tabletop.html', import.meta.url)),
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         notFound: fileURLToPath(new URL('./404.html', import.meta.url)),
         privacy: fileURLToPath(new URL('./privacy.html', import.meta.url)),

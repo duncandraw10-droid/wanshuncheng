@@ -13,9 +13,12 @@ export function initPortfolio({ motion, modalElement }) {
     const label = toggle?.querySelector('.application-detail-label');
     const title = card.querySelector('h3')?.textContent.trim();
     if (!toggle || !details) return;
+    // Detail-page links must not receive focus while their introduction is collapsed.
+    details.inert = true;
     const state = { card, pinned: false, setExpanded(open) {
       if (card.classList.contains('is-expanded') === open) return;
       card.classList.toggle('is-expanded', open);
+      details.inert = !open;
       toggle.setAttribute('aria-expanded', String(open));
       details.setAttribute('aria-hidden', String(!open));
       const action = open ? '收起介紹' : '查看介紹';
