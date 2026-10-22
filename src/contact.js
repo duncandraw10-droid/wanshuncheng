@@ -64,7 +64,7 @@ export function initContact() {
   function contactLocation(element) {
     if (element.closest('footer')) return 'footer';
     if (element.closest('header')) return 'topbar';
-    return element.closest('section')?.id || 'other';
+    return element.closest('[data-contact-location]')?.dataset.contactLocation || element.closest('section')?.id || 'other';
   }
   document.addEventListener('click', event => {
     const anchor = event.target.closest('a[href]');
@@ -77,8 +77,11 @@ export function initContact() {
         contact_location,
         contact_action: 'open',
       });
-    } else if (href === '#contact') {
-      trackContact('inquiry_cta_click', { contact_location });
+    } else {
+      let target;
+      try { target = new URL(href, location.href); } catch { return; }
+      const siteLink = target.origin === location.origin;
+      if (siteLink && target.hash === '#contact') trackContact('inquiry_cta_click', { contact_location });
     }
   });
 }

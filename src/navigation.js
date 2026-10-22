@@ -150,6 +150,7 @@ export function initNavigation(motion) {
 
     if (currentSection === activeSection) return;
     activeSection = currentSection;
+    document.querySelector('.service-menu-trigger')?.classList.toggle('active', currentSection === 'capabilities');
 
     navLinks.forEach(link => {
       link.classList.remove('active');

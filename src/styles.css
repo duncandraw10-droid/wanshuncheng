@@ -392,3 +392,31 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
   }
 }
 .privacy-brand-logo { display: block; width: 200px; max-width: 100%; }
+
+/* Brand-consistent outline controls and global keyboard shortcut. */
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-blue); --bs-btn-border-color: var(--brand-blue);
+  --bs-btn-hover-color: var(--text-on-dark); --bs-btn-hover-bg: var(--brand-navy); --bs-btn-hover-border-color: var(--brand-navy);
+  --bs-btn-active-color: var(--text-on-dark); --bs-btn-active-bg: var(--brand-navy); --bs-btn-active-border-color: var(--brand-navy);
+  --bs-btn-disabled-color: var(--brand-blue); --bs-btn-disabled-bg: transparent; --bs-btn-disabled-border-color: var(--brand-blue);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+.site-skip, .subpage-skip { position: fixed; z-index: 2200; top: 8px; left: 8px; padding: 8px 16px; background: var(--surface-white); transform: translateY(-160%); }
+.site-skip:focus, .subpage-skip:focus { transform: translateY(0); }
+#main-content { scroll-margin-top: calc(var(--site-header-height) + 16px); }
+.service-menu-trigger { border: 0; background: transparent; }
+.service-menu-trigger.active { color: var(--brand-blue); }
+.service-navigation .dropdown-menu { padding: var(--space-8); border-color: var(--border-default); border-radius: var(--radius-card); box-shadow: 0 8px 24px rgba(23,43,70,.1); }
+.service-navigation .dropdown-item { min-height: 44px; padding: 8px 12px; border-radius: var(--radius-inline); color: var(--text-primary); }
+.service-navigation .dropdown-item:hover, .service-navigation .dropdown-item:focus { color: var(--brand-blue); background: var(--surface-subtle); }
+.service-navigation .dropdown-item.active { color: var(--text-on-dark); background: var(--brand-blue); }
+.mobile-service-navigation summary { cursor: pointer; list-style: none; }
+.mobile-service-navigation summary::-webkit-details-marker { display: none; }
+.mobile-service-navigation summary::after { content: '+'; float: right; margin-right: 8px; }
+.mobile-service-navigation[open] summary::after { content: '−'; }
+@media (min-width: 992px) and (max-width: 1199.98px) { .site-header nav { gap: 16px !important; } }
+
+@media (max-width: 374.98px) {
+  .privacy-header .privacy-brand-logo { width: 140px; }
+  .privacy-header .btn { padding-inline: var(--space-16) !important; }
+}

@@ -90,3 +90,25 @@ test('respects reduced motion, background tabs, offscreen state and touch breakp
   h.gallery.emit('pointerenter', { pointerType: 'mouse' }); assert.equal(h.timers.size, 1);
   h.visible(false); assert.equal(h.timers.size, 0);
 });
+
+test('manual arrows and keyboard navigation pause autoplay for the rest of the page visit', () => {
+  for (const action of [h => h.next.emit('click'), h => h.slider.emit('keydown', {target: h.slider, key: 'End', preventDefault() {}})]) {
+    const h = setup(); h.visible(true); action(h); h.flush();
+    assert.equal(h.timers.size, 0);
+    h.visible(false); h.visible(true); h.doc.emit('visibilitychange');
+    assert.equal(h.timers.size, 0);
+  }
+});
+
+test('horizontal touch or trackpad navigation pauses, while vertical page gestures do not', () => {
+  const h = setup(); h.visible(true);
+  h.gallery.emit('pointerdown', {clientX: 100, clientY: 100, pointerId: 1});
+  h.gallery.emit('pointermove', {clientX: 103, clientY: 130, pointerId: 1});
+  h.doc.emit('pointerup'); assert.equal(h.timers.size, 1);
+  h.gallery.emit('pointerdown', {clientX: 100, clientY: 100, pointerId: 2});
+  h.gallery.emit('pointermove', {clientX: 60, clientY: 104, pointerId: 2});
+  h.doc.emit('pointerup'); assert.equal(h.timers.size, 0);
+  h.visible(false); h.visible(true); assert.equal(h.timers.size, 0);
+  const wheel = setup(); wheel.visible(true);
+  wheel.slider.emit('wheel', {deltaX: 30, deltaY: 0}); assert.equal(wheel.timers.size, 0);
+});

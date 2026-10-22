@@ -1,7 +1,5 @@
 /* Subpages extend the same foundations and spacing tokens as the homepage. */
 .subpage-main { padding-top: var(--site-header-height); }
-.subpage-skip { position: fixed; z-index: 1100; top: 8px; left: 8px; padding: 8px 16px; background: var(--surface-white); transform: translateY(-150%); }
-.subpage-skip:focus { transform: translateY(0); }
 .subpage-section { padding-block: var(--layout-space); }
 .subpage-intro { padding-top: var(--space-24); }
 .subpage-breadcrumb { font-size: var(--type-helper); margin-bottom: var(--space-32); }

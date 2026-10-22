@@ -20,7 +20,8 @@ for (const page of ['index.html', 'privacy.html', '404.html', ...subpages]) {
       for (const id of match[1].split(/\s+/)) assert.ok(ids.includes(id), `missing control target: ${id}`);
     }
     for (const match of html.matchAll(/\b(?:src|srcset|href|data-photo|data-photo-webp|data-img-webp)="([^"]+)"/g)) {
-      const url = match[1];
+      const urls = match[0].startsWith('srcset=') ? match[1].split(',').map(candidate => candidate.trim().split(/\s+/)[0]) : [match[1]];
+      for (const url of urls) {
       if (/^(?:https?:|data:|mailto:|tel:)/.test(url) || !url) continue;
       const target = new URL(url, `https://wsctw.com/${page}`);
       const relative = decodeURIComponent(target.pathname).replace(/^\//, '') || 'index.html';
@@ -30,6 +31,7 @@ for (const page of ['index.html', 'privacy.html', '404.html', ...subpages]) {
         const targetPage = relative.endsWith('/') ? relative + 'index.html' : relative;
         const content = readPage(targetPage);
         assert.ok(content.includes(`id="${target.hash.slice(1)}"`), `missing anchor: ${url}`);
+      }
       }
     }
   });
@@ -97,4 +99,17 @@ test('service and case pages expose unique SEO, meaningful content and linked in
     assert.ok(fs.readFileSync(path.join(root, 'vite.config.js'), 'utf8').includes(`./${page}`));
   }
   for (const page of subpages) assert.ok(homepage.includes(`href="./${page}"`), `missing homepage entry: ${page}`);
+});
+
+test('service navigation and case links are directly available without expanding case introductions', () => {
+  const html = readPage('index.html');
+  assert.ok(html.includes('class="site-skip"'));
+  assert.ok(html.includes('data-bs-toggle="dropdown"'));
+  const header = html.match(/<header[\s\S]*?<\/header>/)[0];
+  for (const target of ['./smc-bmc-molding.html', './mold-transfer.html']) assert.ok(header.includes(`href="${target}"`));
+  for (const id of [1, 3]) {
+    const details = html.match(new RegExp(`<div id="portfolio-details-${id}"[\\s\\S]*?</div>\\s*</div>`))[0];
+    assert.ok(!details.includes('application-case-link'));
+  }
+  assert.ok(!html.includes('更能符合軌道交通嚴苛的抗壓與安規標準'));
 });

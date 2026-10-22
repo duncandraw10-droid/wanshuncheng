@@ -75,13 +75,16 @@ export function initPortfolio({ motion, modalElement }) {
     let hovered = false;
     let pointerDown = false;
     let photoOpen = false;
+    let manuallyPaused = false;
+    let gestureStart = null;
+    function pauseAfterManualNavigation() { manuallyPaused = true; schedulePortfolioAutoplay(); }
 
     function schedulePortfolioAutoplay() {
       clearTimeout(autoplayTimer);
       autoplayTimer = 0;
       const focusInside = gallery.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
       const expanded = portfolioStates.some(state => state.card.classList.contains('is-expanded'));
-      if (!inView || document.hidden || motion.matches || hovered || pointerDown || focusInside || expanded || photoOpen) return;
+      if (manuallyPaused || !inView || document.hidden || motion.matches || hovered || pointerDown || focusInside || expanded || photoOpen) return;
       if (portfolioSlider.scrollWidth <= portfolioSlider.clientWidth + 2) return;
       autoplayTimer = window.setTimeout(() => {
         const range = portfolioSlider.scrollWidth - portfolioSlider.clientWidth;
@@ -97,10 +100,23 @@ export function initPortfolio({ motion, modalElement }) {
     gallery.addEventListener('pointerleave', event => {
       if (event.pointerType === 'mouse') { hovered = false; schedulePortfolioAutoplay(); }
     });
-    gallery.addEventListener('pointerdown', () => { pointerDown = true; schedulePortfolioAutoplay(); });
+    gallery.addEventListener('pointerdown', event => {
+      pointerDown = true;
+      gestureStart = typeof event.clientX === 'number' ? { x: event.clientX, y: event.clientY, pointerId: event.pointerId } : null;
+      schedulePortfolioAutoplay();
+    });
+    gallery.addEventListener('pointermove', event => {
+      if (!gestureStart || event.pointerId !== gestureStart.pointerId) return;
+      const dx = Math.abs(event.clientX - gestureStart.x), dy = Math.abs(event.clientY - gestureStart.y);
+      if (dx > 12 && dx > dy) pauseAfterManualNavigation();
+    });
+    portfolioSlider.addEventListener('wheel', event => {
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY) && Math.abs(event.deltaX) > 2) pauseAfterManualNavigation();
+    }, { passive: true });
     const releasePointer = () => {
       if (!pointerDown) return;
       pointerDown = false;
+      gestureStart = null;
       schedulePortfolioAutoplay();
     };
     document.addEventListener('pointerup', releasePointer);
@@ -137,11 +153,12 @@ export function initPortfolio({ motion, modalElement }) {
       closePortfolioDetails();
       portfolioSlider.scrollBy({ left: direction * step, behavior: motion.matches ? 'instant' : 'smooth' });
     }
-    portfolioPrev.addEventListener('click', () => movePortfolio(-1));
-    portfolioNext.addEventListener('click', () => movePortfolio(1));
+    portfolioPrev.addEventListener('click', () => { pauseAfterManualNavigation(); movePortfolio(-1); });
+    portfolioNext.addEventListener('click', () => { pauseAfterManualNavigation(); movePortfolio(1); });
     portfolioSlider.addEventListener('keydown', event => {
       if (event.target !== portfolioSlider || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
       event.preventDefault();
+      pauseAfterManualNavigation();
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') movePortfolio(event.key === 'ArrowLeft' ? -1 : 1);
       else {
         closePortfolioDetails();

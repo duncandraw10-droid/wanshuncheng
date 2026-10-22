@@ -57,6 +57,7 @@
   <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css"><link rel="stylesheet" href="./src/styles.css">
   <link rel="stylesheet" href="./src/page-layout.css"></head>
 <body class="bg-white text-body">
+<a href="#main-content" class="site-skip">跳至主要內容</a>
 
 <!-- Opening: brand reveal, then split curtains -->
 <div id="loadingArea" class="opening-screen position-fixed top-0 bottom-0 start-0 end-0 d-none align-items-center justify-content-center" role="status" aria-label="萬順承網站開場動畫">
@@ -85,7 +86,14 @@
       <a href="#applications" class="nav-link fw-medium rounded py-2">承製案例</a>
       <a href="#equipment" class="nav-link fw-medium rounded py-2">設備能力</a>
       <a href="#about" class="nav-link fw-medium rounded py-2">關於萬順承</a>
-      <a href="#capabilities" class="nav-link fw-medium rounded py-2">製造能力</a>
+      <div class="dropdown service-navigation">
+        <button class="nav-link service-menu-trigger dropdown-toggle rounded py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">製造能力</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a href="#capabilities" class="dropdown-item">製造能力總覽</a></li>
+          <li><a href="./smc-bmc-molding.html" class="dropdown-item">SMC／BMC 模壓成型</a></li>
+          <li><a href="./mold-transfer.html" class="dropdown-item">現有模具移轉</a></li>
+        </ul>
+      </div>
       <a href="#workflow" class="nav-link fw-medium rounded py-2">合作流程</a>
       <a href="#contact" class="btn btn-primary d-inline-flex align-items-center justify-content-center action-gap-compact cta-primary">
         聯絡詢價 <span class="material-symbols-outlined fs-6" aria-hidden="true">arrow_forward</span>
@@ -102,7 +110,14 @@
     <a href="#applications" class="mobile-nav-link nav-link py-2">承製案例</a>
     <a href="#equipment" class="mobile-nav-link nav-link py-2">設備能力</a>
     <a href="#about" class="mobile-nav-link nav-link py-2">關於萬順承</a>
-    <a href="#capabilities" class="mobile-nav-link nav-link py-2">製造能力</a>
+    <details class="mobile-service-navigation">
+      <summary class="nav-link py-2">製造能力</summary>
+      <div class="d-flex flex-column ps-3">
+        <a href="#capabilities" class="mobile-nav-link nav-link py-2">製造能力總覽</a>
+        <a href="./smc-bmc-molding.html" class="mobile-nav-link nav-link py-2">SMC／BMC 模壓成型</a>
+        <a href="./mold-transfer.html" class="mobile-nav-link nav-link py-2">現有模具移轉</a>
+      </div>
+    </details>
     <a href="#workflow" class="mobile-nav-link nav-link py-2">合作流程</a>
     <a href="#contact" class="mobile-nav-link btn btn-primary d-inline-flex align-items-center justify-content-center action-gap-compact mt-2 cta-primary">
       聯絡詢價 <span class="material-symbols-outlined fs-5" aria-hidden="true">arrow_forward</span>
@@ -110,14 +125,14 @@
   </div></div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
   
   <section id="hero" class="position-relative overflow-hidden bg-primary text-white" aria-label="萬順承製造服務">
     <div id="hero-carousel" class="carousel slide carousel-fade h-100" role="region" aria-roledescription="輪播" aria-label="製造服務主視覺">
       <div class="carousel-inner h-100">
         <div class="carousel-item active h-100" role="group" aria-roledescription="投影片" aria-label="1 / 3：SMC／BMC 模壓成型代工">
           <div class="hero-image position-absolute top-0 bottom-0 start-0 end-0">
-            <img src="./images/forming-process.webp" class="w-100 h-100 object-fit-cover hero-forming-photo" fetchpriority="high" decoding="async" alt="熱壓模具與模壓成型作業">
+            <img srcset="./images/responsive/forming-process-480.webp 480w, ./images/responsive/forming-process-960.webp 960w, ./images/responsive/forming-process-1440.webp 1440w, ./images/forming-process.webp 1672w" sizes="100vw" src="./images/forming-process.webp" class="w-100 h-100 object-fit-cover hero-forming-photo" fetchpriority="high" decoding="async" alt="熱壓模具與模壓成型作業">
           </div>
           <div class="hero-copy position-relative h-100"><div class="container site-container h-100"><div class="row h-100"><div class="col-12 col-xl-6 hero-text">
             <p class="hero-kicker hero-animate">35 年製程經驗・桃園楊梅</p>
@@ -130,7 +145,7 @@
           </div></div></div></div>
         </div>
         <div class="carousel-item h-100" role="group" aria-roledescription="投影片" aria-label="2 / 3：模具移轉與量產">
-          <div class="hero-image position-absolute top-0 bottom-0 start-0 end-0"><img src="./images/quality-measurement.webp" class="w-100 h-100 object-fit-cover hero-measurement-photo" loading="lazy" decoding="async" alt="以卡尺量測模壓產品尺寸"></div>
+          <div class="hero-image position-absolute top-0 bottom-0 start-0 end-0"><img srcset="./images/responsive/quality-measurement-480.webp 480w, ./images/responsive/quality-measurement-960.webp 960w, ./images/quality-measurement.webp 1376w" sizes="100vw" src="./images/quality-measurement.webp" class="w-100 h-100 object-fit-cover hero-measurement-photo" loading="lazy" decoding="async" alt="以卡尺量測模壓產品尺寸"></div>
           <div class="hero-copy position-relative h-100"><div class="container site-container h-100"><div class="row h-100"><div class="col-12 col-xl-6 hero-text">
             <p class="hero-kicker hero-animate">從評估、試作到量產交付</p>
             <h2 class="hero-title fw-bold text-white hero-animate"><span class="d-block">現有模具移轉</span>試作與穩定量產</h2>
@@ -144,8 +159,8 @@
         <div class="carousel-item h-100" role="group" aria-roledescription="投影片" aria-label="3 / 3：熱壓成型設備">
           <div class="hero-image position-absolute top-0 bottom-0 start-0 end-0">
             <picture class="d-block w-100 h-100">
-              <source srcset="./images/factory-classic-57373c05.webp" type="image/webp">
-              <img src="./images/factory-classic-57373c05.webp" width="1980" height="1105" class="w-100 h-100 object-fit-cover hero-factory-photo" loading="lazy" decoding="async" alt="廠內熱壓成型設備與生產空間">
+              <source srcset="./images/responsive/factory-classic-57373c05-480.webp 480w, ./images/responsive/factory-classic-57373c05-960.webp 960w, ./images/responsive/factory-classic-57373c05-1440.webp 1440w, ./images/factory-classic-57373c05.webp 1980w" sizes="100vw" type="image/webp">
+              <img srcset="./images/responsive/factory-classic-57373c05-480.webp 480w, ./images/responsive/factory-classic-57373c05-960.webp 960w, ./images/responsive/factory-classic-57373c05-1440.webp 1440w, ./images/factory-classic-57373c05.webp 1980w" sizes="100vw" src="./images/factory-classic-57373c05.webp" width="1980" height="1105" class="w-100 h-100 object-fit-cover hero-factory-photo" loading="lazy" decoding="async" alt="廠內熱壓成型設備與生產空間">
             </picture>
           </div>
           <div class="hero-copy position-relative h-100"><div class="container site-container h-100"><div class="row h-100"><div class="col-12 col-xl-6 hero-text">
@@ -192,8 +207,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-box.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-box.webp" alt="玻璃纖維強化複合防護箱" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-box-480.webp 480w, ./images/responsive/portfolio-box-960.webp 960w, ./images/portfolio-box.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-box-480.webp 480w, ./images/responsive/portfolio-box-960.webp 960w, ./images/portfolio-box.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-box.webp" alt="玻璃纖維強化複合防護箱" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-box.webp" data-photo-webp="./images/portfolio-box.webp" data-photo-title="模組化高耐久防護箱體" aria-label="放大檢視模組化高耐久防護箱體圖片" aria-describedby="portfolio-material-1 portfolio-description-1">
@@ -210,10 +225,10 @@
           </div>
           <div id="portfolio-details-1" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-1" class="application-description body-copy text-muted-on-dark mb-0">採用一體成型技術，具備極佳的密閉性、防潮與防火阻燃特性。專為需要長期保存與系統化堆疊的空間設計，提供堅固且能長久維持結構穩定的防護解決方案。</p>
-              <a href="./cases/smc-protective-box.html" class="application-case-link d-inline-flex align-items-center action-gap-secondary pe-auto mt-2">閱讀完整案例<span aria-hidden="true">→</span></a>
+              <p id="portfolio-description-1" class="application-description body-copy text-muted-on-dark mb-0">以 SMC 模壓成型製作立體箱體，依用途評估結構、接合與堆疊需求。防潮、密閉或阻燃要求，需依指定材料、產品設計與檢驗規格確認。</p>
             </div>
           </div>
+          <a href="./cases/smc-protective-box.html" class="application-case-link d-inline-flex align-items-center action-gap-secondary pe-auto mt-2">閱讀完整案例<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </article>
@@ -221,8 +236,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-chair.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-chair.webp" alt="SMC 模壓公共座椅" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-chair-480.webp 480w, ./images/responsive/portfolio-chair-960.webp 960w, ./images/portfolio-chair.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-chair-480.webp 480w, ./images/responsive/portfolio-chair-960.webp 960w, ./images/portfolio-chair.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-chair.webp" alt="SMC 模壓公共座椅" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-chair.webp" data-photo-webp="./images/portfolio-chair.webp" data-photo-title="高耐候戶外公共座椅" aria-label="放大檢視高耐候戶外公共座椅圖片" aria-describedby="portfolio-material-2 portfolio-description-2">
@@ -239,7 +254,7 @@
           </div>
           <div id="portfolio-details-2" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-2" class="application-description body-copy text-muted-on-dark mb-0">針對戶外日曬雨淋環境開發，具備抗紫外線、不易脆化與防潮損等優勢。結構堅固且表面易於清潔，能大幅降低公共設施的長期維護成本。</p>
+              <p id="portfolio-description-2" class="application-description body-copy text-muted-on-dark mb-0">公共座椅的造型、表面與安裝方式，依使用場所及清潔維護需求評估。戶外耐候、抗紫外線與承載要求，需依材料及檢驗規格確認。</p>
             </div>
           </div>
         </div>
@@ -249,8 +264,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-panel.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-panel.webp" alt="抗污耐磨高剛性桌面板" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-panel-480.webp 480w, ./images/responsive/portfolio-panel-960.webp 960w, ./images/portfolio-panel.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-panel-480.webp 480w, ./images/responsive/portfolio-panel-960.webp 960w, ./images/portfolio-panel.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-panel.webp" alt="抗污耐磨高剛性桌面板" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-panel.webp" data-photo-webp="./images/portfolio-panel.webp" data-photo-title="抗污耐磨高剛性桌面板" aria-label="放大檢視抗污耐磨高剛性桌面板圖片" aria-describedby="portfolio-material-3 portfolio-description-3">
@@ -267,10 +282,10 @@
           </div>
           <div id="portfolio-details-3" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-3" class="application-description body-copy text-muted-on-dark mb-0">充分發揮 BMC 材質的高表面硬度與絕佳的尺寸安定性。具備耐高溫、抗污且不易變形的物理特性，非常適合需要高承載或頻繁清潔的特殊桌面應用情境。</p>
-              <a href="./cases/bmc-tabletop.html" class="application-case-link d-inline-flex align-items-center action-gap-secondary pe-auto mt-2">閱讀完整案例<span aria-hidden="true">→</span></a>
+              <p id="portfolio-description-3" class="application-description body-copy text-muted-on-dark mb-0">以 BMC 模壓成型製作桌面與板件，依用途確認表面、尺寸及加工需求。耐熱、耐污、耐磨與承載性能，需依指定材料與檢驗規格評估。</p>
             </div>
           </div>
+          <a href="./cases/bmc-tabletop.html" class="application-case-link d-inline-flex align-items-center action-gap-secondary pe-auto mt-2">閱讀完整案例<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </article>
@@ -278,8 +293,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-glare.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-glare.webp" alt="公路防眩板" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-glare-480.webp 480w, ./images/responsive/portfolio-glare-960.webp 960w, ./images/portfolio-glare.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-glare-480.webp 480w, ./images/responsive/portfolio-glare-960.webp 960w, ./images/portfolio-glare.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-glare.webp" alt="公路防眩板" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-glare.webp" data-photo-webp="./images/portfolio-glare.webp" data-photo-title="交通工程專用防眩板" aria-label="放大檢視交通工程專用防眩板圖片" aria-describedby="portfolio-material-4 portfolio-description-4">
@@ -296,7 +311,7 @@
           </div>
           <div id="portfolio-details-4" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-4" class="application-description body-copy text-muted-on-dark mb-0">專為高速公路與交通樞紐設計，結合了輕量化與高強度的雙重結構優勢。能長年抵禦強風、日曬及車輛震動，確保行車安全設施的長期穩定。</p>
+              <p id="portfolio-description-4" class="application-description body-copy text-muted-on-dark mb-0">交通工程防眩板的尺寸、安裝位置與結構，依專案需求討論。風載、耐候與相關驗收要求，需配合指定材料、設計及檢驗標準確認。</p>
             </div>
           </div>
         </div>
@@ -306,8 +321,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-base.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-base.webp" alt="運動器材抗衝擊水箱罩" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-base-480.webp 480w, ./images/responsive/portfolio-base-960.webp 960w, ./images/portfolio-base.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-base-480.webp 480w, ./images/responsive/portfolio-base-960.webp 960w, ./images/portfolio-base.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-base.webp" alt="運動器材抗衝擊水箱罩" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-base.webp" data-photo-webp="./images/portfolio-base.webp" data-photo-title="運動器材抗衝擊水箱罩" aria-label="放大檢視運動器材抗衝擊水箱罩圖片" aria-describedby="portfolio-material-5 portfolio-description-5">
@@ -324,7 +339,7 @@
           </div>
           <div id="portfolio-details-5" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-5" class="application-description body-copy text-muted-on-dark mb-0">兼顧高強度的物理防護與彈性的外觀曲面設計。能有效保護設備內部零件，承受高強度的外力撞擊，為專業運動器材提供安全與美觀兼具的外殼解決方案。</p>
+              <p id="portfolio-description-5" class="application-description body-copy text-muted-on-dark mb-0">運動器材水箱罩可依設備外形、零件配置及裝配需求評估成型方式。防護、衝擊及外觀要求，需在試作與檢驗規格確認時一併討論。</p>
             </div>
           </div>
         </div>
@@ -334,8 +349,8 @@
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
         <picture class="d-block w-100 h-100">
-          <source srcset="./images/portfolio-train.webp" type="image/webp">
-          <img width="1024" height="768" decoding="async" src="./images/portfolio-train.webp" alt="軌道車輛一體成型車頭面罩" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
+          <source srcset="./images/responsive/portfolio-train-480.webp 480w, ./images/responsive/portfolio-train-960.webp 960w, ./images/portfolio-train.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" type="image/webp">
+          <img srcset="./images/responsive/portfolio-train-480.webp 480w, ./images/responsive/portfolio-train-960.webp 960w, ./images/portfolio-train.webp 1024w" sizes="(min-width: 992px) 720px, (min-width: 576px) 700px, calc(100vw - 72px)" width="1024" height="768" decoding="async" src="./images/portfolio-train.webp" alt="軌道車輛一體成型車頭面罩" loading="lazy" class="w-100 h-100 object-fit-cover application-photo">
         </picture>
         </div>
         <button type="button" title="放大圖片" class="application-photo-button position-absolute rounded-circle d-flex align-items-center justify-content-center" data-photo="./images/portfolio-train.webp" data-photo-webp="./images/portfolio-train.webp" data-photo-title="軌道車輛一體成型車頭面罩" aria-label="放大檢視軌道車輛一體成型車頭面罩圖片" aria-describedby="portfolio-material-6 portfolio-description-6">
@@ -352,7 +367,7 @@
           </div>
           <div id="portfolio-details-6" class="application-details" aria-hidden="true">
             <div class="application-description-wrapper">
-              <p id="portfolio-description-6" class="application-description body-copy text-muted-on-dark mb-0">運用玻璃纖維極致的輕量化與高剛性特性，突破傳統金屬的造型限制。不僅提供優異的流線空氣動力外觀，更能符合軌道交通嚴苛的抗壓與安規標準。</p>
+              <p id="portfolio-description-6" class="application-description body-copy text-muted-on-dark mb-0">以玻璃纖維複合材料製作車頭面罩，依外形、結構與裝配需求評估製造方式。軌道交通的強度、防火及安全要求，需依專案指定規格與檢驗結果確認。</p>
             </div>
           </div>
         </div>
@@ -395,8 +410,8 @@
         <div id="equipment-tab-content" class="tab-content equipment-feature-photo rounded-4 w-100">
           <div id="equip-250t-pane" class="tab-pane fade show active w-100 h-100" role="tabpanel" aria-labelledby="equip-250t-tab" tabindex="0">
             <picture class="d-block w-100 h-100">
-              <source id="equip-main-source" srcset="./images/equip-250t-cutout.webp" type="image/webp">
-              <img width="1143" height="1376" id="equip-main-img" src="./images/equip-250t-cutout.webp" alt="250T 熱壓成型機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+              <source id="equip-main-source" srcset="./images/responsive/equip-250t-cutout-480.webp 480w, ./images/responsive/equip-250t-cutout-960.webp 960w, ./images/equip-250t-cutout.webp 1143w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" type="image/webp">
+              <img srcset="./images/responsive/equip-250t-cutout-480.webp 480w, ./images/responsive/equip-250t-cutout-960.webp 960w, ./images/equip-250t-cutout.webp 1143w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" width="1143" height="1376" id="equip-main-img" src="./images/equip-250t-cutout.webp" alt="250T 熱壓成型機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
             </picture>
             <div class="equipment-caption d-lg-none p-4 pt-0 text-start">
               <h3 class="content-heading fw-semibold mb-2">250T 熱固性壓機</h3>
@@ -405,8 +420,8 @@
           </div>
           <div id="equip-400t-pane" class="tab-pane fade w-100 h-100" role="tabpanel" aria-labelledby="equip-400t-tab" tabindex="0">
             <picture class="d-block w-100 h-100">
-              <source srcset="./images/equip-400t-cutout.webp" type="image/webp">
-              <img width="1312" height="1199" src="./images/equip-400t-cutout.webp" alt="400T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+              <source srcset="./images/responsive/equip-400t-cutout-480.webp 480w, ./images/responsive/equip-400t-cutout-960.webp 960w, ./images/equip-400t-cutout.webp 1312w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" type="image/webp">
+              <img srcset="./images/responsive/equip-400t-cutout-480.webp 480w, ./images/responsive/equip-400t-cutout-960.webp 960w, ./images/equip-400t-cutout.webp 1312w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" width="1312" height="1199" src="./images/equip-400t-cutout.webp" alt="400T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
                 </picture>
             <div class="equipment-caption d-lg-none p-4 pt-0 text-start">
               <h3 class="content-heading fw-semibold mb-2">400T 熱固性壓機</h3>
@@ -415,8 +430,8 @@
           </div>
           <div id="equip-500t-pane" class="tab-pane fade w-100 h-100" role="tabpanel" aria-labelledby="equip-500t-tab" tabindex="0">
             <picture class="d-block w-100 h-100">
-              <source srcset="./images/equip-500t-cutout.webp" type="image/webp">
-              <img width="1221" height="1288" src="./images/equip-500t-cutout.webp" alt="500T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+              <source srcset="./images/responsive/equip-500t-cutout-480.webp 480w, ./images/responsive/equip-500t-cutout-960.webp 960w, ./images/equip-500t-cutout.webp 1221w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" type="image/webp">
+              <img srcset="./images/responsive/equip-500t-cutout-480.webp 480w, ./images/responsive/equip-500t-cutout-960.webp 960w, ./images/equip-500t-cutout.webp 1221w" sizes="(min-width: 1440px) 656px, (min-width: 992px) 45vw, calc(100vw - 56px)" width="1221" height="1288" src="./images/equip-500t-cutout.webp" alt="500T 熱固性壓機" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
                 </picture>
             <div class="equipment-caption d-lg-none p-4 pt-0 text-start">
               <h3 class="content-heading fw-semibold mb-2">500T 熱固性壓機</h3>
@@ -439,12 +454,12 @@
     </div>
     <div class="row g-4 company-gallery reveal">
       <div class="col-12 col-md-6"><figure class="mb-0"><div class="ratio factory-view overflow-hidden rounded-3"><picture class="d-block w-100 h-100 factory-photo-upper">
-        <source srcset="./images/factory-overview.webp" type="image/webp">
-        <img src="./images/factory-overview.webp" alt="廠內作業環境與產品暫存區" width="1447" height="1087" loading="lazy" decoding="async">
+        <source srcset="./images/responsive/factory-overview-480.webp 480w, ./images/responsive/factory-overview-960.webp 960w, ./images/responsive/factory-overview-1440.webp 1440w, ./images/factory-overview.webp 1447w" sizes="(min-width: 992px) 1200px, 100vw" type="image/webp">
+        <img srcset="./images/responsive/factory-overview-480.webp 480w, ./images/responsive/factory-overview-960.webp 960w, ./images/responsive/factory-overview-1440.webp 1440w, ./images/factory-overview.webp 1447w" sizes="(min-width: 992px) 1200px, 100vw" src="./images/factory-overview.webp" alt="廠內作業環境與產品暫存區" width="1447" height="1087" loading="lazy" decoding="async">
       </picture></div><figcaption class="helper-copy text-muted-on-dark mt-3">廠內作業環境與產品暫存區</figcaption></figure></div>
       <div class="col-12 col-md-6"><figure class="mb-0"><div class="ratio factory-view overflow-hidden rounded-3"><picture class="d-block w-100 h-100 factory-photo-lower">
-        <source srcset="./images/factory-overview.webp" type="image/webp">
-        <img src="./images/factory-overview.webp" alt="熱壓成型設備與生產空間" width="1447" height="1087" loading="lazy" decoding="async">
+        <source srcset="./images/responsive/factory-overview-480.webp 480w, ./images/responsive/factory-overview-960.webp 960w, ./images/responsive/factory-overview-1440.webp 1440w, ./images/factory-overview.webp 1447w" sizes="(min-width: 992px) 1200px, 100vw" type="image/webp">
+        <img srcset="./images/responsive/factory-overview-480.webp 480w, ./images/responsive/factory-overview-960.webp 960w, ./images/responsive/factory-overview-1440.webp 1440w, ./images/factory-overview.webp 1447w" sizes="(min-width: 992px) 1200px, 100vw" src="./images/factory-overview.webp" alt="熱壓成型設備與生產空間" width="1447" height="1087" loading="lazy" decoding="async">
       </picture></div><figcaption class="helper-copy text-muted-on-dark mt-3">熱壓成型設備與生產空間</figcaption></figure></div>
     </div>
     <div class="row g-0 company-facts reveal">
