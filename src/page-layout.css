@@ -143,15 +143,18 @@
 .company-fact .content-heading { font-size: var(--type-subheading); }
 .company-value { font-size: var(--type-hero); font-weight: 700; line-height: var(--leading-stat); margin-bottom: var(--space-20); }
 .company-unit { font-size: var(--type-subheading); color: var(--text-muted-on-dark); padding-left: var(--space-8); }
+/* Shared editorial imagery keeps every supplied 4:3 composition intact. */
+.section-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; border-radius: var(--radius-card); background: var(--surface-subtle); }
+.capability-grid { --bs-gutter-y: var(--space-32); }
 .capability-copy { min-width: 0; }
-.capability-row { padding-block: var(--space-20); }
-.capability-grid > :first-child .capability-row { padding-top: 0; }
+.capability-row { padding: 0; }
+.capability-photo { margin-bottom: var(--space-20); }
 .capability-marker { width: 24px; padding-top: var(--space-4); }
 .capability-marker .material-symbols-outlined { width: 24px; }
 .capability-row h3, .workflow-section .content-heading { line-height: var(--leading-heading); }
 .capability-row p, .workflow-section .body-copy { line-height: var(--leading-compact-copy); }
-@media (min-width: 992px) {
-  .capability-row { padding-top: 0; }
+@media (max-width: 991.98px) {
+  .capability-photo { margin-bottom: var(--space-16); }
 }
 .workflow-grid { --bs-gutter-y: var(--space-20); }
 .workflow-step { padding-bottom: var(--space-20); }
@@ -214,14 +217,16 @@
 .full-footer .footer-contact-row:last-child { min-height: 0; }
 
 /* Four quality stages use the same brand tokens and Bootstrap responsive grid. */
-.quality-icon { width: 64px; height: 64px; }
-.quality-icon svg { width: 36px; height: 36px; }
+.quality-card { min-width: 0; overflow: hidden; border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-white); }
+.quality-card > .section-photo { border-radius: 0; }
+.quality-card-content { padding: var(--space-16); }
+.quality-icon { width: 36px; height: 36px; }
+.quality-icon svg { width: 22px; height: 22px; }
+.quality-card-heading .content-heading { min-width: 0; line-height: var(--leading-heading); }
 .quality-card p { position: relative; padding-inline-start: var(--space-16); line-height: var(--leading-compact-copy); margin-bottom: var(--space-12); }
 .quality-card p::before { content: ""; position: absolute; inset-inline-start: 0; top: calc(.825em - 3px); width: 6px; height: 6px; background-color: currentColor; }
-@media (max-width: 767.98px) {
-  .quality-icon { width: 44px; height: 44px; }
-  .quality-icon svg { width: 26px; height: 26px; }
-  .quality-card-heading .content-heading { min-width: 0; }
+@media (min-width: 768px) {
+  .quality-card-content { padding: var(--space-24); }
 }
 
 /* Bootstrap equipment pills and their shared machinery display stage. */
@@ -298,9 +303,8 @@
   .company-gallery + .company-facts { margin-top: var(--space-32); }
 }
 
-/* Quality paragraphs retain their reading order and shared starting axis. */
-.quality-card { min-width: 0; }
-@media (min-width: 992px) and (max-width: 1199.98px) {
+/* Retain readable photo cards before there is room for four columns. */
+@media (min-width: 992px) and (max-width: 1399.98px) {
   #quality .col-lg-3 { width: 50%; }
 }
 
