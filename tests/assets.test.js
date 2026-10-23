@@ -113,3 +113,29 @@ test('service navigation and case links are directly available without expanding
   }
   assert.ok(!html.includes('更能符合軌道交通嚴苛的抗壓與安規標準'));
 });
+
+
+test('search snippets, canonical URLs and page metadata remain aligned across public landing pages', () => {
+  const titles = new Set();
+  const descriptions = new Set();
+  for (const page of ['index.html', ...subpages]) {
+    const html = readPage(page);
+    const title = html.match(/<title>([^<]+)<\/title>/)[1];
+    const description = html.match(/<meta name="description" content="([^"]+)"/)[1];
+    const ogTitle = html.match(/<meta property="og:title" content="([^"]+)"/)[1];
+    const ogDescription = html.match(/<meta property="og:description" content="([^"]+)"/)[1];
+    assert.ok(!titles.has(title), `duplicate title: ${page}`);
+    assert.ok(!descriptions.has(description), `duplicate description: ${page}`);
+    titles.add(title); descriptions.add(description);
+    assert.equal(title, ogTitle, `search / sharing title drift: ${page}`);
+    assert.equal(description, ogDescription, `search / sharing description drift: ${page}`);
+    assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `primary heading count: ${page}`);
+    if (page !== 'index.html') {
+      const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+      const webpage = graph.find(item => item['@type'] === 'WebPage');
+      assert.equal(webpage.name, title);
+      assert.equal(webpage.description, description);
+      assert.equal(webpage.url, `https://wsctw.com/${page}`);
+    }
+  }
+});

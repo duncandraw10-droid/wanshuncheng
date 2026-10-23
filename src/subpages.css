@@ -74,6 +74,20 @@
 .transfer-assessment-facts { display: grid; gap: var(--space-16); margin: 0; }
 .transfer-assessment-facts dt { margin-bottom: var(--space-4); font-weight: 600; }
 .transfer-assessment-facts dd { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+/* Purchase guidance stays in HTML; compact tables fit narrow screens without horizontal scrolling. */
+.material-comparison { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border-default); border-radius: var(--radius-card); overflow: hidden; background: var(--surface-white); font-size: var(--type-helper); line-height: var(--leading-compact-copy); }
+.material-comparison th, .material-comparison td { padding: var(--space-16); vertical-align: top; overflow-wrap: anywhere; }
+.material-comparison thead th { background: var(--surface-machine-accent); font-weight: var(--weight-cta); }
+.material-comparison thead th:first-child { width: 24%; }
+.material-comparison tbody th { font-weight: var(--weight-cta); }
+.material-comparison tbody td { color: var(--text-secondary); }
+.material-comparison tbody tr + tr > * { border-top: 1px solid var(--border-default); }
+.material-comparison a { text-decoration: underline; text-underline-offset: 4px; }
+.preparation-details { margin-top: var(--space-32); }
+.preparation-facts { padding-bottom: var(--space-24); }
+.preparation-examples { padding-bottom: var(--space-24); }
+.preparation-examples .subpage-card p { margin: 0; max-width: none; }
+.preparation-icon { display: block; width: var(--type-subheading); height: var(--type-subheading); margin-bottom: var(--space-12); color: var(--brand-blue); font-size: var(--type-subheading); line-height: var(--leading-tight); }
 @media (min-width: 576px) {
   .molding-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); }
   .molding-process-card { padding: var(--space-24); }
@@ -103,6 +117,8 @@
   .subpage-title-molding { font-size: clamp(20px, 6.6vw, 28px); white-space: nowrap; }
 }
 @media (max-width: 575.98px) {
+  .material-comparison th, .material-comparison td { padding: var(--space-12) var(--space-8); }
+  .material-comparison thead th:first-child { width: 30%; }
   .subpage-contact .subpage-actions { flex-direction: column; align-items: stretch; gap: var(--space-12); }
   .subpage-contact .btn { min-width: 0; width: 100%; }
 }
