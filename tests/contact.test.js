@@ -28,7 +28,7 @@ function setup(host = 'wsctw.com') {
 test('copies the public company email and exact inquiry template with feedback', async () => {
   const h = setup(); await h.handlers.copy(); await h.handlers.template();
   assert.equal(h.writes[0], 'info@wsctw.com');
-  assert.equal(h.writes[1], '您好，我們有模壓成型的需求，請協助評估：\n\n1. 產品用途與尺寸：\n2. 材料需求（如已知）：\n3. 預計數量：\n4. 是否已有模具：\n5. 希望交期：\n\n（備註：將隨信附上圖面或產品照片）');
+  assert.equal(h.writes[1], '您好，我們有模壓成型的需求，請協助評估：\n\n1. 產品用途與尺寸：\n2. 材料與性能要求（如已知）：\n3. 預計數量：\n4. 是否已有模具：\n5. 希望交期：\n6. 關鍵尺寸、外觀與驗收要求：\n\n（備註：將隨信附上圖面或產品照片）');
   assert.deepEqual(h.messages, ['已複製！', '已複製！']);
   assert.equal(h.events.length, 2);
   assert.ok(!JSON.stringify(h.events).includes('info@wsctw.com'));

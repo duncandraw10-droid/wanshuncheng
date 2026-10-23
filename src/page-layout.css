@@ -376,3 +376,14 @@
   .application-case-link, .application-case-link:hover { color: var(--brand-blue); }
   .application-case-link:focus-visible { outline-color: var(--brand-blue); }
 }
+
+/* Buyer-facing facts use verified content and the existing spacing/type tokens. */
+.supplier-panel { margin-top: var(--space-32); padding: var(--space-24); border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-subtle); }
+.supplier-panel .content-heading { margin: 0 0 var(--space-12); }
+.supplier-panel p { line-height: var(--leading-compact-copy); }
+.supplier-facts { display: grid; gap: var(--space-16); margin: 0; }
+.supplier-facts > div { display: grid; grid-template-columns: 6em minmax(0, 1fr); gap: var(--space-12); align-items: start; }
+.supplier-facts dt { font-weight: var(--weight-cta); line-height: var(--leading-compact-copy); }
+.supplier-facts dd { min-width: 0; margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); overflow-wrap: anywhere; }
+@media (min-width: 992px) { .supplier-panel { padding: var(--space-32); } }
+@media (max-width: 575.98px) { .supplier-facts > div { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); } }
