@@ -385,5 +385,8 @@
 .supplier-facts > div { display: grid; grid-template-columns: 6em minmax(0, 1fr); gap: var(--space-12); align-items: start; }
 .supplier-facts dt { font-weight: var(--weight-cta); line-height: var(--leading-compact-copy); }
 .supplier-facts dd { min-width: 0; margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); overflow-wrap: anywhere; }
-@media (min-width: 992px) { .supplier-panel { padding: var(--space-32); } }
+@media (min-width: 992px) {
+  .supplier-panel { padding: var(--space-32); }
+  .equipment-section .supplier-facts > div { grid-template-columns: 4em minmax(0, 1fr); }
+}
 @media (max-width: 575.98px) { .supplier-facts > div { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); } }
