@@ -174,7 +174,7 @@ section[id] { scroll-margin-top: calc(var(--site-header-height) + 16px); }
 .site-header .nav-link:hover, .site-header .nav-link.active { color: var(--brand-blue); }
 .site-header .nav-link.active { text-decoration: underline; text-underline-offset: 7px; }
 .site-header nav > .btn { border-radius: var(--radius-pill); min-width: 148px; min-height: var(--button-height-compact); padding: var(--button-padding-block-compact) var(--space-24); font-size: 1rem; }
-.site-header .mobile-nav-link.btn { min-height: var(--button-height-compact); border-radius: var(--radius-pill); }
+.site-header .mobile-nav-link.btn { min-height: var(--button-height-compact); padding-block: var(--button-padding-block-compact); border-radius: var(--radius-pill); }
 .site-header .navbar-toggler { color: var(--surface-white); background: var(--brand-blue); border-color: var(--brand-blue); border-radius: var(--radius-circle); width: var(--control-min-size); height: var(--control-min-size); padding: 9px; }
 .site-header .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(37,99,235,.2); }
 #mobile-menu { background: var(--surface-white); max-height: calc(100svh - var(--site-header-height)); overflow-y: auto; overscroll-behavior: contain; }
