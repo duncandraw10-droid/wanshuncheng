@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import { fileURLToPath } from 'node:url'
 import { readFileSync } from 'node:fs'
 import { renderSharedLayout } from './build/shared-layout.js'
+import { renderSiteIcons } from './build/site-icons.js'
 
 export default defineConfig({
   base: './',
@@ -10,9 +11,9 @@ export default defineConfig({
     transformIndexHtml: {
       order: 'pre',
       handler(html, context) {
-        if (!html.includes('<!-- shared:')) return html
         const homepage = readFileSync(new URL('./index.html', import.meta.url), 'utf8')
-        return renderSharedLayout(html, homepage, context.path.startsWith('/cases/') ? '../' : './')
+        const page = renderSharedLayout(html, homepage, context.path.startsWith('/cases/') ? '../' : './')
+        return renderSiteIcons(page)
       },
     },
   }, {

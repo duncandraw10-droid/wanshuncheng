@@ -11,6 +11,7 @@
 | `--text-secondary` | #526174 | 說明文字 |
 | `--surface-white`／`--text-on-dark` | #FFFFFF | 白色背景與深底文字 |
 | `--surface-subtle` | #F4F6F8 | 區塊底色 |
+| `--surface-machine-accent` | #E7EDF6 | 服務頁機台圖斜角底色 |
 | `--border-default` | #D7DEE7 | 一般分隔線 |
 | `--border-control` | #7B8798 | 操作元件邊框 |
 | `--text-muted-on-dark` | #CBD5E1 | 深底次要文字 |
@@ -25,7 +26,7 @@
 | --- | --- | --- |
 | Hero 標題 | 48–56px／700／1.2 | 32–36px／700／1.2 |
 | 區塊標題 | 35px／700／1.4 | 28–32px／700／1.4 |
-| 子標題 | 24px／600／1.5 | 20px／600／1.5 |
+| 子標題 | 24px／600／1.4 | 20px／600／1.4 |
 | 正文 | 18px／400 | 16px／400 |
 | 小字 | 14px／400 | 14px／400 |
 
@@ -71,15 +72,15 @@
 | `--leading-solid` | 1 | 圖示、Hero 按鈕文字群組 |
 | `--leading-tight` | 1.2 | Hero 標題、手機 Footer 資訊 |
 | `--leading-stat` | 1.3 | 公司數據 |
-| `--leading-card-title` | 1.35 | 設備卡片標題 |
-| `--leading-heading` | 1.4 | 區塊標題 |
+| `--leading-card-title` | 1.35 | 設備與首頁案例卡片標題 |
+| `--leading-heading` | 1.4 | 區塊與一般內容小標題 |
 | `--leading-ui` | 1.5 | 操作與電話資訊 |
 | `--leading-footer` | 1.6 | 桌機 Footer 資訊 |
 | `--leading-compact-copy` | 1.65 | 設備、製造能力與合作流程說明 |
 | `--leading-body` | 1.8 | 一般正文 |
 | `--leading-company` | 1.9 | 公司介紹 |
 
-圓角命名為 `inline: 4px`、`soft: 8px`、`card: 12px`、`panel: 16px`、`pill: 999px`、`circle: 50%`，使用 `--radius-*`，並對應適用的 Bootstrap 圓角變數。
+圓角命名為 `inline: 4px`、`control: 6px`、`soft: 8px`、`card: 12px`、`panel: 16px`、`pill: 999px`、`circle: 50%`，使用 `--radius-*`，並對應適用的 Bootstrap 圓角變數。
 
 間距使用 `--space-*`，尺度為 4、8、12、16、20、24、28、32、40、48、56、64、72、80、96px。區塊上下內距由 `--layout-space` 引用 56／96；Footer 下方內距由 `--footer-bottom-space` 引用 32／64；標題間距由 `--section-heading-gap` 引用 32／48。保留機台透明邊界的逐張視覺校正內距，避免共用尺度使機台偏移。
 
@@ -123,3 +124,31 @@ Hero 桌機主按鈕寬度由 `--hero-cta-width: 174px` 管理；桌機案例高
 模具移轉的 `.transfer-assessment-panel` 使用 subtle 底色、card 圓角與既有間距；桌機圖片／說明比例 3:2，手機依序呈現圖片、示意註解與評估項目。僅解釋模具外形、高度、設備空間、固定方式與狀態，不填未確認規格。所有插畫標示剖面概念示意，與實際設備照片區分。
 
 正式圖使用 `scripts/generate-molding-diagrams.mjs` 產生的 SVG，共用上下模、材料間隙與導向位置；開模僅移動上模／壓板，固定零件與頂出機構細節一致省略。SVG viewBox 與座標為無單位繪圖配置，不代表設備尺寸。替換前須重新核對閉模接觸、開模間距與取件位置，不只檢查版面。
+
+## 2026-10-23 元件規格整理
+
+一般內容小標題（製造能力、品質管理、合作流程、採購評估、聯絡資訊及子頁卡片）統一行高 1.4。設備與首頁案例卡片標題維持 1.35；手機公司數據說明為輔助文字，行高仍為 1.65。區塊標題、Hero、Footer 與隱私政策的閱讀層級維持原設定。
+
+### 按鈕尺寸
+
+| 規格 | 最小高度 | 垂直內距 | 使用位置 |
+| --- | --- | --- | --- |
+| 精簡 `--button-height-compact` | 46px | `--button-padding-block-compact: 10px` | 桌機導覽、手機選單、隱私政策頁首 |
+| 標準 `--button-height-standard` | 54px | `--button-padding-block-standard: 14px` | `.layout-pill`：首頁／子頁詢價、Footer |
+| 大型 `--button-height-large` | 58px | `--button-padding-block-large: 16px` | `.button-large`：電話、郵件入口、隱私政策聯絡、404 返回 |
+
+三種規格均為最小高度，長文字可自然增高。輔助操作（複製、展開、手機選單切換、關閉圖片）共用 `--control-min-size: 44px`；案例輪播箭頭保留手機 36px、平板 44px、桌機 48px 的既有尺寸。Hero 保留手機 48px、平板 52px、桌機 54px 與桌機寬 174px；其文字與箭頭整組置中。
+
+CTA 維持膠囊圓角；404 返回按鈕保留 soft 8px，設備／內容卡片為 card 12px、設備舞台／子頁首圖為 panel 16px。導覽焦點框使用 control 6px，對應 Bootstrap 預設圓角；小型內嵌操作使用 inline 4px。圖像容器內部的 8px 圓角為刻意保留的內外層差異。
+
+### 導覽箭頭
+
+所有前往、上一個／下一個、向下導覽的箭頭由 `build/site-icons.js` 在建置時產生 inline SVG，採相同 24×24 viewBox、2px 筆畫與圓頭，不增加執行時請求。原始 HTML 以 `data-site-icon` 指定方向；不得再加入文字箭頭或箭頭字型圖示。
+
+一般操作圖示使用 `--icon-size-action: 20px`；桌機導覽精簡箭頭使用 `--icon-size-compact: 16px`；Hero／平板以上案例切換使用 `--icon-size-control: 24px`。手機案例切換為 20px。方向圖示繼承文字色，不參與朗讀；連結／按鈕本身保留原名稱。Hero 向下箭頭外側圓框維持桌機／平板 38px、手機 34px、<360px 時 28px，內部箭頭統一為 20px。
+
+展開收合的 chevron、FAQ 正負號、Bootstrap 下拉三角、放大鏡、電話與郵件圖示屬不同功能，保留原造型。文字與箭頭間距仍使用既有 12／6／4px 規格。
+
+### 命名例外
+
+常規間距沿用 `--space-*`；需要保留原比例的例外改以用途命名：案例輪播左右預留 `--gallery-inset-mobile: 36px`／`--gallery-inset-tablet: 52px`、案例圖片放大按鈕距離圖片邊緣 `--portfolio-photo-control-inset: 18px`、公司數據原有上下留白 `--company-fact-padding-block: 30px`／桌機底部 `--company-fact-padding-bottom-desktop: 26px`。設備透明圖的逐張光學補償、照片裁切座標與裝飾圖形尺寸維持元件專屬設定，不視為全站間距尺度。
