@@ -48,6 +48,29 @@
 .subpage-contact p { color: var(--text-secondary); }
 .subpage-contact .helper-copy { margin: var(--space-16) 0 0; }
 .subpage-contact .btn { overflow-wrap: anywhere; }
+/* Diagram captions stay in HTML so they remain readable at every breakpoint. */
+.molding-process-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-16); margin: 0; padding: 0; list-style: none; }
+.molding-process-card { min-width: 0; padding: var(--space-16); border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-white); }
+.molding-process-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; margin-bottom: var(--space-16); }
+.molding-process-copy { min-width: 0; }
+.molding-process-copy .subpage-number { margin-bottom: var(--space-8); }
+.molding-process-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
+.molding-process-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+.transfer-assessment-panel { display: grid; gap: var(--space-24); padding: var(--space-16); margin-bottom: var(--space-32); border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-subtle); }
+.transfer-assessment-figure { min-width: 0; margin: 0; }
+.transfer-assessment-figure img { display: block; width: 100%; height: auto; border-radius: var(--radius-soft); background: var(--surface-white); }
+.transfer-assessment-figure figcaption { margin-top: var(--space-12); color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+.transfer-assessment-copy { min-width: 0; }
+.transfer-assessment-copy h3 { margin: 0 0 var(--space-20); }
+.transfer-assessment-facts { display: grid; gap: var(--space-16); margin: 0; }
+.transfer-assessment-facts dt { margin-bottom: var(--space-4); font-weight: 600; }
+.transfer-assessment-facts dd { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+@media (min-width: 576px) {
+  .molding-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); }
+  .molding-process-card { padding: var(--space-24); }
+  .molding-process-card img { aspect-ratio: 3 / 2; margin-bottom: var(--space-20); }
+  .transfer-assessment-panel { padding: var(--space-24); }
+}
 @media (min-width: 768px) {
   .subpage-case-photo { aspect-ratio: 4 / 3; }
   .subpage-related { grid-template-columns: 40% minmax(0, 1fr); grid-template-rows: auto; height: 100%; }
@@ -60,6 +83,9 @@
   .subpage-card { padding: var(--space-32); }
   .subpage-contact .subpage-actions { justify-content: flex-end; }
   .subpage-contact .helper-copy { text-align: right; }
+  .molding-process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .molding-process-card { padding: var(--space-16); }
+  .transfer-assessment-panel { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: center; gap: var(--space-32); padding: var(--space-32); }
 }
 @media (max-width: 767.98px) {
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
