@@ -275,6 +275,12 @@ body.intro-running { overflow: hidden; }
 @media (min-width: 992px) {
   :root { --site-header-height: 86px; }
   .site-header .navbar-brand { width: 200px; }
+  .site-header > .container > nav { gap: var(--space-28) !important; }
+  .site-header > .container > nav .nav-link {
+    display: inline-flex; align-items: center; min-height: var(--control-min-size);
+    font-size: 1rem; font-weight: 500 !important; letter-spacing: .02em;
+    line-height: var(--leading-ui); white-space: nowrap;
+  }
 }
 @media (min-width: 1200px) {
   #hero { height: max(660px,calc(100svh - var(--site-header-height))); max-height: 880px; }
@@ -438,7 +444,7 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 .mobile-service-navigation summary::-webkit-details-marker { display: none; }
 .mobile-service-navigation summary::after { content: '+'; float: right; margin-right: var(--space-8); }
 .mobile-service-navigation[open] summary::after { content: '−'; }
-@media (min-width: 992px) and (max-width: 1199.98px) { .site-header nav { gap: var(--space-16) !important; } }
+@media (min-width: 992px) and (max-width: 1199.98px) { .site-header > .container > nav { gap: var(--space-16) !important; } }
 
 @media (max-width: 374.98px) {
   .privacy-header .privacy-brand-logo { width: 140px; }
