@@ -130,10 +130,14 @@
 }
 .company-section { isolation: isolate; }
 .company-section .section-heading { color: var(--text-on-dark); }
-.company-overview .section-heading { max-width: 300px; }
+.company-overview { --bs-gutter-y: var(--space-32); }
+.company-introduction .section-heading { margin: 0 0 var(--space-24); }
 .company-overview p { line-height: var(--leading-company); }
-@media (max-width: 991.98px) {
-  .company-overview { --bs-gutter-y: var(--section-heading-gap); }
+.company-photo { display: block; width: 100%; height: auto; border-radius: var(--radius-card); }
+.company-overview + .company-facts { margin-top: var(--space-32); }
+@media (min-width: 992px) {
+  .company-overview { --bs-gutter-y: 0; }
+  .company-overview + .company-facts { margin-top: var(--space-48); }
 }
 .company-orbit { position: absolute; width: 440px; height: 440px; z-index: -1; pointer-events: none; border-radius: var(--radius-circle); background-image: radial-gradient(var(--text-muted-on-dark) 1.5px,transparent 1.7px); background-size: 11px 11px; mask-image: radial-gradient(transparent 43%,#000 44%,transparent 68%); opacity: .28; }
 .company-orbit-first { top: -240px; left: -160px; }
@@ -319,15 +323,6 @@
   .equipment-feature-photo img { padding: var(--space-24) var(--space-20) var(--space-12); }
 }
 
-/* Supplied process photographs and two factory panorama viewports. */
-.company-gallery { margin-top: var(--space-40); }
-.company-gallery + .company-facts { margin-top: var(--space-48); }
-.factory-view { --bs-aspect-ratio: 37.25%; background: var(--surface-subtle); }
-@media (max-width: 767.98px) {
-  .company-gallery { margin-top: var(--space-32); }
-  .company-gallery + .company-facts { margin-top: var(--space-32); }
-}
-
 /* Retain readable photo cards before there is room for four columns. */
 @media (min-width: 992px) and (max-width: 1399.98px) {
   #quality .col-lg-3 { width: 50%; }
@@ -340,17 +335,6 @@
 
 /* Icon actions remain compact while offering a consistent interaction area. */
 .contact-value .btn-link { min-width: var(--control-min-size); min-height: var(--control-min-size); padding: 0 !important; justify-content: center; }
-
-/* Match the two previous SVG viewports while allowing native lazy <img> loading.
-   The .factory-view ratio remains 37.25%; the original full photo is preserved. */
-.factory-photo-upper { --factory-photo-width: 100%; --factory-photo-center: -25.022999%; }
-.factory-photo-lower { --factory-photo-width: 100.187268%; --factory-photo-center: -75.252990%; }
-.factory-view picture { overflow: hidden; }
-.factory-view picture img {
-  position: absolute; left: 50%; top: 50%; max-width: none;
-  width: var(--factory-photo-width); height: auto;
-  transform: translate(-50%, var(--factory-photo-center));
-}
 
 /* Keep preparation first while shortening the mobile contact journey. */
 .contact-preparation-details > ul.contact-panel-content { gap: var(--space-8); }

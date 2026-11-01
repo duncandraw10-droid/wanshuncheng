@@ -6,7 +6,7 @@
 - 首屏 Hero 圖保留優先載入設定；下方案例、工廠與設備圖片保留 `loading="lazy"`、`decoding="async"` 及尺寸資訊。
 - 更換 `<picture>` 時，同步更新 `<source srcset>`、`<img src>` 及圖片放大按鈕的 `data-photo`／`data-photo-webp`，並核對 `alt` 與品項名稱。
 - 設備圖片需同步核對對應分頁與預載入的 `data-img-webp`。機台仍以 contain 置中呈現。
-- 工廠雙全景使用同一張圖的上下裁切，不要改變 `factory-view`、`factory-photo-upper`／`factory-photo-lower` 比例設定。
+- 關於萬順承使用單張 `factory-classic-57373c05.webp` 大圖，與 Hero 共用既有 480／960／1440px 響應式版本。關於區塊使用原始 1980×1105 比例、寬度 100% 與高度自動，保持完整構圖；Hero 的 cover 裁切維持原設定。舊雙全景及專用裁切規則已移除。
 - 手機案例圖片使用 1:1 容器與 object-fit: cover，不拉伸原圖；桌機保留既有漸層介紹效果。
 - 分享圖片與企業 Logo 使用正式網址 `https://wsctw.com/images/...`，更換檔名時也要檢查 `<head>`。
 - 製造能力的 `manufacturing-*`、品質管理的 `quality-incoming-review`／`quality-dimension-check`／`quality-final-inspection`／`quality-record-linkage`，以及案例評估的 `case-*` 共 11 張圖片，使用核准版本輸出為 1440 × 1080 WebP；480／960px 版本位於 `responsive/`。PNG 原稿與製作紀錄保存在專案外，不隨網站發佈。
