@@ -6,7 +6,7 @@
 .application-section, .equipment-section, .company-section,
 .capability-section, .quality-section, .workflow-section,
 .contact-section { padding-block: var(--layout-space); }
-.application-section { isolation: isolate; }
+.application-section { --type-application-title: var(--type-subheading); isolation: isolate; }
 .application-section::before {
   content: ''; position: absolute; inset: 0; background: var(--border-default);
   opacity: .22; clip-path: polygon(90% 0,100% 0,100% 100%,60% 100%); z-index: -1;
@@ -75,7 +75,7 @@
 .application-card-arrow { width: 100%; height: 100%; }
 .application-photo-button:hover, .application-photo-button:focus-visible { background: var(--brand-blue); border-color: var(--brand-blue); }
 .application-caption { position: absolute; inset-inline: 0; bottom: 0; z-index: 3; }
-.application-caption h3 { font-size: 20px; line-height: var(--leading-card-title); text-shadow: 0 2px 8px #172B46,0 0 20px rgba(23,43,70,.65); }
+.application-caption .application-title { font-size: var(--type-application-title); line-height: var(--leading-card-title); text-shadow: 0 2px 8px #172B46,0 0 20px rgba(23,43,70,.65); }
 .application-caption p { line-height: var(--leading-compact-copy); }
 .application-material {
   padding: var(--space-4) 10px; font-size: var(--type-helper); line-height: var(--leading-ui); color: var(--text-on-dark);
@@ -97,10 +97,11 @@
   .application-card::after { height: 30%; }
   .application-photo { object-fit: cover !important; object-position: center; }
   .application-caption { padding: var(--space-20); }
-  .application-caption h3 { font-size: 22px; min-height: 0; }
+  .application-section { --type-application-title: 1.375rem; }
+  .application-caption .application-title { min-height: 0; }
 }
 @media (min-width: 1200px) {
-  .application-caption h3 { font-size: var(--type-subheading); }
+  .application-section { --type-application-title: var(--type-subheading); }
 }
 /* Square photographs and readable captions on touch-sized screens. */
 @media (max-width: 991.98px) {
@@ -115,7 +116,7 @@
   .application-detail-toggle { color: var(--brand-blue); }
   .application-detail-toggle:focus-visible { outline-color: var(--brand-blue); }
   .application-card .application-caption { position: relative; inset: auto; padding: var(--space-16); pointer-events: auto !important; }
-  .application-caption h3 {
+  .application-caption .application-title {
     min-height: 2.7em; color: var(--text-primary) !important; text-shadow: none; cursor: pointer;
   }
   .application-material {
@@ -126,7 +127,7 @@
 }
 @media (max-width: 575.98px) {
   .portfolio-slider > .portfolio-item { flex-basis: 100%; width: 100%; }
-  .application-caption h3 { min-height: 0; }
+  .application-caption .application-title { min-height: 0; }
 }
 .company-section {
   isolation: isolate;

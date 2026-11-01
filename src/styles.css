@@ -45,6 +45,7 @@
 :root {
   color-scheme: only light;
   /* Named differences preserve the current hierarchy and component proportions. */
+  --weight-emphasis: 700;
   --weight-cta: 600;
   --weight-secondary-action: 500;
   --leading-solid: 1;
@@ -112,6 +113,16 @@
   --type-subheading: 1.25rem;
   --type-body: 1rem;
   --type-helper: .875rem;
+  /* Component type roles preserve the approved exceptions to the main scale. */
+  --type-contact-email: 1.25rem;
+  --type-image-modal-title: 1.25rem;
+  --type-hero-counter: 44px;
+  --type-hero-total: 1.125rem;
+  --tracking-hero-counter: -.04em;
+  --type-service-menu: 1rem;
+  /* Preserve Bootstrap RFS proportions while owning the error-page hierarchy. */
+  --type-error-code: calc(1.525rem + 3.3vw);
+  --type-error-title: calc(1.3rem + .6vw);
   --bs-body-font-size: var(--type-body);
   --bs-body-line-height: var(--leading-body);
 }
@@ -234,8 +245,8 @@ body.intro-running { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll-cue a, .hero-scroll-cue svg { animation: none; }
 }
-.hero-page > span:first-child { font-family: Inter,system-ui,sans-serif; font-weight: 600; font-size: 44px; line-height: var(--leading-tight); letter-spacing: -.04em; }
-.hero-total { font-size: 18px; color: var(--text-on-dark); margin-left: 10px; }
+.hero-current { font-family: Inter,system-ui,sans-serif; font-weight: var(--weight-cta); font-size: var(--type-hero-counter); line-height: var(--leading-tight); letter-spacing: var(--tracking-hero-counter); }
+.hero-total { font-size: var(--type-hero-total); color: var(--text-on-dark); margin-left: 10px; }
 .hero-dots { margin-left: var(--space-4); gap: 0 !important; }
 .hero-dot { width: 26px; height: 44px; border: 0; background: transparent; padding: 0; position: relative; }
 .hero-dot::before { content: ''; position: absolute; width: 7px; height: 7px; border: 1px solid rgba(255,255,255,.85); border-radius: var(--radius-circle); inset: 0; margin: auto; transition: background .2s,transform .2s; }
@@ -309,6 +320,13 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 .content-heading { font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .body-copy, .hero-description { font-size: var(--type-body); font-weight: 400; }
 .small, small, .helper-copy { font-size: var(--type-helper); font-weight: 400; }
+.contact-email-address { font-size: var(--type-contact-email); font-weight: var(--weight-emphasis); line-height: var(--leading-body); }
+.image-modal-title { font-size: var(--type-image-modal-title); font-weight: var(--weight-emphasis); line-height: var(--leading-ui); }
+.error-code { font-size: var(--type-error-code); font-weight: var(--weight-emphasis); line-height: var(--leading-tight); }
+.error-title { font-size: var(--type-error-title); font-weight: var(--weight-emphasis); line-height: var(--leading-tight); }
+@media (min-width: 1200px) {
+  :root { --type-error-code: 4rem; --type-error-title: 1.75rem; }
+}
 .text-muted-on-dark { color: var(--text-muted-on-dark) !important; }
 .site-footer { color: var(--text-muted-on-dark); }
 .site-footer .footer-link { color: var(--text-muted-on-dark); }
@@ -436,7 +454,7 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 .service-menu-trigger { border: 0; background: transparent; }
 .service-menu-trigger.active { color: var(--brand-blue); }
 .service-navigation .dropdown-menu { padding: var(--space-8); border-color: var(--border-default); border-radius: var(--radius-card); box-shadow: 0 8px 24px rgba(23,43,70,.1); }
-.service-navigation .dropdown-item { min-height: var(--control-min-size); padding: var(--space-8) var(--space-12); border-radius: var(--radius-inline); color: var(--text-primary); }
+.service-navigation .dropdown-item { font-size: var(--type-service-menu); font-weight: 400; line-height: var(--leading-body); letter-spacing: normal; min-height: var(--control-min-size); padding: var(--space-8) var(--space-12); border-radius: var(--radius-inline); color: var(--text-primary); }
 .service-navigation .dropdown-item:hover, .service-navigation .dropdown-item:focus { color: var(--brand-blue); background: var(--surface-subtle); }
 .service-navigation .dropdown-item.active { color: var(--text-on-dark); background: var(--brand-blue); }
 .mobile-service-navigation summary { cursor: pointer; list-style: none; }

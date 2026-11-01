@@ -36,6 +36,27 @@
 
 正文一般行高 1.8；製造能力、合作流程及設備介紹 1.65，電話資訊 1.5，Footer 資訊桌機 1.6／手機 1.2；手機資訊列及連結最小高度 32px，列間距 8px。Hero CTA 文字與 SVG 箭頭整組置中，桌機寬度 174px。
 
+### 特殊元件字級
+
+以下是主字級尺度之外的正式元件變體。此次僅整理命名，保留既有字級、字重、行高與斷點；不要將元件差異改成新的全站標準。
+
+| 用途／樣式 | 字級 Token 與斷點 | 字重 | 行高 | 字距 |
+| --- | --- | --- | --- | --- |
+| 首頁案例卡片 `.application-title` | `--type-application-title`：<992px 20px；992–1199px 22px；≥1200px 24px | 600 | 1.35 | normal |
+| 詢價信箱 `.contact-email-address` | `--type-contact-email`：20px，各尺寸一致 | 700 | 1.8 | normal |
+| 圖片彈窗標題 `.image-modal-title` | `--type-image-modal-title`：20px，各尺寸一致 | 700 | 1.5 | normal |
+| Hero 目前頁碼 `.hero-current` | `--type-hero-counter`：44px，各尺寸一致 | 600 | 1.2 | `--tracking-hero-counter: -0.04em` |
+| Hero 總頁數 `.hero-total` | `--type-hero-total`：18px，各尺寸一致 | 400 | 1.8 | normal |
+| 桌機服務下拉選單 `.service-navigation .dropdown-item` | `--type-service-menu`：16px | 400 | 1.8 | normal |
+| 404 數字 `.error-code` | `--type-error-code`：<1200px `calc(1.525rem + 3.3vw)`；≥1200px 64px | 700 | 1.2 | normal |
+| 404 說明標題 `.error-title` | `--type-error-title`：<1200px `calc(1.3rem + 0.6vw)`；≥1200px 28px | 700 | 1.2 | normal |
+
+- 案例標題 Token 限定於 `.application-section`；20／24px 引用 `--type-subheading`，22px 為窄桌機的正式變體，保留既有卡片排版。
+- 特殊角色的 700 字重共用 `--weight-emphasis`；600 共用 `--weight-cta`；行高沿用 `--leading-*`。下拉選單屬次層導覽，維持 400 字重；手機選單仍用原有 15px／600。
+- 404 字級承接原有 Bootstrap RFS 比例，改由品牌 Token 管理。以根字級 16px 計，390px 寬時數字約 37.27px、說明標題約 23.14px；不強制套用一般內容標題。
+- 上述文字不再使用 `fs-*`／`display-*` 工具類別決定字級；版面、色彩及圖示仍可使用 Bootstrap 工具類別。`#hero-current` 與 `#modal-title` 保留供互動與無障礙標記使用。
+- 已有正式差異繼續保留：子頁 H1 40／30px、手機模壓成型 H1 的單行縮放、材料比較表 14px，以及公司數據說明的元件 Token。
+
 ## 排版與互動
 
 - 頁首、Hero 與正文共用滿寬容器，所有尺寸最大 1440px，不套用 Bootstrap 在平板的 540／720px 容器上限。桌機內容容器最大 1440px；內距 40px，≥1200px 時 64px；手機寬度 375–767px 左右內距各 28px，<375px 各 24px，使用 `--mobile-container-padding`。平板 768–991px 維持各 24px；案例輪播 <768px 保留各 36px、平板保留各 52px，預留箭頭空間。
