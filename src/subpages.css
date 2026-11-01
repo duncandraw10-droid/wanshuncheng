@@ -58,32 +58,44 @@
 .molding-process-copy .subpage-number { margin-bottom: var(--space-8); }
 .molding-process-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .molding-process-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
-/* Transfer guidance stays brief; supporting content opens in one step. */
+/* Technical guidance leads with the diagram and a clear inquiry action. */
 .transfer-page { --transfer-intro-image-max: 480px; --transfer-assessment-image-max: 400px; }
 .transfer-intro-grid { display: grid; align-items: center; gap: var(--space-24); }
 .transfer-intro-grid > * { min-width: 0; }
-.transfer-preparation-grid { display: grid; gap: var(--space-32); align-items: start; }
-.transfer-preparation-grid > * { min-width: 0; }
+.transfer-process-strip { margin-top: var(--space-32); padding: var(--space-16); border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-subtle); scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
+.transfer-process-strip > .helper-copy { margin: 0 0 var(--space-16); color: var(--text-secondary); line-height: var(--leading-ui); }
 .transfer-process-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
 .transfer-process-list > li { min-width: 0; }
-.transfer-process-list .subpage-step { height: 100%; padding-left: var(--space-12); }
-.transfer-more-info { min-width: 0; }
-.transfer-more-info [id] { scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
-.transfer-more-info .transfer-assessment-panel { margin-bottom: var(--space-24); }
-.transfer-more-info .preparation-examples { --bs-gutter-x: 0; --bs-gutter-y: var(--space-16); }
-.transfer-more-info .preparation-examples > div { width: 100%; }
-.transfer-faq-answers { display: grid; gap: var(--space-24); padding-bottom: var(--space-24); }
-.transfer-faq-answers .content-heading { margin: 0 0 var(--space-8); }
-.transfer-faq-answers p { margin: 0; }
-.transfer-assessment-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); padding: var(--space-16); margin: 0; border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-white); }
-.transfer-assessment-figure { width: 100%; max-width: var(--transfer-assessment-image-max); min-width: 0; margin: 0 auto; }
-.transfer-assessment-figure img { display: block; width: 100%; height: auto; border-radius: var(--radius-soft); background: var(--surface-white); }
-.transfer-assessment-figure figcaption { margin-top: var(--space-12); color: var(--text-secondary); line-height: var(--leading-compact-copy); }
-.transfer-assessment-copy { min-width: 0; }
-.transfer-assessment-copy h3 { margin: 0 0 var(--space-20); }
+.transfer-process-list .subpage-step { height: 100%; padding-left: 0; border-left: 0; }
+.transfer-guidance-section { background: var(--surface-subtle); }
+.transfer-guidance-grid { display: grid; gap: var(--space-24); }
+.transfer-guidance-grid > * { min-width: 0; }
+.transfer-technical-figure { display: flex; flex-direction: column; align-items: center; gap: var(--space-16); margin: 0; padding: var(--space-16); border: 1px solid var(--border-default); border-radius: var(--radius-panel); background: var(--surface-white); }
+.transfer-technical-label { align-self: stretch; color: var(--brand-blue); font-weight: var(--weight-cta); }
+.transfer-technical-figure > img { display: block; width: 100%; max-width: var(--transfer-assessment-image-max); height: auto; object-fit: contain; }
+.transfer-technical-figure figcaption { align-self: stretch; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+.transfer-criteria { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-8); margin: 0; padding: 0; list-style: none; }
+.transfer-criteria li { padding: var(--space-4) var(--space-8); border-radius: var(--radius-inline); background: var(--surface-subtle); color: var(--text-secondary); font-size: var(--type-helper); line-height: var(--leading-ui); }
+.transfer-inquiry-card { display: flex; flex-direction: column; padding: var(--space-24); border-radius: var(--radius-panel); background: var(--brand-navy); color: var(--text-on-dark); }
+.transfer-inquiry-card > .content-heading { color: var(--text-on-dark); margin: 0 0 var(--space-24); }
+.transfer-inquiry-card .subpage-checklist { color: var(--text-muted-on-dark); gap: var(--space-16); }
+.transfer-inquiry-card .subpage-checklist li::marker { color: var(--text-on-dark); }
+.transfer-inquiry-action { margin-top: auto; padding-top: var(--space-24); }
+.transfer-inquiry-action .btn { width: 100%; min-width: 0; }
+.transfer-inquiry-action > .helper-copy { margin: var(--space-12) 0 0; color: var(--text-muted-on-dark); }
+.transfer-resources { margin-top: var(--space-24); }
+.transfer-resources > summary { min-height: var(--control-min-size); padding-block: var(--space-16); }
+.transfer-resource-content { display: grid; gap: var(--space-32); padding: var(--space-24) 0; }
+.transfer-resource-content > article > .content-heading { margin: 0 0 var(--space-16); }
+.transfer-resource-content [id] { scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
+.transfer-resource-content .preparation-examples { padding-bottom: var(--space-16); }
+.transfer-resource-content p { margin: 0; }
+.transfer-faq-answers { display: grid; gap: var(--space-24); }
+.transfer-question-heading { font-size: var(--type-body); font-weight: var(--weight-cta); line-height: var(--leading-heading); margin: 0 0 var(--space-8); }
 .transfer-assessment-facts { display: grid; gap: var(--space-16); margin: 0; }
-.transfer-assessment-facts dt { margin-bottom: var(--space-4); font-weight: 600; }
+.transfer-assessment-facts dt { margin-bottom: var(--space-4); font-weight: var(--weight-cta); }
 .transfer-assessment-facts dd { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
+.transfer-page .subpage-contact { background: var(--surface-white); }
 /* Purchase guidance stays in HTML; compact tables fit narrow screens without horizontal scrolling. */
 .material-comparison { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border-default); border-radius: var(--radius-card); overflow: hidden; background: var(--surface-white); font-size: var(--type-helper); line-height: var(--leading-compact-copy); }
 .material-comparison th, .material-comparison td { padding: var(--space-16); vertical-align: top; overflow-wrap: anywhere; }
@@ -102,7 +114,7 @@
   .molding-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); }
   .molding-process-card { padding: var(--space-24); }
   .molding-process-card img { aspect-ratio: 3 / 2; margin-bottom: var(--space-20); }
-  .transfer-assessment-panel { padding: var(--space-24); }
+  .transfer-technical-figure { padding: var(--space-24); }
 }
 @media (min-width: 768px) {
   .case-reference-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-32); }
@@ -122,13 +134,12 @@
   .molding-process-card { padding: var(--space-16); }
   .transfer-intro-grid { grid-template-columns: minmax(0, 11fr) minmax(0, 9fr); gap: var(--space-48); }
   .transfer-intro-grid > figure { width: 100%; max-width: var(--transfer-intro-image-max); justify-self: end; }
-  .transfer-preparation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-48); }
-  .transfer-checklist { gap: 0; padding-left: 0; list-style: none; }
-  .transfer-checklist > li { position: relative; padding: var(--space-20) 0 var(--space-20) var(--space-20); border-bottom: 1px solid var(--border-default); }
-  .transfer-checklist > li::before { content: ''; position: absolute; left: 0; top: calc(var(--space-20) + .9em - 3px); width: 6px; height: 6px; border-radius: var(--radius-circle); background: var(--brand-blue); }
+  .transfer-guidance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-32); }
+  .transfer-technical-figure { order: -1; }
+  .transfer-inquiry-card { padding: var(--space-32); }
+  .transfer-process-strip { margin-top: var(--space-48); padding: var(--space-24); }
 }
 @media (max-width: 767.98px) {
-  .transfer-more-info summary { min-height: var(--control-min-size); padding-block: var(--space-16); }
   .transfer-process-list p > .text-nowrap { display: block; }
   .transfer-process-list .transfer-process-separator { display: none; }
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }

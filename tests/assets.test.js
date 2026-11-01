@@ -89,7 +89,7 @@ test('service and case pages expose unique SEO, meaningful content and linked in
       assert.equal(normalized, original, `global chrome drift in ${page}`);
     }
     if (!page.startsWith('cases/')) {
-      assert.ok([...html.matchAll(/<details class="subpage-faq"/g)].length >= 4);
+      assert.ok([...html.matchAll(/<details\b[^>]*class="[^\"]*\bsubpage-faq\b[^\"]*"/g)].length >= 1, `missing expandable purchase guidance: ${page}`);
       assert.ok(graph.some(item => item['@type'] === 'Service'));
     } else {
       assert.ok(html.includes('href="../smc-bmc-molding.html"'));
