@@ -59,17 +59,25 @@
 .molding-process-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .molding-process-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
 /* Transfer guidance stays brief; supporting content opens in one step. */
+.transfer-page { --transfer-intro-image-max: 480px; --transfer-assessment-image-max: 400px; }
+.transfer-intro-grid { display: grid; align-items: center; gap: var(--space-24); }
+.transfer-intro-grid > * { min-width: 0; }
+.transfer-preparation-grid { display: grid; gap: var(--space-32); align-items: start; }
+.transfer-preparation-grid > * { min-width: 0; }
+.transfer-preparation-grid > .subpage-note { margin: 0; }
 .transfer-process-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
 .transfer-process-list > li { min-width: 0; }
 .transfer-process-list .subpage-step { height: 100%; padding-left: var(--space-12); }
-.transfer-more-info { margin-top: var(--space-32); }
+.transfer-more-info { min-width: 0; }
 .transfer-more-info [id] { scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
 .transfer-more-info .transfer-assessment-panel { margin-bottom: var(--space-24); }
+.transfer-more-info .preparation-examples { --bs-gutter-x: 0; --bs-gutter-y: var(--space-16); }
+.transfer-more-info .preparation-examples > div { width: 100%; }
 .transfer-faq-answers { display: grid; gap: var(--space-24); padding-bottom: var(--space-24); }
 .transfer-faq-answers .content-heading { margin: 0 0 var(--space-8); }
 .transfer-faq-answers p { margin: 0; }
-.transfer-assessment-panel { display: grid; gap: var(--space-24); padding: var(--space-16); margin: 0; border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-white); }
-.transfer-assessment-figure { min-width: 0; margin: 0; }
+.transfer-assessment-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); padding: var(--space-16); margin: 0; border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-white); }
+.transfer-assessment-figure { width: 100%; max-width: var(--transfer-assessment-image-max); min-width: 0; margin: 0 auto; }
 .transfer-assessment-figure img { display: block; width: 100%; height: auto; border-radius: var(--radius-soft); background: var(--surface-white); }
 .transfer-assessment-figure figcaption { margin-top: var(--space-12); color: var(--text-secondary); line-height: var(--leading-compact-copy); }
 .transfer-assessment-copy { min-width: 0; }
@@ -113,9 +121,17 @@
   .subpage-contact .helper-copy { text-align: right; }
   .molding-process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .molding-process-card { padding: var(--space-16); }
-  .transfer-assessment-panel { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: center; gap: var(--space-32); padding: var(--space-32); }
+  .transfer-intro-grid { grid-template-columns: minmax(0, 11fr) minmax(0, 9fr); gap: var(--space-48); }
+  .transfer-intro-grid > figure { width: 100%; max-width: var(--transfer-intro-image-max); justify-self: end; }
+  .transfer-preparation-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; column-gap: var(--space-48); row-gap: var(--space-24); }
+  .transfer-preparation-grid > .transfer-more-info { grid-column: 2; grid-row: 1 / span 2; }
+  .transfer-preparation-grid > .transfer-more-info > details:first-child > summary { padding-top: 0; }
+  .transfer-preparation-grid > .subpage-note { grid-column: 1; }
 }
 @media (max-width: 767.98px) {
+  .transfer-more-info summary { min-height: var(--control-min-size); padding-block: var(--space-16); }
+  .transfer-process-list p > .text-nowrap { display: block; }
+  .transfer-process-list .transfer-process-separator { display: none; }
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
   /* Keep the full service name on one line at 320–767px without clipping. */
   .subpage-title-molding { font-size: clamp(20px, 6.6vw, 28px); white-space: nowrap; }
