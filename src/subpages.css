@@ -62,11 +62,17 @@
 .transfer-page { --transfer-intro-image-max: 480px; --transfer-assessment-image-max: 400px; --transfer-resource-max: 960px; --transfer-resource-tabs-max: 480px; }
 .transfer-intro-grid { display: grid; align-items: center; gap: var(--space-24); }
 .transfer-intro-grid > * { min-width: 0; }
-.transfer-process-strip { margin-top: var(--space-32); padding: var(--space-16); border: 1px solid var(--border-default); border-radius: var(--radius-card); background: var(--surface-subtle); scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
-.transfer-process-strip > .helper-copy { margin: 0 0 var(--space-16); color: var(--text-secondary); line-height: var(--leading-ui); }
-.transfer-process-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
-.transfer-process-list > li { min-width: 0; }
-.transfer-process-list .subpage-step { height: 100%; padding-left: 0; border-left: 0; }
+/* A connected sequence reads left to right on desktop, top to bottom on mobile. */
+.transfer-process-strip { --transfer-process-node: var(--space-40); --transfer-process-gap: var(--space-24); margin-top: var(--space-32); padding: var(--space-24); border: 1px solid var(--border-default); border-radius: var(--radius-panel); background: var(--surface-subtle); scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
+.transfer-process-strip > .content-heading { margin: 0 0 var(--space-24); }
+.transfer-process-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--transfer-process-gap); margin: 0; padding: 0; list-style: none; }
+.transfer-process-list > li { position: relative; min-width: 0; }
+.transfer-process-list > li:not(:last-child)::after { content: ''; position: absolute; left: calc(var(--transfer-process-node) / 2); top: var(--transfer-process-node); bottom: calc(-1 * var(--transfer-process-gap)); width: 1px; background: var(--border-default); }
+.transfer-process-step { display: grid; grid-template-columns: var(--transfer-process-node) minmax(0, 1fr); align-items: start; gap: var(--space-16); }
+.transfer-process-number { position: relative; z-index: 1; display: grid; place-items: center; width: var(--transfer-process-node); height: var(--transfer-process-node); border-radius: var(--radius-circle); background: var(--brand-blue); color: var(--text-on-dark); font-size: 1rem; font-weight: var(--weight-cta); line-height: var(--leading-solid); }
+.transfer-process-copy { min-width: 0; }
+.transfer-process-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: var(--weight-cta); line-height: var(--leading-heading); }
+.transfer-process-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
 .transfer-guidance-section { background: var(--surface-subtle); }
 .transfer-guidance-grid { display: grid; gap: var(--space-24); }
 .transfer-guidance-grid > * { min-width: 0; }
@@ -135,6 +141,8 @@
   .subpage-title { font-size: 40px; }
   .subpage-machine { --subpage-image-inset: var(--space-32); }
   .transfer-process-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .transfer-process-list > li:not(:last-child)::after { left: var(--transfer-process-node); right: calc(-1 * var(--transfer-process-gap)); top: calc(var(--transfer-process-node) / 2); bottom: auto; width: auto; height: 1px; }
+  .transfer-process-step { grid-template-columns: minmax(0, 1fr); gap: var(--space-16); }
   .subpage-card { padding: var(--space-32); }
   .subpage-contact .subpage-actions { justify-content: flex-end; }
   .subpage-contact .helper-copy { text-align: right; }
@@ -145,11 +153,9 @@
   .transfer-guidance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-32); }
   .transfer-technical-figure { order: -1; }
   .transfer-inquiry-card { padding: var(--space-32); }
-  .transfer-process-strip { margin-top: var(--space-48); padding: var(--space-24); }
+  .transfer-process-strip { margin-top: var(--space-48); padding: var(--space-32); }
 }
 @media (max-width: 767.98px) {
-  .transfer-process-list p > .text-nowrap { display: block; }
-  .transfer-process-list .transfer-process-separator { display: none; }
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
   /* Keep the full service name on one line at 320–767px without clipping. */
   .subpage-title-molding { font-size: clamp(20px, 6.6vw, 28px); white-space: nowrap; }
