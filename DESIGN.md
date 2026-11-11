@@ -43,7 +43,6 @@
 | 用途／樣式 | 字級 Token 與斷點 | 字重 | 行高 | 字距 |
 | --- | --- | --- | --- | --- |
 | 首頁案例卡片 `.application-title` | `--type-application-title`：<992px 20px；992–1199px 22px；≥1200px 24px | 600 | 1.35 | normal |
-| 詢價信箱 `.contact-email-address` | `--type-contact-email`：20px，各尺寸一致 | 700 | 1.8 | normal |
 | 圖片彈窗標題 `.image-modal-title` | `--type-image-modal-title`：20px，各尺寸一致 | 700 | 1.5 | normal |
 | Hero 目前頁碼 `.hero-current` | `--type-hero-counter`：44px，各尺寸一致 | 600 | 1.2 | `--tracking-hero-counter: -0.04em` |
 | Hero 總頁數 `.hero-total` | `--type-hero-total`：18px，各尺寸一致 | 400 | 1.8 | normal |
@@ -80,7 +79,7 @@
 
 ## 操作字重與共用 Token
 
-主要操作使用 `.cta-primary`／`--weight-cta: 600`，包括聯絡詢價、討論產品需求、開始詢價、開啟郵件及 Footer 聯絡我們。次要操作使用 `.cta-secondary`／`--weight-secondary-action: 500`，包括 Hero 次要連結、複製操作與外框按鈕；不要再加會衝突的 `fw-*` 類別。
+主要操作使用 `.cta-primary`／`--weight-cta: 600`，包括聯絡詢價、討論產品需求、開始詢價、寄信詢價及 Footer 聯絡我們。次要操作使用 `.cta-secondary`／`--weight-secondary-action: 500`，包括 Hero 次要連結、複製操作與外框按鈕；不要再加會衝突的 `fw-*` 類別。
 
 文字與箭頭間距使用以下共用 Token 與 `.action-gap-*` 類別，文字與箭頭整組置中；手機 Hero 主要 CTA 繼續只顯示文字。純圖示按鈕及電話、Email 等非箭頭圖示操作保留原設定。
 

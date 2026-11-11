@@ -114,7 +114,6 @@
   --type-body: 1rem;
   --type-helper: .875rem;
   /* Component type roles preserve the approved exceptions to the main scale. */
-  --type-contact-email: 1.25rem;
   --type-image-modal-title: 1.25rem;
   --type-hero-counter: 44px;
   --type-hero-total: 1.125rem;
@@ -320,7 +319,6 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 .content-heading { font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .body-copy, .hero-description { font-size: var(--type-body); font-weight: 400; }
 .small, small, .helper-copy { font-size: var(--type-helper); font-weight: 400; }
-.contact-email-address { font-size: var(--type-contact-email); font-weight: var(--weight-emphasis); line-height: var(--leading-body); }
 .image-modal-title { font-size: var(--type-image-modal-title); font-weight: var(--weight-emphasis); line-height: var(--leading-ui); }
 .error-code { font-size: var(--type-error-code); font-weight: var(--weight-emphasis); line-height: var(--leading-tight); }
 .error-title { font-size: var(--type-error-title); font-weight: var(--weight-emphasis); line-height: var(--leading-tight); }
