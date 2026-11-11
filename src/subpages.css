@@ -1,6 +1,7 @@
 /* Subpages extend the same foundations and spacing tokens as the homepage. */
 .subpage-main { padding-top: var(--site-header-height); }
 .subpage-section { padding-block: var(--layout-space); }
+.subpage-section-compact { padding-block: var(--space-48); }
 .subpage-intro { padding-top: var(--space-24); }
 .subpage-breadcrumb { font-size: var(--type-helper); margin-bottom: var(--space-32); }
 .subpage-breadcrumb ol { display: flex; flex-wrap: wrap; gap: var(--space-8); padding: 0; margin: 0; list-style: none; }
@@ -67,8 +68,6 @@
 .service-flow-copy { min-width: 0; }
 .service-flow-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: var(--weight-cta); line-height: var(--leading-heading); }
 .service-flow-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); text-wrap: balance; }
-.service-scope-details { margin-top: var(--space-24); }
-.service-scope-details > .supplier-facts { padding-bottom: var(--space-24); }
 .transfer-guidance-section { background: var(--surface-subtle); }
 .transfer-guidance-grid { display: grid; gap: var(--space-24); }
 .transfer-guidance-grid > * { min-width: 0; }
@@ -116,8 +115,6 @@
 .material-comparison tbody td { color: var(--text-secondary); }
 .material-comparison tbody tr + tr > * { border-top: 1px solid var(--border-default); }
 .material-comparison a { text-decoration: underline; text-underline-offset: 4px; }
-.preparation-details { margin-top: var(--space-32); }
-.preparation-facts { padding-bottom: var(--space-24); }
 @media (min-width: 576px) {
   .molding-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); }
   .molding-process-card { padding: var(--space-24); }
@@ -132,6 +129,7 @@
   .subpage-related > img { align-self: center; }
 }
 @media (min-width: 992px) {
+  .subpage-section-compact { padding-block: var(--space-80); }
   .transfer-resource-shell { padding: var(--space-32); }
   .subpage-breadcrumb { margin-bottom: var(--space-48); }
   .subpage-title { font-size: 40px; }
