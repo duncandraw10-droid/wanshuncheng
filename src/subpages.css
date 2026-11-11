@@ -59,7 +59,6 @@
 /* Technical guidance leads with the diagram and a clear inquiry action. */
 .transfer-page { --transfer-assessment-image-max: 400px; --transfer-resource-max: 960px; --transfer-resource-tabs-max: 480px; }
 /* A connected sequence reads left to right on desktop, top to bottom on mobile. */
-.service-flow { padding: var(--space-24); border: 1px solid var(--border-default); border-radius: var(--radius-panel); background: var(--surface-subtle); scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
 .service-flow-list { --service-flow-node: var(--space-40); --service-flow-gap: var(--space-24); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--service-flow-gap); margin: 0; padding: 0; list-style: none; }
 .service-flow-list > li { position: relative; min-width: 0; }
 .service-flow-list > li:not(:last-child)::after { content: ''; position: absolute; left: calc(var(--service-flow-node) / 2); top: var(--service-flow-node); bottom: calc(-1 * var(--service-flow-gap)); width: 1px; background: var(--border-default); }
@@ -147,7 +146,6 @@
   .transfer-guidance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-32); }
   .transfer-technical-figure { order: -1; }
   .transfer-inquiry-card { padding: var(--space-32); }
-  .service-flow { padding: var(--space-32); }
 }
 @media (max-width: 767.98px) {
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
