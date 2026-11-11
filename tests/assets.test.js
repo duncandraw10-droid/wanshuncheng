@@ -40,12 +40,12 @@ for (const page of ['index.html', 'privacy.html', '404.html', ...subpages]) {
 test('home page keeps usable contact actions, media and formal-domain SEO', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(html.includes('tel:034721912'));
-  assert.ok(html.includes('tel:0932271570'));
+  assert.doesNotMatch(html, /(?:tel:|data-copy-text=")09\d{8}/);
   assert.ok(html.includes('mailto:info@wsctw.com'));
   assert.ok(html.includes('https://wsctw.com/'));
   assert.equal([...html.matchAll(/class="[^\"]*\bportfolio-item\b/g)].length, 6);
   assert.equal([...html.matchAll(/class="[^\"]*\bequip-tab\b/g)].length, 3);
-  assert.equal([...html.matchAll(/data-copy-text=/g)].length, 3);
+  assert.ok(html.includes('data-copy-text="034721912"'));
   assert.ok(html.includes('data-copy-template'));
   assert.ok(html.includes('data-modal-close'));
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);

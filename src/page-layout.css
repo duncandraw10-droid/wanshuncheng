@@ -215,16 +215,40 @@
   .workflow-step { padding-inline-start: var(--space-32); }
 }
 .contact-panel { min-width: 0; overflow-wrap: anywhere; padding-block: var(--space-24) 0; border-top: 1px solid var(--border-default); }
-.contact-panel-content, .contact-panel-footer { margin-inline-start: var(--space-32); }
-.contact-panel .contact-label { width: 3.5rem; min-width: 3.5rem; }
-.contact-panel .contact-value { min-width: 0; }
-/* Match the 44px copy controls so all contact rows share one rhythm. */
-.contact-phone-details { line-height: var(--leading-ui); }
-.contact-phone-details > div,
-.contact-preparation .contact-panel-content > li { min-height: var(--control-min-size); }
-.contact-preparation .contact-panel-content > li { display: flex; align-items: center; }
+.contact-panel-content { margin-inline-start: var(--space-32); }
+.contact-methods {
+  padding: var(--space-16);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-panel);
+  background: var(--surface-white);
+}
+.contact-methods-list { line-height: var(--leading-ui); }
+.contact-methods-list > div {
+  display: grid;
+  grid-template-columns: 4em minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-12);
+  min-height: var(--control-min-size);
+}
+.contact-methods-list dt { font-weight: var(--weight-cta); }
+.contact-methods-list dd { min-width: 0; margin: 0; }
+.contact-methods-list a { display: inline-flex; align-items: center; min-height: var(--control-min-size); }
+.contact-method-actions { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.contact-method-actions > .cta-primary { flex-basis: 100%; min-height: var(--control-min-size); }
+@media (min-width: 576px) {
+  .contact-method-actions > .cta-primary { flex-basis: auto; }
+}
+@media (min-width: 992px) {
+  .contact-methods { padding: var(--space-24); }
+}
+.contact-preparation .contact-panel-content > li {
+  display: flex;
+  align-items: center;
+  min-height: var(--control-min-size);
+}
 .contact-panel .btn:not(.btn-link) { border-radius: var(--radius-pill); }
-.contact-copy-actions .btn { --bs-btn-bg: var(--surface-white); min-height: var(--control-min-size); }
+.contact-copy-actions .btn { min-height: var(--control-min-size); }
+.contact-copy-actions .btn-outline-secondary { --bs-btn-bg: var(--surface-white); }
 .contact-preparation .list-dot { inset-inline-start: -14px; top: 50%; transform: translateY(-50%); }
 .full-footer { padding-block: var(--layout-space) calc(var(--footer-bottom-space) + env(safe-area-inset-bottom)) !important; }
 .full-footer .footer-link { line-height: var(--leading-body); }
@@ -353,7 +377,7 @@
 /* Icon actions remain compact while offering a consistent interaction area. */
 .contact-value .btn-link { min-width: var(--control-min-size); min-height: var(--control-min-size); padding: 0 !important; justify-content: center; }
 
-/* Keep preparation first while shortening the mobile contact journey. */
+/* Preserve compact spacing in the preparation list. */
 .contact-preparation-details > ul.contact-panel-content { gap: var(--space-8); }
 @media (max-width: 991.98px) {
   .contact-preparation-details > ul.contact-panel-content { gap: var(--space-4); }
