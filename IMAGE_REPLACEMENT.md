@@ -9,7 +9,7 @@
 - 關於萬順承使用單張 `factory-classic-57373c05.webp` 大圖，與 Hero 共用既有 480／960／1440px 響應式版本。關於區塊使用原始 1980×1105 比例、寬度 100% 與高度自動，保持完整構圖；Hero 的 cover 裁切維持原設定。舊雙全景及專用裁切規則已移除。
 - 手機案例圖片使用 1:1 容器與 object-fit: cover，不拉伸原圖；桌機保留既有漸層介紹效果。
 - 分享圖片與企業 Logo 使用正式網址 `https://wsctw.com/images/...`，更換檔名時也要檢查 `<head>`。
-- 製造能力的 `manufacturing-*`、品質管理的 `quality-incoming-review`／`quality-dimension-check`／`quality-final-inspection`／`quality-record-linkage`，以及案例評估的 `case-*` 共 11 張圖片，使用核准版本輸出為 1440 × 1080 WebP；480／960px 版本位於 `responsive/`。PNG 原稿與製作紀錄保存在專案外，不隨網站發佈。
+- 製造能力的 `manufacturing-*`、品質管理的 `quality-incoming-review`／`quality-digital-caliper`／`quality-final-inspection`／`quality-record-linkage`，以及案例評估的 `case-*` 共 11 張圖片，使用核准版本輸出為 1440 × 1080 WebP；480／960px 版本位於 `responsive/`。PNG 原稿與製作紀錄保存在專案外，不隨網站發佈。
 - 新增三區圖片完整顯示為 4:3，使用共用 `.section-photo`；不套用首頁輪播的正方形裁切。箱體特寫與板件放大窗來自同一主圖裁切，更換時需一起核對。
 
 不要直接修改 `dist/`；修改來源檔案後重新執行建置。

@@ -55,7 +55,7 @@
 .molding-process-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; margin-bottom: var(--space-16); }
 .molding-process-copy { min-width: 0; }
 .molding-process-copy .subpage-number { margin-bottom: var(--space-8); }
-.molding-process-copy h3 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
+.molding-process-copy h2 { margin: 0 0 var(--space-8); font-size: var(--type-subheading); font-weight: 600; line-height: var(--leading-heading); }
 .molding-process-copy p { margin: 0; color: var(--text-secondary); line-height: var(--leading-compact-copy); }
 /* Technical guidance leads with the diagram and a clear inquiry action. */
 .transfer-page { --transfer-assessment-image-max: 400px; --transfer-resource-max: 960px; --transfer-resource-tabs-max: 480px; }
@@ -155,7 +155,7 @@
 }
 @media (max-width: 767.98px) {
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
-  /* Keep the full service name on one line at 320–767px without clipping. */
+  /* Keep the molding process title on one line at 320–767px without clipping. */
   .subpage-title-molding { font-size: clamp(20px, 6.6vw, 28px); white-space: nowrap; }
 }
 @media (max-width: 575.98px) {
