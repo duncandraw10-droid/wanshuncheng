@@ -250,10 +250,6 @@
 }
 .contact-method-link:hover { color: var(--brand-blue); }
 .contact-method-note { line-height: var(--leading-ui); text-wrap: balance; }
-.contact-line-action {
-  min-height: var(--control-min-size);
-  --bs-btn-disabled-opacity: 1;
-}
 .contact-method-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
