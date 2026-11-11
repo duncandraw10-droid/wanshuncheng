@@ -61,7 +61,7 @@
 .transfer-page { --transfer-assessment-image-max: 400px; --transfer-resource-max: 960px; --transfer-resource-tabs-max: 480px; }
 /* A connected sequence reads left to right on desktop, top to bottom on mobile. */
 .service-flow { --service-flow-node: var(--space-40); --service-flow-gap: var(--space-24); padding: var(--space-24); border: 1px solid var(--border-default); border-radius: var(--radius-panel); background: var(--surface-subtle); scroll-margin-top: calc(var(--site-header-height) + var(--space-16)); }
-.transfer-process-strip { margin-top: var(--space-32); }
+.transfer-process-strip { margin-top: var(--space-32); background: transparent; }
 .service-flow > .content-heading { margin: 0 0 var(--space-24); }
 .service-flow-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--service-flow-gap); margin: 0; padding: 0; list-style: none; }
 .service-flow-list > li { position: relative; min-width: 0; }
