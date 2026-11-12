@@ -11,8 +11,9 @@
     "images": "node scripts/generate-responsive-images.mjs"
   },
   "devDependencies": {
-    "vite": "^5.2.0",
-    "sharp": "0.35.5"
+    "parse5": "8.0.0",
+    "sharp": "0.35.5",
+    "vite": "^5.2.0"
   },
   "engines": {
     "node": ">=24 <25"

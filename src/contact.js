@@ -15,6 +15,8 @@ export function initContact() {
   // --- Bootstrap Toast & Copy ---
   const toastElement = document.getElementById('toast');
   const copyToast = toastElement ? bootstrap.Toast.getOrCreateInstance(toastElement, { delay: 2000 }) : null;
+  const templateButton = document.querySelector('[data-copy-template]');
+  const { copySuccess = '已複製！', copyManual = '複製失敗，請手動複製：', copyFailure = '複製失敗，請手動複製。' } = toastElement?.dataset ?? {};
   function showToast(message) {
     const msgEl = document.getElementById('toast-message');
     if (msgEl) msgEl.textContent = message;
@@ -24,28 +26,27 @@ export function initContact() {
   async function copyToClipboard(text) {
     try {
       await navigator.clipboard.writeText(text);
-      showToast('已複製！');
+      showToast(copySuccess);
       trackContact('contact_copy', { contact_method: text.includes('@') ? 'email' : 'phone', contact_location: 'contact', contact_action: 'copy' });
     } catch {
-      showToast('複製失敗，請手動複製：' + text);
+      showToast(copyManual + text);
     }
   }
 
   async function copyTemplate() {
-
     try {
-      await navigator.clipboard.writeText(inquiryTemplate);
-      showToast('已複製！');
+      await navigator.clipboard.writeText(templateButton.dataset?.inquiryTemplate ?? inquiryTemplate);
+      showToast(copySuccess);
       trackContact('contact_copy', { contact_method: 'email', contact_location: 'contact', contact_action: 'copy_template' });
     } catch {
-      showToast('複製失敗，請手動複製。');
+      showToast(copyFailure);
     }
   }
 
   document.querySelectorAll('[data-copy-text]').forEach(button => {
     button.addEventListener('click', () => copyToClipboard(button.dataset.copyText));
   });
-  document.querySelector('[data-copy-template]')?.addEventListener('click', copyTemplate);
+  templateButton?.addEventListener('click', copyTemplate);
   // Preparation is expandable on small screens; desktop keeps all six items visible.
   const preparationDetails = document.querySelector('.contact-preparation-details');
   if (preparationDetails) {

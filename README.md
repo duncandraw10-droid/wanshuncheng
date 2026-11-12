@@ -40,6 +40,12 @@ npm run build
 | `public/favicon.png` | 首頁、隱私政策頁與 404 頁共用的網站圖示 |
 | `tests/` | 資產引用、聯絡操作／追蹤與案例輪播的回歸測試 |
 
+## 多語頁面
+
+繁中 HTML 是共用版型。英文與日文文案存放在 `locales/en.json` 和 `locales/ja.json`。新增或改動繁中文案時，同步更新兩份檔案的原文鍵值及翻譯。缺少翻譯的建置錯誤會指出頁面與原文。
+
+Vite 在發佈時產生 `dist/en/` 和 `dist/ja/` 的六個內容頁。開發預覽也能直接開啟 `/en/`、`/ja/` 及其子頁。語言選單、各頁 canonical 與互相對應的 hreflang 由 `build/site-languages.js` 產生。新增內容頁時，把頁面加入 Vite 的內容入口與三語 sitemap，再執行測試與建置。
+
 ## 必須保留的行為
 
 - 導覽順序：承製案例、設備能力、關於萬順承、製造能力、合作流程、聯絡詢價。

@@ -412,6 +412,12 @@
 }
 
 /* Icon actions remain compact while offering a consistent interaction area. */
+@media (max-width: 374.98px) {
+  html:is([lang="en"], [lang="ja"]) .contact-methods-list > div { grid-template-columns: 3.25rem minmax(0, 1fr); gap: var(--space-4); }
+  html:is([lang="en"], [lang="ja"]) .contact-methods-list :is(dt, .numbers) { font-size: var(--type-helper); }
+  html:is([lang="en"], [lang="ja"]) .contact-value > div { column-gap: 0 !important; }
+  html:is([lang="en"], [lang="ja"]) .contact-method-actions { grid-template-columns: minmax(0, 1fr); }
+}
 .contact-value .btn-link { min-width: var(--control-min-size); min-height: var(--control-min-size); padding: 0 !important; justify-content: center; }
 
 .contact-preparation-summary { min-height: var(--control-min-size); cursor: pointer; padding-block: 10px; }

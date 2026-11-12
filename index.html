@@ -96,15 +96,19 @@
         </ul>
       </div>
       <a href="#workflow" class="nav-link fw-medium rounded py-2">合作流程</a>
+      <!-- language-switch -->
       <a href="#contact" class="btn btn-primary d-inline-flex align-items-center justify-content-center action-gap-compact cta-primary">
         聯絡詢價 <span data-site-icon="arrow-right" class="site-icon-compact"></span>
       </a>
     </nav>
 
-    <button id="mobile-menu-btn" class="navbar-toggler d-lg-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="切換選單" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-menu">
-      <span class="material-symbols-outlined icon-menu d-block" aria-hidden="true">menu</span>
-      <span class="material-symbols-outlined icon-close d-none" aria-hidden="true">close</span>
-    </button>
+    <div class="mobile-header-actions d-flex d-lg-none align-items-center gap-2">
+      <!-- language-switch -->
+      <button id="mobile-menu-btn" class="navbar-toggler" aria-expanded="false" aria-controls="mobile-menu" aria-label="切換選單" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-menu">
+        <span class="material-symbols-outlined icon-menu d-block" aria-hidden="true">menu</span>
+        <span class="material-symbols-outlined icon-close d-none" aria-hidden="true">close</span>
+      </button>
+    </div>
   </div>
   
   <div id="mobile-menu" class="collapse d-lg-none w-100"><div class="container site-container navbar-nav py-3 gap-2">
@@ -204,7 +208,7 @@
           </p>
   </div>
   <div class="container layout-container application-gallery position-relative reveal">
-    <div id="portfolio-slider" class="row g-0 flex-nowrap gap-3 gap-lg-4 overflow-x-auto portfolio-slider" tabindex="0" role="region" aria-roledescription="輪播" aria-label="承製案例產品輪播">
+    <div id="portfolio-slider" data-collapse-label="收起介紹" class="row g-0 flex-nowrap gap-3 gap-lg-4 overflow-x-auto portfolio-slider" tabindex="0" role="region" aria-roledescription="輪播" aria-label="承製案例產品輪播">
     <article class="col-10 col-lg-4 portfolio-item d-flex">
       <div class="application-card position-relative overflow-hidden text-white">
         <div class="application-image-frame ratio ratio-1x1">
@@ -833,7 +837,7 @@
 </div></div></div>
 
 <!-- Toast Notification -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"><div id="toast" class="toast align-items-center bg-dark text-white border-0 shadow-lg" aria-live="polite" aria-atomic="true" role="status"><div class="toast-body d-flex align-items-center gap-2">
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"><div id="toast" data-copy-success="已複製！" data-copy-manual="複製失敗，請手動複製：" data-copy-failure="複製失敗，請手動複製。" class="toast align-items-center bg-dark text-white border-0 shadow-lg" aria-live="polite" aria-atomic="true" role="status"><div class="toast-body d-flex align-items-center gap-2">
   <span class="material-symbols-outlined fs-5 text-success" aria-hidden="true">check_circle</span>
   <span id="toast-message">複製成功</span>
 </div></div>

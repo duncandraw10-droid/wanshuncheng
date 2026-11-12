@@ -5,6 +5,8 @@ export function initPortfolio({ motion, modalElement }) {
   const portfolioNext = document.getElementById('slider-next');
   const portfolioHover = window.matchMedia('(min-width: 992px) and (hover: hover) and (pointer: fine)');
   const portfolioStates = [];
+  const collapseLabel = portfolioSlider?.dataset?.collapseLabel ?? '收起介紹';
+  const labelSeparator = document.documentElement?.lang === 'en' ? ': ' : '：';
   let syncAutoplay = () => {};
 
   document.querySelectorAll('.application-card').forEach(card => {
@@ -13,6 +15,7 @@ export function initPortfolio({ motion, modalElement }) {
     const label = toggle?.querySelector('.application-detail-label');
     const title = card.querySelector('h3')?.textContent.trim();
     if (!toggle || !details) return;
+    const expandLabel = label?.textContent?.trim() || '查看介紹';
     // Detail-page links must not receive focus while their introduction is collapsed.
     details.inert = true;
     const state = { card, pinned: false, setExpanded(open) {
@@ -21,9 +24,9 @@ export function initPortfolio({ motion, modalElement }) {
       details.inert = !open;
       toggle.setAttribute('aria-expanded', String(open));
       details.setAttribute('aria-hidden', String(!open));
-      const action = open ? '收起介紹' : '查看介紹';
+      const action = open ? collapseLabel : expandLabel;
       if (label) label.textContent = action;
-      toggle.setAttribute('aria-label', `${title}：${action}`);
+      toggle.setAttribute('aria-label', title + labelSeparator + action);
       syncAutoplay();
     } };
     portfolioStates.push(state);

@@ -149,6 +149,9 @@
   .subpage-intro .subpage-actions { column-gap: var(--space-16); }
   /* Keep the molding process title on one line at 320–767px without clipping. */
   .subpage-title-molding { font-size: clamp(20px, 6.6vw, 28px); white-space: nowrap; }
+  html:is([lang="en"], [lang="ja"]) .subpage-title { text-wrap: balance; }
+  html:is([lang="en"], [lang="ja"]) .subpage-title-molding { white-space: normal; }
+  html:is([lang="en"], [lang="ja"]) .transfer-resource-tabs .nav-link { white-space: normal; overflow-wrap: anywhere; }
 }
 @media (max-width: 575.98px) {
   .material-comparison th, .material-comparison td { padding: var(--space-12) var(--space-8); }

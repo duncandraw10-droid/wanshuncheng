@@ -3,6 +3,16 @@ import { fileURLToPath } from 'node:url'
 import { readFileSync } from 'node:fs'
 import { renderSharedLayout } from './build/shared-layout.js'
 import { renderSiteIcons } from './build/site-icons.js'
+import { siteLanguagePages } from './build/site-languages.js'
+
+const contentPages = [
+  './index.html',
+  './smc-bmc-molding.html',
+  './mold-transfer.html',
+  './cases/smc-protective-box.html',
+  './cases/bmc-tabletop.html',
+  './privacy.html',
+]
 
 export default defineConfig({
   base: './',
@@ -31,18 +41,10 @@ export default defineConfig({
         })
       },
     },
-  }],
+  }, siteLanguagePages(contentPages.map(page => page.slice(2)))],
   build: {
     rollupOptions: {
-      input: {
-        molding: fileURLToPath(new URL('./smc-bmc-molding.html', import.meta.url)),
-        transfer: fileURLToPath(new URL('./mold-transfer.html', import.meta.url)),
-        box: fileURLToPath(new URL('./cases/smc-protective-box.html', import.meta.url)),
-        tabletop: fileURLToPath(new URL('./cases/bmc-tabletop.html', import.meta.url)),
-        main: fileURLToPath(new URL('./index.html', import.meta.url)),
-        notFound: fileURLToPath(new URL('./404.html', import.meta.url)),
-        privacy: fileURLToPath(new URL('./privacy.html', import.meta.url)),
-      },
+      input: [...contentPages, './404.html'].map(page => fileURLToPath(new URL(page, import.meta.url))),
     },
   },
 })

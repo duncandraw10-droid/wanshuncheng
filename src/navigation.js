@@ -16,6 +16,8 @@ export function initNavigation(motion) {
       mobileMenu.addEventListener('shown.bs.collapse', () => mobileCollapse?.hide(), { once: true });
     } else mobileCollapse?.hide();
   }
+  document.querySelector('.mobile-header-actions .language-switch-toggle')
+    ?.addEventListener('show.bs.dropdown', closeMobileNavigation);
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', closeMobileNavigation);
   });
