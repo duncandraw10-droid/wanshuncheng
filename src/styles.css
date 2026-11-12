@@ -408,6 +408,7 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 }
 .cta-primary { font-weight: var(--weight-cta); }
 .cta-secondary { font-weight: var(--weight-secondary-action); }
+.action-link, .subpage-link { display: inline-flex; align-items: center; gap: var(--action-gap-secondary); min-height: var(--control-min-size); }
 .site-icon { display: inline-block; width: var(--icon-size-action); height: var(--icon-size-action); flex-shrink: 0; vertical-align: middle; }
 .site-icon-compact { width: var(--icon-size-compact); height: var(--icon-size-compact); }
 .site-icon-control { width: var(--icon-size-control); height: var(--icon-size-control); }
@@ -436,7 +437,12 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
     mask-mode: alpha;
   }
 }
-.privacy-brand-logo { display: block; width: 200px; max-width: 100%; }
+.privacy-brand-logo { display: block; max-width: 100%; }
+.privacy-header .button-compact { padding-inline: var(--space-16); }
+@media (min-width: 768px) {
+  .privacy-brand-logo { width: 200px; }
+  .privacy-header .button-compact { padding-inline: var(--space-24); }
+}
 
 /* Brand-consistent outline controls and global keyboard shortcut. */
 .btn-outline-primary {
@@ -460,8 +466,3 @@ body { font-size: var(--type-body); font-weight: 400; -webkit-font-smoothing: an
 .mobile-service-navigation summary::after { content: '+'; float: right; margin-right: var(--space-8); }
 .mobile-service-navigation[open] summary::after { content: '−'; }
 @media (min-width: 992px) and (max-width: 1199.98px) { .site-header > .container > nav { gap: var(--space-16) !important; } }
-
-@media (max-width: 374.98px) {
-  .privacy-header .privacy-brand-logo { width: 140px; }
-  .privacy-header .btn { padding-inline: var(--space-16) !important; }
-}

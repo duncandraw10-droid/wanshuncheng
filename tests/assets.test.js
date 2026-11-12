@@ -39,6 +39,8 @@ for (const page of ['index.html', 'privacy.html', '404.html', ...subpages]) {
 
 test('home page keeps usable contact actions, media and formal-domain SEO', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const heroIntro = html.slice(html.indexOf('<section id="hero"'), html.indexOf('<div id="hero-carousel"'));
+  assert.match(heroIntro, /<h1\b[^>]*>SMC／BMC 模壓成型代工<\/h1>/, 'primary heading precedes the carousel');
   assert.ok(html.includes('tel:034721912'));
   assert.doesNotMatch(html, /(?:tel:|data-copy-text=")09\d{8}/);
   assert.ok(html.includes('mailto:info@wsctw.com'));
